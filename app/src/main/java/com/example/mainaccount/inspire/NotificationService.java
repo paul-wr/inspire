@@ -1,5 +1,6 @@
 package com.example.mainaccount.inspire;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
@@ -47,6 +48,8 @@ public class NotificationService extends Service {
         NotificationCompat.Builder mBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(NotificationService.this)
                 .setSmallIcon(R.drawable.ic_stat_android)
                 .setContentTitle("Inspire Phrase Title")
+                .setDefaults(Notification.DEFAULT_SOUND)
+                .setTicker("Inspire notification")
                 .setContentText("Content text");
 
         // Obtain NotificationManager system service in order to show the notification
