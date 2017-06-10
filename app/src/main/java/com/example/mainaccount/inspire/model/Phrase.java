@@ -8,7 +8,7 @@ public class Phrase{
     private String category;
     private String phrase;
     Random ran;
-    ArrayList <Phrase> phraseList;
+    public ArrayList <Phrase> phraseList;
 
 
     public Phrase(){

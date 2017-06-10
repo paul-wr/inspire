@@ -9,6 +9,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
+import com.example.mainaccount.inspire.model.Phrase;
+
+import java.util.Random;
+
 /**
  * Created by mainaccount on 10/06/2017.
  */
@@ -16,6 +20,8 @@ import android.widget.Toast;
 
 public class NotificationService extends Service {
     private int notificationId = 1;
+    String text;
+    Random rand = new Random();
 
     @Nullable
     @Override
@@ -42,6 +48,11 @@ public class NotificationService extends Service {
 
 
     public void startNotifications(){
+        Phrase p = new Phrase();
+        p.createList();
+        String[] array = p.getRandomPhrase();
+
+
 
         // NotificationCompat Builder takes care of backwards compatibility and
         // provides clean API to create rich notifications
@@ -50,11 +61,12 @@ public class NotificationService extends Service {
                 .setContentTitle("Inspire Phrase Title")
                 .setDefaults(Notification.DEFAULT_SOUND)
                 .setTicker("Inspire notification")
-                .setContentText("Content text");
+                .setContentText(array[1]);
 
         // Obtain NotificationManager system service in order to show the notification
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(notificationId, mBuilder.build());
+
 
     }
 
