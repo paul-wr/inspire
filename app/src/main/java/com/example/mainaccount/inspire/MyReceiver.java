@@ -8,13 +8,26 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
+import com.example.mainaccount.inspire.model.Phrase;
+
 public class MyReceiver extends BroadcastReceiver {
+    Phrase phrase;
+    String[] array;
+    public static String title;
+    public static String text;
+
     public MyReceiver() {
+        phrase = new Phrase();
+        phrase.createList();
+        array = phrase.getRandomPhrase();
+        title = array[0];
+        text = array[1];
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        createNotification(context, "Inspire notification", "Click to go to your daily Notification", "Inspire notification");
+        createNotification(context, "Inspire notification", text, "Inspire Notification");
+        array = phrase.getRandomPhrase();
 
     }
 
@@ -40,7 +53,7 @@ public class MyReceiver extends BroadcastReceiver {
         mBuilder.setDefaults(Notification.DEFAULT_SOUND);
 
         // Auto cancels the notification when clicked on in the task bar
-        mBuilder.setAutoCancel(true);
+        mBuilder.setAutoCancel(false);
 
         // Gets a NotificationManager which is used to notify the user of the background event
         NotificationManager mNotificationManager =
