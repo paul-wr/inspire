@@ -26,12 +26,20 @@ public class MyReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+
         createNotification(context, "Inspire notification", text, "Inspire Notification");
         array = phrase.getRandomPhrase();
+
+
+
+        // Intent intentone = new Intent(context.getApplicationContext(), NotificationDetails.class);
+        // intentone.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        // intentone.putExtra("string", "Intent text");
 
     }
 
     public void createNotification(Context context, String msg, String msgText, String notificationAlert){
+
 
         // Define an Intent and an action to perform with it by another application
         PendingIntent notificIntent = PendingIntent.getActivity(context, 0,
