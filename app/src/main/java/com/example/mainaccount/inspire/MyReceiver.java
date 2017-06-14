@@ -26,16 +26,8 @@ public class MyReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
         createNotification(context, "Inspire notification", text, "Inspire Notification");
         array = phrase.getRandomPhrase();
-
-
-
-        // Intent intentone = new Intent(context.getApplicationContext(), NotificationDetails.class);
-        // intentone.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        // intentone.putExtra("string", "Intent text");
-
     }
 
     public void createNotification(Context context, String msg, String msgText, String notificationAlert){
@@ -51,6 +43,7 @@ public class MyReceiver extends BroadcastReceiver {
                         .setSmallIcon(R.drawable.ic_stat_android)
                         .setContentTitle(msg)
                         .setTicker(notificationAlert)
+                        .addAction(android.R.drawable.ic_dialog_info, "Details", notificIntent)
                         .setContentText(msgText);
 
         // Defines the Intent to fire when the notification is clicked
