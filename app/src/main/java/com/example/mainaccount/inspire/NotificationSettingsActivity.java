@@ -41,6 +41,9 @@ public class NotificationSettingsActivity extends AppCompatActivity {
 
     }
 
+
+
+
     public void start() {
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         int interval = 15000;
