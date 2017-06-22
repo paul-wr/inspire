@@ -13,7 +13,7 @@
 
 
     <Button
-        android:id="@+id/startAlarm"
+        android:id="@+id/start_notifications"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -22,10 +22,10 @@
         android:text="Start Notifications" />
 
     <Button
-        android:id="@+id/stopAlarm"
+        android:id="@+id/stop_notifications"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/startAlarm"
+        android:layout_below="@+id/start_notifications"
         android:layout_marginBottom="20dp"
         android:text="Stop Notifications" />
 
