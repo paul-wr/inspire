@@ -29,5 +29,51 @@
         android:layout_marginBottom="20dp"
         android:text="Stop Notifications" />
 
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/stopAlarm"
+        android:orientation="vertical" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Select minute"
+            android:id="@+id/minute_view"
+            android:textSize="21sp"
+            android:textStyle="bold"  />
+        <NumberPicker android:id="@+id/minute_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"  />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Select hour"
+            android:id="@+id/hour_view"
+            android:textSize="21sp"
+            android:layout_below="@+id/minute_view"
+            android:textStyle="bold"  />
+        <NumberPicker android:id="@+id/hour_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"  />
+
+        <Button
+            android:id="@+id/set_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/minute_view"
+            android:layout_marginBottom="20dp"
+            android:text="Set Time" />
+
+
+    </LinearLayout>
+
+
+
+
 
 </RelativeLayout>

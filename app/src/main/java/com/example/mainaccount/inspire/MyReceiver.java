@@ -42,6 +42,7 @@ public class MyReceiver extends BroadcastReceiver {
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.ic_stat_android)
                         .setContentTitle(msg)
+                        .setWhen(System.currentTimeMillis())
                         .setTicker(notificationAlert)
                         .addAction(android.R.drawable.ic_dialog_info, "Details", notificIntent)
                         .setContentText(msgText);
