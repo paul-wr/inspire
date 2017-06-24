@@ -50,15 +50,11 @@ public class NotificationSettingsActivity extends AppCompatActivity {
         pendingIntent = PendingIntent.getBroadcast(NotificationSettingsActivity.this, 0, alarmIntent, 0);
 
 
-        timePicker.clearFocus();
-        timePicker.setEnabled(true);
-        timePicker.setIs24HourView(true);
-
+        timePicker.setIs24HourView(false);
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
 
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                userHour = hourOfDay;
-                userMinutes = minute;
+                Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set!"+userHour+" : "+userMinutes, Toast.LENGTH_SHORT).show();
             }
         });
 

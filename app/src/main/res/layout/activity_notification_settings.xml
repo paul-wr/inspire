@@ -41,13 +41,6 @@
             android:textStyle="bold"  />
 
 
-    <TimePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/clock_text"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/timePicker" />
 
 
     <Button
@@ -55,8 +48,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:layout_below="@+id/timePicker"
+        android:layout_below="@+id/clock_text"
         android:text="Set notification time" />
+
+    <TimePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/set_time"
+        android:id="@+id/timePicker" />
 
 
 </RelativeLayout>
