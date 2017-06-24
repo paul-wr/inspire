@@ -29,71 +29,34 @@
         android:layout_marginBottom="20dp"
         android:text="Stop Notifications" />
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:id="@+id/num_pick_text_view"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/stop_notifications"
-        android:orientation="horizontal" >
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Select minute"
-            android:id="@+id/minute_view"
-            android:textSize="21sp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:textStyle="bold"  />
 
         <TextView
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Select hour"
-            android:id="@+id/hour_view"
+            android:id="@+id/clock_text"
             android:textSize="21sp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_below="@+id/minute_view"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/stop_notifications"
             android:textStyle="bold"  />
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:id="@+id/lin_layout_num_picker"
+    <TimePicker
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/stop_notifications"
-        android:weightSum="1"
-        android:orientation="horizontal" >
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/clock_text"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/timePicker" />
 
-        <Button
-            android:id="@+id/timeBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_below="@+id/stop_notifications"
-            android:text="Set time" />
-
-
-
-
-
-    </LinearLayout>
 
     <Button
         android:id="@+id/set_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:layout_below="@+id/lin_layout_num_picker"
+        android:layout_below="@+id/timePicker"
         android:text="Set notification time" />
-
-
 
 
 </RelativeLayout>
