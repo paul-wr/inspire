@@ -50,14 +50,16 @@ public class NotificationSettingsActivity extends AppCompatActivity {
         pendingIntent = PendingIntent.getBroadcast(NotificationSettingsActivity.this, 0, alarmIntent, 0);
 
 
-        timePicker.setIs24HourView(false);
+        timePicker.clearFocus();
+        timePicker.setEnabled(true);
+        timePicker.setIs24HourView(true);
 
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
-            @Override
-            public void onTimeChanged(TimePicker timePicker, int hour, int minute) {
-                updateDisplay(hour, minute);
-            }
 
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                userHour = hourOfDay;
+                userMinutes = minute;
+            }
         });
 
 
@@ -72,7 +74,7 @@ public class NotificationSettingsActivity extends AppCompatActivity {
                 calendar.set(Calendar.HOUR_OF_DAY, userHour);
                 calendar.set(Calendar.MINUTE, userMinutes);
                 start();
-                Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set!"+userHour+" : "+userMinutes, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -96,10 +98,6 @@ public class NotificationSettingsActivity extends AppCompatActivity {
 
     }
 
-    private void updateDisplay(int hourOfDay, int minute) {
-        clockText.setText(hourOfDay+" "+minute);
-
-    }
 
 
 
