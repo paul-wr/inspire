@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String s = "test";
+        String s = "version2";
 
 
         Button notificationBtn = (Button) findViewById(R.id.notific_button);

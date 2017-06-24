@@ -71,22 +71,13 @@
         android:weightSum="1"
         android:orientation="horizontal" >
 
-        <NumberPicker
-            android:id="@+id/minute_picker"
+        <Button
+            android:id="@+id/timeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:layout_width="0dp"
-            android:layout_weight=".4"
-            android:layout_below="@+id/minute_view"
-            android:layout_height="wrap_content"  />
-
-        <NumberPicker
-            android:id="@+id/hour_picker"
-            android:layout_marginTop="50dp"
-            android:layout_width="0dp"
-            android:layout_weight=".4"
-            android:layout_marginLeft="55dp"
-            android:layout_below="@+id/hour_view"
-            android:layout_height="wrap_content"  />
+            android:layout_below="@+id/stop_notifications"
+            android:text="Set time" />
 
 
 
@@ -101,9 +92,6 @@
         android:layout_marginTop="50dp"
         android:layout_below="@+id/lin_layout_num_picker"
         android:text="Set notification time" />
-
-
-
 
 
 
