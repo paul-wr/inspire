@@ -20,14 +20,16 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+
 public class NotificationSettingsActivity extends AppCompatActivity {
     private PendingIntent pendingIntent; // PendingIntent stores Intent until Alarm fires
     private int notificationId = 1;
     public static int userMinutes; // user specified minute count
     public static int userHour; // user specified hour of day
-    Calendar calendar;
     TextView clockText; // TextViews for each NumberPicker (hour/minute)
     TimePicker timePicker;
+    SetTime setTime;
+
 
 
 
@@ -36,13 +38,6 @@ public class NotificationSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_settings);
         timePicker = (TimePicker) findViewById(R.id.timePicker);
-        clockText = (TextView) findViewById(R.id.clock_text);
-
-        // calender instance set to default notification time of 18:00
-        calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 18);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
 
         // Intent to begin BroadcastReceiver
         Intent alarmIntent = new Intent(NotificationSettingsActivity.this, MyReceiver.class);
@@ -50,11 +45,19 @@ public class NotificationSettingsActivity extends AppCompatActivity {
         pendingIntent = PendingIntent.getBroadcast(NotificationSettingsActivity.this, 0, alarmIntent, 0);
 
 
-        timePicker.setIs24HourView(false);
-        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
 
-            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set!"+userHour+" : "+userMinutes, Toast.LENGTH_SHORT).show();
+        clockText = (TextView) findViewById(R.id.clock_text);
+
+        TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
+
+        timePicker.setIs24HourView(false);
+
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker timePicker, int i, int i1) {
+                clockText.setText("Time: "+i+" : "+i1);
+                userHour = i;
+                userMinutes = i1;
             }
         });
 
@@ -67,10 +70,9 @@ public class NotificationSettingsActivity extends AppCompatActivity {
         findViewById(R.id.set_time).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calendar.set(Calendar.HOUR_OF_DAY, userHour);
-                calendar.set(Calendar.MINUTE, userMinutes);
+                setTime = new SetTime(userHour, userMinutes);
                 start();
-                Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set!"+userHour+" : "+userMinutes, Toast.LENGTH_SHORT).show();
+                Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set! "+setTime.getCalendar().get(Calendar.HOUR_OF_DAY)+" : "+setTime.getCalendar().get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -101,7 +103,7 @@ public class NotificationSettingsActivity extends AppCompatActivity {
     public void start() {
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-        manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_FIFTEEN_MINUTES , pendingIntent);
+        manager.setRepeating(AlarmManager.RTC_WAKEUP, setTime.getCalendar().getTimeInMillis(), AlarmManager.INTERVAL_FIFTEEN_MINUTES , pendingIntent);
         Toast.makeText(this, "Notifications activated!", Toast.LENGTH_SHORT).show();
     }
 
