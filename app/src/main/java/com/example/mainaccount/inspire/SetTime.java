@@ -3,9 +3,11 @@ package com.example.mainaccount.inspire;
 import java.util.Calendar;
 
 /**
- * Created by mainaccount on 25/06/2017.
+ *  Classname: SetTime.java
+ *  Version 1
+ *  Date: 25 Jun 2017
+ *  @author Paul Wrenn, x15020029
  */
-
 public class SetTime {
     private Calendar calendar;
 

@@ -50,6 +50,8 @@ public class NotificationSettingsActivity extends AppCompatActivity {
 
         TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
 
+        timePicker.setVisibility(View.INVISIBLE);
+
         timePicker.setIs24HourView(false);
 
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
@@ -67,12 +69,22 @@ public class NotificationSettingsActivity extends AppCompatActivity {
         /* set_time button sets values to calender variables and calls start()
         method to begin notifications at specified time
         */
+        findViewById(R.id.set_time).setVisibility(View.INVISIBLE);
         findViewById(R.id.set_time).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setTime = new SetTime(userHour, userMinutes);
                 start();
                 Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set! "+setTime.getCalendar().get(Calendar.HOUR_OF_DAY)+" : "+setTime.getCalendar().get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        findViewById(R.id.edit_time).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                findViewById(R.id.set_time).setVisibility(View.VISIBLE);
+                findViewById(R.id.timePicker).setVisibility(View.VISIBLE);
+
             }
         });
 
