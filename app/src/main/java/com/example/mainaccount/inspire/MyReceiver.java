@@ -32,7 +32,6 @@ public class MyReceiver extends BroadcastReceiver {
 
     public void createNotification(Context context, String msg, String msgText, String notificationAlert){
 
-
         // Define an Intent and an action to perform with it by another application
         PendingIntent notificIntent = PendingIntent.getActivity(context, 0,
                 new Intent(context, NotificationDetails.class), 0);

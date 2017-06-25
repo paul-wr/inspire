@@ -26,11 +26,10 @@ public class NotificationSettingsActivity extends AppCompatActivity {
     private int notificationId = 1;
     public static int userMinutes; // user specified minute count
     public static int userHour; // user specified hour of day
-    TextView clockText; // TextViews for each NumberPicker (hour/minute)
-    TimePicker timePicker;
-    SetTime setTime;
-
-
+    TextView clockText; // TextViews for clock
+    TimePicker timePicker; // TimePicker allows user to define notification time
+    SetTime setTime; // SetTime class for setting and retrieving time
+    public static boolean isNotificationsOn;
 
 
     @Override
@@ -44,27 +43,20 @@ public class NotificationSettingsActivity extends AppCompatActivity {
         // PendingIntent holds Intent until called by AlarmManger
         pendingIntent = PendingIntent.getBroadcast(NotificationSettingsActivity.this, 0, alarmIntent, 0);
 
-
-
         clockText = (TextView) findViewById(R.id.clock_text);
 
         TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
-
         timePicker.setVisibility(View.INVISIBLE);
-
         timePicker.setIs24HourView(false);
 
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
-            public void onTimeChanged(TimePicker timePicker, int i, int i1) {
-                clockText.setText("Time: "+i+" : "+i1);
-                userHour = i;
-                userMinutes = i1;
+            public void onTimeChanged(TimePicker timePicker, int hour, int minute) {
+                clockText.setText("Time: "+hour+" : "+minute);
+                userHour = hour;
+                userMinutes = minute;
             }
         });
-
-
-
 
         /* set_time button sets values to calender variables and calls start()
         method to begin notifications at specified time
@@ -105,26 +97,28 @@ public class NotificationSettingsActivity extends AppCompatActivity {
             }
         });
 
-
     }
-
-
-
 
     // start() method defines an AlarmManger to start notifications for set time and launches Intent via PendingIntent
     public void start() {
-        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        isNotificationsOn = true;
 
-        manager.setRepeating(AlarmManager.RTC_WAKEUP, setTime.getCalendar().getTimeInMillis(), AlarmManager.INTERVAL_FIFTEEN_MINUTES , pendingIntent);
+        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        int interval = 15000;
+
+
+        manager.setRepeating(AlarmManager.RTC_WAKEUP, setTime.getCalendar().getTimeInMillis(), interval , pendingIntent);
         Toast.makeText(this, "Notifications activated!", Toast.LENGTH_SHORT).show();
     }
 
     // cancel() method stops the notifications
     public void cancel() {
+        isNotificationsOn = false;
+
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         manager.cancel(pendingIntent);
         Toast.makeText(this, "Notifications deactivated!", Toast.LENGTH_SHORT).show();
-    }
 
+    }
 
 }
