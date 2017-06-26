@@ -2,11 +2,11 @@ package com.example.mainaccount.inspire;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int HOME_LAUNCH_DELAY = 7000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,15 +14,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Button notificationBtn = (Button) findViewById(R.id.notific_button);
-
-        notificationBtn.setOnClickListener(new View.OnClickListener() {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NotificationSettingsActivity.class);
-                startActivity(intent);
+            public void run() {
+                Intent i = new Intent(MainActivity.this, NotificationSettingsActivity.class);
+                startActivity(i);
+                finish();
             }
-        });
+        }, HOME_LAUNCH_DELAY);
+
 
     }
 }
