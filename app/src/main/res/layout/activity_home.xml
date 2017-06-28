@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:padding="@dimen/default_padding"
+    tools:context="com.example.mainaccount.inspire.model.LoginActivity">
+    <Button
+        android:id="@+id/register_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/InspireGrey"
+        android:textStyle="bold"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/button_size"
+        android:background="@color/mainInspireColor"
+        android:text="Register" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/InspireGrey"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/button_size"
+        android:background="@color/mainInspireColor"
+        android:layout_below="@+id/register_btn"
+        android:text="Login" />
+
+
+</RelativeLayout>
