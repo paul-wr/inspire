@@ -1,6 +1,7 @@
 package com.example.mainaccount.inspire.model;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.Menu;
@@ -19,7 +20,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class ProfileActivity extends BaseActivity {
     private EditText nameField, emailField;
-    private Button updateBtn, cancelBtn;
+    private Button updateBtn, profileEdit;
 
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -33,12 +34,14 @@ public class ProfileActivity extends BaseActivity {
         nameField = (EditText) findViewById(R.id.nameField);
         emailField = (EditText) findViewById(R.id.emailField);
         updateBtn = (Button) findViewById(R.id.updateBtn);
-        cancelBtn = (Button) findViewById(R.id.cancelBtn);
+        profileEdit = (Button) findViewById(R.id.profile_edit);
+
+        profileEdit.setPaintFlags(profileEdit.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        updateBtn.setPaintFlags(updateBtn.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         nameField.setEnabled(false);
         emailField.setEnabled(false);
         updateBtn.setVisibility(View.INVISIBLE);
-        cancelBtn.setVisibility(View.INVISIBLE);
 
         auth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
@@ -67,6 +70,14 @@ public class ProfileActivity extends BaseActivity {
             finish();
         }
 
+        profileEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nameField.setEnabled(true);
+                updateBtn.setVisibility(View.VISIBLE);
+            }
+        });
+
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +100,6 @@ public class ProfileActivity extends BaseActivity {
                                                     Toast.LENGTH_LONG).show();
                                             nameField.setEnabled(false);
                                             updateBtn.setVisibility(View.INVISIBLE);
-                                            cancelBtn.setVisibility(View.INVISIBLE);
                                         } else {
                                             Toast.makeText(ProfileActivity.this,
                                                     "Profile name updated",
@@ -117,13 +127,14 @@ public class ProfileActivity extends BaseActivity {
 
         int id = item.getItemId();
 
-        if (id == R.id.action_logout) {
-            FirebaseAuth.getInstance().signOut();
-            return true;
-        }else if(id == R.id.action_edit_profile){
+        if (id == R.id.profile){
             nameField.setEnabled(true);
             updateBtn.setVisibility(View.VISIBLE);
-            cancelBtn.setVisibility(View.VISIBLE);
+            return true;
+        }
+        else if(id == R.id.sign_out){
+            FirebaseAuth.getInstance().signOut();
+            Toast.makeText(ProfileActivity.this, "Successfully signed out!", Toast.LENGTH_SHORT).show();
             return true;
         }
 

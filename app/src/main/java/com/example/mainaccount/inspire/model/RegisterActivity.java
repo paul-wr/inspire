@@ -15,9 +15,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SignUpActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity {
     private EditText  emailField, passwordField;
-    private Button loginBtn, signUpBtn;
+    private Button loginBtn, registerBtn;
 
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -25,13 +25,13 @@ public class SignUpActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_register);
 
         setTitle("Sign Up");
 
         emailField = (EditText) findViewById(R.id.emailField);
         passwordField = (EditText) findViewById(R.id.passwordField);
-        signUpBtn = (Button) findViewById(R.id.signupBtn);
+        registerBtn = (Button) findViewById(R.id.register_btn);
         loginBtn = (Button) findViewById(R.id.loginBtn);
 
         auth = FirebaseAuth.getInstance();
@@ -40,13 +40,13 @@ public class SignUpActivity extends BaseActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null){
-                    startActivity(new Intent(SignUpActivity.this, ProfileActivity.class));
+                    startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
                     finish();
                 }
             }
         };
 
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
+        registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(validateEditTextField(emailField) && validateEditTextField(passwordField)) {
@@ -59,7 +59,7 @@ public class SignUpActivity extends BaseActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 finish();
             }
         });
@@ -81,7 +81,7 @@ public class SignUpActivity extends BaseActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         hideProgressDialog();
                         if(!task.isSuccessful()){
-                            Toast.makeText(SignUpActivity.this, "Failed signup",
+                            Toast.makeText(RegisterActivity.this, "Failed signup",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }

@@ -44,7 +44,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".model.SignUpActivity" />
+        <activity android:name=".model.RegisterActivity" />
         <activity android:name=".model.ProfileActivity" />
         <activity android:name=".model.LoginActivity" />
         <activity android:name=".HomeActivity"></activity>

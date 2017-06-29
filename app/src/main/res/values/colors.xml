@@ -4,5 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="mainInspireColor">#1c5b1c</color>
-    <color name="InspireGrey">#e2e2e2</color>
+    <color name="InspireGrey">#eeeeee</color>
 </resources>

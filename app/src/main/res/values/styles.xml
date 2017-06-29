@@ -5,14 +5,23 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@color/InspireGrey</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
+        <item name="android:windowBackground">@color/InspireGrey</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">false</item>
     </style>
-    
+
+    <style name="btn_style">
+        <item name="android:background">@color/InspireGrey</item>
+        <item name="android:textColor">@color/mainInspireColor</item>
+        <item name="android:paddingLeft">14dp</item>
+        <item name="android:paddingRight">14dp</item>
+    </style>
 
 </resources>

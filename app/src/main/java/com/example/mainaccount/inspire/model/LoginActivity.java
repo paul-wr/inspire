@@ -15,10 +15,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import static com.example.mainaccount.inspire.HomeActivity.myMenu;
+
 public class LoginActivity extends BaseActivity {
 
     EditText emailField, passwordField;
-    Button loginBtn, signUpBtn;
+    Button loginBtn, registerBtn;
 
     FirebaseAuth auth;
     FirebaseAuth.AuthStateListener authStateListener;
@@ -32,7 +34,7 @@ public class LoginActivity extends BaseActivity {
 
         emailField = (EditText) findViewById(R.id.emailField);
         passwordField = (EditText) findViewById(R.id.passwordField);
-        signUpBtn = (Button) findViewById(R.id.signupBtn);
+        registerBtn = (Button) findViewById(R.id.register_btn);
         loginBtn = (Button) findViewById(R.id.loginBtn);
 
         auth = FirebaseAuth.getInstance();
@@ -58,10 +60,10 @@ public class LoginActivity extends BaseActivity {
                 }
             }
         });
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
+        registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
                 finish();
             }
         });
@@ -77,6 +79,10 @@ public class LoginActivity extends BaseActivity {
                         if(!task.isSuccessful()){
                             Toast.makeText(LoginActivity.this, "Failed signin!",
                                     Toast.LENGTH_SHORT).show();
+                        }else{
+                            // if login is successful display logout item and hide login item
+                            myMenu.getItem(0).setVisible(false);
+                            myMenu.getItem(1).setVisible(true);
                         }
                     }
                 });

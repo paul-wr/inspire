@@ -7,67 +7,72 @@ android:layout_height="match_parent"
 android:padding="@dimen/default_padding"
 tools:context="com.example.mainaccount.inspire.model.ProfileActivity">
 
-<TextView
-    android:id="@+id/textView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
-    android:text="My Profile"
-    android:textAllCaps="false"
-    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-    android:textStyle="bold" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="My Profile"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold" />
 
-<TextView
-    android:id="@+id/textView2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/textView"
-    android:layout_marginTop="27dp"
-    android:text="Name:" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="27dp"
+        android:text="Name:" />
 
 
-<EditText
-    android:id="@+id/nameField"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/textView2"
-    android:layout_marginTop="17dp"
-    android:editable="false"
-    android:ems="10"
-    android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/nameField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="17dp"
+        android:backgroundTint="@color/mainInspireColor"
+        android:textCursorDrawable="@color/mainInspireColor"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
-<TextView
-    android:id="@+id/textView3"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/nameField"
-    android:layout_marginTop="19dp"
-    android:text="Email:" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameField"
+        android:layout_marginTop="19dp"
+        android:text="Email:" />
 
-<EditText
-    android:id="@+id/emailField"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="21dp"
-    android:editable="false"
-    android:ems="10"
-    android:inputType="textEmailAddress"
-    android:layout_below="@+id/textView3" />
+    <EditText
+        android:id="@+id/emailField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:backgroundTint="@color/mainInspireColor"
+        android:textCursorDrawable="@color/mainInspireColor"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:layout_below="@+id/textView3" />
 
-<Button
-    android:id="@+id/updateBtn"
-    style="@style/Widget.AppCompat.Button.Colored"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/emailField"
-    android:text="Update"
-    android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/profile_edit"
+        android:layout_width="wrap_content"
+        style="@style/btn_style"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emailField"
+        android:text="@string/profile_edit" />
 
-<Button
-    android:id="@+id/cancelBtn"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/updateBtn"
-    android:text="Cancel" />
+    <Button
+        android:id="@+id/updateBtn"
+        android:layout_width="wrap_content"
+        style="@style/btn_style"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/profile_edit"
+        android:text="Update" />
 
 </RelativeLayout>

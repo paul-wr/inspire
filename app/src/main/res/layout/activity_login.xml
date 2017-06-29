@@ -42,7 +42,7 @@
         android:layout_below="@+id/passwordField" />
 
     <Button
-        android:id="@+id/signupBtn"
+        android:id="@+id/register_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginBtn"

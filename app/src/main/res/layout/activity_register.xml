@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/default_padding"
-    tools:context="com.example.mainaccount.inspire.model.SignUpActivity">
+    tools:context="com.example.mainaccount.inspire.model.RegisterActivity">
 
     <EditText
         android:id="@+id/emailField"
@@ -28,11 +28,11 @@
         android:layout_below="@+id/emailField" />
 
     <Button
-        android:id="@+id/signupBtn"
+        android:id="@+id/register_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:text="Sign Up"
+        android:text="Register"
         android:layout_below="@+id/passwordField" />
 
     <Button
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Login"
-        android:layout_below="@+id/signupBtn" />
+        android:layout_below="@+id/register_btn" />
 
     <TextView
         android:id="@+id/textView5"
@@ -50,7 +50,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
-        android:text="Sign Up"
+        android:text="Register"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="36sp"
         android:textStyle="bold" />
