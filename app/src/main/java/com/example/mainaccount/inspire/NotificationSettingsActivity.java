@@ -12,16 +12,17 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.mainaccount.inspire.model.BaseActivity;
+
 import java.util.Calendar;
 
 
-public class NotificationSettingsActivity extends AppCompatActivity {
+public class NotificationSettingsActivity extends BaseActivity {
     private PendingIntent pendingIntent; // PendingIntent stores Intent until Alarm fires
     private int notificationId = 1;
     public static int userMinutes; // user specified minute count

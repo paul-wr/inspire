@@ -15,7 +15,7 @@
         android:textStyle="bold"
         android:layout_centerVertical="true"
         android:textSize="@dimen/button_size"
-        android:background="@color/mainInspireColor"
+        android:background="@color/colorPrimary"
         android:text="Register" />
 
     <Button
@@ -27,9 +27,21 @@
         android:layout_marginTop="10dp"
         android:layout_centerVertical="true"
         android:textSize="@dimen/button_size"
-        android:background="@color/mainInspireColor"
+        android:background="@color/colorPrimary"
         android:layout_below="@+id/register_btn"
         android:text="Login" />
 
+    <Button
+        android:id="@+id/settingsBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/InspireGrey"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/button_size"
+        android:background="@color/colorPrimary"
+        android:layout_below="@+id/loginBtn"
+        android:text="Settings" />
 
 </RelativeLayout>

@@ -1,13 +1,14 @@
 package com.example.mainaccount.inspire;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.example.mainaccount.inspire.model.BaseActivity;
 
 import static com.example.mainaccount.inspire.MyReceiver.text;
 
 
-public class NotificationDetails extends AppCompatActivity {
+public class NotificationDetails extends BaseActivity {
     TextView t;
 
     @Override

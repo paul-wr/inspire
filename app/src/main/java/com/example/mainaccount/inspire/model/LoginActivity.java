@@ -15,9 +15,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import static com.example.mainaccount.inspire.HomeActivity.myMenu;
+import static com.example.mainaccount.inspire.MainActivity.myMenu;
 
 public class LoginActivity extends BaseActivity {
+    public static boolean loginV, logoutV;
 
     EditText emailField, passwordField;
     Button loginBtn, registerBtn;
@@ -79,11 +80,12 @@ public class LoginActivity extends BaseActivity {
                         if(!task.isSuccessful()){
                             Toast.makeText(LoginActivity.this, "Failed signin!",
                                     Toast.LENGTH_SHORT).show();
-                        }else{
-                            // if login is successful display logout item and hide login item
-                            myMenu.getItem(0).setVisible(false);
-                            myMenu.getItem(1).setVisible(true);
                         }
+                        // if login is successful display logout item and hide login item
+                        myMenu.getItem(0).setVisible(false);
+                        myMenu.getItem(1).setVisible(true);
+                        loginV = false;
+                        logoutV = true;
                     }
                 });
     }
