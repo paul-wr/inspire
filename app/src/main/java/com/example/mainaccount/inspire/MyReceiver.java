@@ -8,16 +8,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
-import com.example.mainaccount.inspire.model.Gems;
+import com.example.mainaccount.inspire.model.Gem;
 
 public class MyReceiver extends BroadcastReceiver {
-    Gems gem;
+    Gem gem;
     String[] array;
     public static String title;
     public static String text;
 
     public MyReceiver() {
-        gem = new Gems();
+        gem = new Gem();
         gem.createList();
         array = gem.getRandomGem();
         title = array[0];

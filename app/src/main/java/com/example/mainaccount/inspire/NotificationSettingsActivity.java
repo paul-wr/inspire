@@ -32,7 +32,7 @@ public class NotificationSettingsActivity extends BaseActivity {
     TextView clockText; // TextViews for clock
     TimePicker timePicker; // TimePicker allows user to define notification time
     SetTime setTime; // SetTime class for setting and retrieving time
-    public static boolean isNotificationsOn;
+    public static boolean isNotificationsOn; // check if notifications are on/off on reboot of system
 
 
     @Override
@@ -74,8 +74,19 @@ public class NotificationSettingsActivity extends BaseActivity {
                     Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set! " + setTime.getCalendar().get(Calendar.HOUR_OF_DAY) + " : " + setTime.getCalendar().get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(NotificationSettingsActivity.this, "You need to be logged in to set notifications time!", Toast.LENGTH_LONG).show();
+                    Thread thread = new Thread(){
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(2500); // Launch login Activity after Toast message has run
+                                startActivity(new Intent(NotificationSettingsActivity.this, LoginActivity.class));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
 
-                    startActivity(new Intent(NotificationSettingsActivity.this, LoginActivity.class));
+                    thread.start();
                 }
             }
         });

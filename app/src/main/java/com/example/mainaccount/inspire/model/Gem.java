@@ -4,34 +4,34 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class Gems {
+public class Gem {
     private String category;
     private String gem;
     Random ran;
-    public ArrayList <Gems> gemList;
+    public ArrayList <Gem> gemList;
 
 
-    public Gems(){
+    public Gem(){
         ran = new Random();
         gemList = new ArrayList<>();
     }
 
-    public Gems(String category, String gem){
+    public Gem(String category, String gem){
         this.category = category;
         this.gem = gem;
     }
 
     // method to populate phraseList
     public void createList(){
-        gemList.add(new Gems("Love", "love text1"));
-        gemList.add(new Gems("Love", "love text2"));
-        gemList.add(new Gems("Love", "love text3"));
-        gemList.add(new Gems("Wisdom", "wisdom text1"));
-        gemList.add(new Gems("Wisdom", "wisdom text2"));
-        gemList.add(new Gems("Wisdom", "wisdom text3"));
-        gemList.add(new Gems("Freedom", "freedom text1"));
-        gemList.add(new Gems("Freedom", "freedom text2"));
-        gemList.add(new Gems("Freedom", "freedom text3"));
+        gemList.add(new Gem("Love", "love text1"));
+        gemList.add(new Gem("Love", "love text2"));
+        gemList.add(new Gem("Love", "love text3"));
+        gemList.add(new Gem("Wisdom", "wisdom text1"));
+        gemList.add(new Gem("Wisdom", "wisdom text2"));
+        gemList.add(new Gem("Wisdom", "wisdom text3"));
+        gemList.add(new Gem("Freedom", "freedom text1"));
+        gemList.add(new Gem("Freedom", "freedom text2"));
+        gemList.add(new Gem("Freedom", "freedom text3"));
 
     }
 
@@ -48,7 +48,7 @@ public class Gems {
     }
 
     public String[] getRandomGem(){
-        Gems p = gemList.get(ran.nextInt(gemList.size()));
+        Gem p = gemList.get(ran.nextInt(gemList.size()));
         String[] a = new String[2];
         // System.out.println(p.getCategory()+": "+p.getPhrase());
 
@@ -60,7 +60,7 @@ public class Gems {
     }
 
     public void getPhraseByCategory(String phraseCategory){
-        for(Gems phrase : gemList){
+        for(Gem phrase : gemList){
             if(phrase.getCategory().equalsIgnoreCase(phraseCategory)){
                 System.out.println(phrase.getCategory()+": "+phrase.getGem());
             }
