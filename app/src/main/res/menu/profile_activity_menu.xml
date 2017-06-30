@@ -5,19 +5,16 @@
     <item
         android:id="@+id/sign_in"
         android:title="Sign in"
-        app:showAsAction="never|always"/>
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/sign_out"
         android:title="Sign out"
-        android:visible="false"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/profile"
         android:title="Profile"
         app:showAsAction="never" />
-
-
 
 </menu>

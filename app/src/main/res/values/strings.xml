@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Inspire</string>
     <string name="profile_edit">Edit profile</string>
+    <string name="app_string"></string>
 </resources>

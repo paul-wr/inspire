@@ -8,18 +8,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
-import com.example.mainaccount.inspire.model.Phrase;
+import com.example.mainaccount.inspire.model.Gems;
 
 public class MyReceiver extends BroadcastReceiver {
-    Phrase phrase;
+    Gems gem;
     String[] array;
     public static String title;
     public static String text;
 
     public MyReceiver() {
-        phrase = new Phrase();
-        phrase.createList();
-        array = phrase.getRandomPhrase();
+        gem = new Gems();
+        gem.createList();
+        array = gem.getRandomGem();
         title = array[0];
         text = array[1];
     }
@@ -27,7 +27,7 @@ public class MyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         createNotification(context, "Inspire notification", text, "Inspire Notification");
-        array = phrase.getRandomPhrase();
+        array = gem.getRandomGem();
     }
 
     public void createNotification(Context context, String msg, String msgText, String notificationAlert){

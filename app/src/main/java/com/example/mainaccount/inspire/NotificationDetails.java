@@ -21,4 +21,12 @@ public class NotificationDetails extends BaseActivity {
         t.setText(text);
 
     }
+
+    // onRestart() method call refreshes user login data in the menu
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
 }

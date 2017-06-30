@@ -18,6 +18,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.mainaccount.inspire.model.BaseActivity;
+import com.example.mainaccount.inspire.model.LoginActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;
 
@@ -66,9 +68,15 @@ public class NotificationSettingsActivity extends BaseActivity {
         findViewById(R.id.set_time).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setTime = new SetTime(userHour, userMinutes);
-                start();
-                Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set! "+setTime.getCalendar().get(Calendar.HOUR_OF_DAY)+" : "+setTime.getCalendar().get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
+                if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+                    setTime = new SetTime(userHour, userMinutes);
+                    start();
+                    Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set! " + setTime.getCalendar().get(Calendar.HOUR_OF_DAY) + " : " + setTime.getCalendar().get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(NotificationSettingsActivity.this, "You need to be logged in to set notifications time!", Toast.LENGTH_LONG).show();
+
+                    startActivity(new Intent(NotificationSettingsActivity.this, LoginActivity.class));
+                }
             }
         });
 
@@ -120,6 +128,14 @@ public class NotificationSettingsActivity extends BaseActivity {
         manager.cancel(pendingIntent);
         Toast.makeText(this, "Notifications deactivated!", Toast.LENGTH_SHORT).show();
 
+    }
+
+    // onRestart() method call refreshes user login data in the menu
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
     }
 
 }

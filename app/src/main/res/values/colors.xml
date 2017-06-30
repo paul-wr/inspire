@@ -2,6 +2,8 @@
 <resources>
     <color name="colorPrimary">#1c5b1c</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="InspireGrey">#eeeeee</color>
+    <color name="colorAccent">#3E7C3E</color>
+    <color name="mainInspireColor">#1c5b1c</color>
+    <color name="inspireGrey">#eeeeee</color>
+    <color name="InspireLight">#3E7C3E</color>
 </resources>
