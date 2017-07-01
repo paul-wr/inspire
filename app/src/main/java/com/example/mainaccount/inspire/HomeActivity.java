@@ -13,6 +13,7 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
         findViewById(R.id.settingsBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -22,12 +23,12 @@ public class HomeActivity extends BaseActivity {
 
     }
 
+
     // onRestart() method call refreshes user login data in the menu
     @Override
     public void onRestart() {
         super.onRestart();
-        finish();
-        startActivity(getIntent());
+            finish();
+            startActivity(getIntent());
     }
-
 }

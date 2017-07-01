@@ -10,10 +10,10 @@ import android.widget.Toast;
 import com.example.mainaccount.inspire.R;
 import com.google.firebase.auth.FirebaseAuth;
 
-import static com.example.mainaccount.inspire.MainActivity.myMenu;
-
 
 public class BaseActivity extends AppCompatActivity {
+    public static Menu myMenu; // myMenu allows updating of Menu items visibility across classes
+
 
     private ProgressDialog progressDialog;
 
@@ -90,5 +90,4 @@ public class BaseActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }

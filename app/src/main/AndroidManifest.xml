@@ -9,7 +9,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/inspire_logo"
+        android:icon="@drawable/logo_pink"
         android:label="@string/app_string"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -47,7 +47,8 @@
         <activity android:name=".model.RegisterActivity" />
         <activity android:name=".model.ProfileActivity" />
         <activity android:name=".model.LoginActivity" />
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".model.FavoritesActivity"></activity>
     </application>
 
 </manifest>

@@ -15,8 +15,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import static com.example.mainaccount.inspire.MainActivity.myMenu;
-
 public class LoginActivity extends BaseActivity {
     public static boolean loginV, logoutV;
 

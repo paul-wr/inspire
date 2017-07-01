@@ -8,7 +8,6 @@ import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity {
     private static final int HOME_LAUNCH_DELAY = 3500;
-    public static Menu myMenu; // myMenu allows updating of Menu items visibility across classes
 
 
     @Override

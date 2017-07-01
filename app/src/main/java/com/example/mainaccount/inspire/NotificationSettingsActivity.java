@@ -105,6 +105,8 @@ public class NotificationSettingsActivity extends BaseActivity {
         findViewById(R.id.start_notifications).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setTime = new SetTime();
+                Toast.makeText(NotificationSettingsActivity.this, "Notifications set at defualt time 18:00", Toast.LENGTH_LONG).show();
                 start();
             }
         });

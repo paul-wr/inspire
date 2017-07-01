@@ -12,20 +12,16 @@
         android:id="@+id/imageViewLogo"
         style="@style/logoStyle"
         android:layout_marginTop="0dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        app:srcCompat="@drawable/inspire_logo" />
+        app:srcCompat="@drawable/logo_pink" />
 
     <Button
         android:id="@+id/settingsBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/inspireGrey"
-        android:textStyle="bold"
         android:layout_marginTop="10dp"
+        style="@style/btn_style"
         android:layout_centerVertical="true"
         android:textSize="@dimen/button_size"
-        android:background="@color/colorPrimary"
         android:layout_below="@+id/loginBtn"
         android:text="Settings" />
 
