@@ -34,7 +34,6 @@ public class NotificationSettingsActivity extends BaseActivity {
     SetTime setTime; // SetTime class for setting and retrieving time
     public static boolean isNotificationsOn; // check if notifications are on/off on reboot of system
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,8 +146,22 @@ public class NotificationSettingsActivity extends BaseActivity {
     @Override
     public void onRestart() {
         super.onRestart();
-        finish();
-        startActivity(getIntent());
+        /** if back button has been pressed relaunch activity to update user login data
+         *  (this boolean check helps to avoid a bug on screen sleep relaunch)
+        */
+        if(backPressed == true){
+            finish();
+            startActivity(getIntent());
+            backPressed = false;
+        }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        backPressed = true;
+        super.onBackPressed();
+
     }
 
 }

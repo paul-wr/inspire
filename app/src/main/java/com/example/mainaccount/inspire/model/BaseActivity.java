@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class BaseActivity extends AppCompatActivity {
     public static Menu myMenu; // myMenu allows updating of Menu items visibility across classes
+    public static boolean backPressed;
 
 
     private ProgressDialog progressDialog;

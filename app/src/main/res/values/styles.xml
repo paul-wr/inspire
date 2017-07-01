@@ -21,11 +21,18 @@
 
     <style name="btn_style">
         <item name="android:background">@color/colorPrimaryDark</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/inspireGrey</item>
         <item name="android:textSize">17sp</item>
-        <item name="android:color">@color/inspireGrey</item>
         <item name="android:paddingLeft">14dp</item>
         <item name="android:paddingRight">14dp</item>
+    </style>
+
+    <style name="img_btn_style">
+        <item name="android:background">@color/inspireGrey</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
     </style>
 
     <style name="logoStyle">

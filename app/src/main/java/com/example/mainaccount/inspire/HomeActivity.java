@@ -14,7 +14,7 @@ public class HomeActivity extends BaseActivity {
         setContentView(R.layout.activity_home);
 
 
-        findViewById(R.id.settingsBtn).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.imageButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(HomeActivity.this, NotificationSettingsActivity.class));
@@ -28,7 +28,11 @@ public class HomeActivity extends BaseActivity {
     @Override
     public void onRestart() {
         super.onRestart();
+        if(backPressed == true){
             finish();
             startActivity(getIntent());
+            backPressed = false;
+        }
+
     }
 }

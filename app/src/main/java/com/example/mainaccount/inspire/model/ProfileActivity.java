@@ -128,4 +128,11 @@ public class ProfileActivity extends BaseActivity {
             auth.removeAuthStateListener(authStateListener);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        backPressed = true;
+        super.onBackPressed();
+
+    }
 }

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
     android:padding="@dimen/default_padding"
     tools:context="com.example.mainaccount.inspire.HomeActivity">
 
@@ -14,15 +13,11 @@
         android:layout_marginTop="0dp"
         app:srcCompat="@drawable/logo_pink" />
 
-    <Button
-        android:id="@+id/settingsBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        style="@style/btn_style"
-        android:layout_centerVertical="true"
-        android:textSize="@dimen/button_size"
-        android:layout_below="@+id/loginBtn"
-        android:text="Settings" />
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        style="@style/img_btn_style"
+        app:srcCompat="@drawable/settings_icon" />
 
 </RelativeLayout>

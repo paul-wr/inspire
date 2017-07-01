@@ -15,6 +15,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+
 public class LoginActivity extends BaseActivity {
     public static boolean loginV, logoutV;
 
@@ -97,6 +98,13 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        backPressed = true;
+        super.onBackPressed();
+
+    }
+
+    @Override
     protected void onStart(){
         super.onStart();
         auth.addAuthStateListener(authStateListener);
@@ -109,4 +117,5 @@ public class LoginActivity extends BaseActivity {
             auth.removeAuthStateListener(authStateListener);
         }
     }
+
 }
