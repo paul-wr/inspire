@@ -9,7 +9,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo_pink"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_string"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
