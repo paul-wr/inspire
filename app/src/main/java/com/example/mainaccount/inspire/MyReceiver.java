@@ -26,43 +26,43 @@ public class MyReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        createNotification(context, "Inspire notification", text, "Inspire Notification");
-        array = gem.getRandomGem();
+            createNotification(context, "Inspire notification", text, "Inspire Notification");
+            array = gem.getRandomGem();
     }
+    
 
     public void createNotification(Context context, String msg, String msgText, String notificationAlert){
 
-        // Define an Intent and an action to perform with it by another application
-        PendingIntent notificIntent = PendingIntent.getActivity(context, 0,
-                new Intent(context, NotificationDetails.class), 0);
+            // Define an Intent and an action to perform with it by another application
+            PendingIntent notificIntent = PendingIntent.getActivity(context, 0,
+                    new Intent(context, NotificationDetails.class), 0);
 
-        // Builds a notification
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(context)
-                        .setSmallIcon(R.drawable.ic_stat_android)
-                        .setContentTitle(msg)
-                        .setWhen(System.currentTimeMillis())
-                        .setTicker(notificationAlert)
-                        .addAction(android.R.drawable.ic_dialog_info, "Details", notificIntent)
-                        .setContentText(msgText);
+            // Builds a notification
+            NotificationCompat.Builder mBuilder =
+                    new NotificationCompat.Builder(context)
+                            .setSmallIcon(R.drawable.ic_stat_android)
+                            .setContentTitle(msg)
+                            .setWhen(System.currentTimeMillis())
+                            .setTicker(notificationAlert)
+                            .addAction(android.R.drawable.ic_dialog_info, "Details", notificIntent)
+                            .setContentText(msgText);
 
-        // Defines the Intent to fire when the notification is clicked
-        mBuilder.setContentIntent(notificIntent);
+            // Defines the Intent to fire when the notification is clicked
+            mBuilder.setContentIntent(notificIntent);
 
 
-        // DEFAULT_SOUND : Make sound
-        mBuilder.setDefaults(Notification.DEFAULT_SOUND);
+            // DEFAULT_SOUND : Make sound
+            mBuilder.setDefaults(Notification.DEFAULT_SOUND);
 
-        // Auto cancels the notification when clicked on in the task bar
-        mBuilder.setAutoCancel(false);
+            // Auto cancels the notification when clicked on in the task bar
+            mBuilder.setAutoCancel(false);
 
-        // Gets a NotificationManager which is used to notify the user of the background event
-        NotificationManager mNotificationManager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            // Gets a NotificationManager which is used to notify the user of the background event
+            NotificationManager mNotificationManager =
+                    (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        // Post the notification
-        mNotificationManager.notify(1, mBuilder.build());
-
+            // Post the notification
+            mNotificationManager.notify(1, mBuilder.build());
 
     }
 }

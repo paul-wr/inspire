@@ -15,8 +15,10 @@ import static com.example.mainaccount.inspire.NotificationSettingsActivity.MyPRE
 
 
 public class MyBootReceiver extends BroadcastReceiver {
+    // version 2
     private PendingIntent pendingIntent;
     Boolean isNotificationsOn;
+    public static boolean confirmReboot;
     long time;
     Calendar calendar;
     SetTime setTime;
@@ -28,6 +30,7 @@ public class MyBootReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        confirmReboot = true;
         SharedPreferences prefs = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         isNotificationsOn = prefs.getBoolean("notificationsOn", false);
         time = prefs.getLong("time", System.currentTimeMillis());
