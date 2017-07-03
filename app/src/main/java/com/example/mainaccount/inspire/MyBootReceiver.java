@@ -15,6 +15,7 @@ import static com.example.mainaccount.inspire.NotificationSettingsActivity.MyPRE
 
 
 public class MyBootReceiver extends BroadcastReceiver {
+    // master branch
     private PendingIntent pendingIntent;
     Boolean isNotificationsOn;
     long time;
