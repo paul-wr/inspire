@@ -48,7 +48,7 @@ public class ProfileActivity extends BaseActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = firebaseAuth.getCurrentUser();
                 if(user == null){
-                    startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+                    startActivity(new Intent(ProfileActivity.this, SigninActivity.class));
                     finish();
                 }
             }
@@ -65,7 +65,7 @@ public class ProfileActivity extends BaseActivity {
             emailField.setText(email);
             nameField.setText(name);
         }else{
-            startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+            startActivity(new Intent(ProfileActivity.this, SigninActivity.class));
             finish();
         }
 

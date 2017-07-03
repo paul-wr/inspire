@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mainaccount.inspire.NotificationSettingsActivity;
 import com.example.mainaccount.inspire.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -15,8 +16,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import static com.example.mainaccount.inspire.NotificationSettingsActivity.isRedirected;
 
-public class LoginActivity extends BaseActivity {
+
+public class SigninActivity extends BaseActivity {
     public static boolean loginV, logoutV;
 
     EditText emailField, passwordField;
@@ -28,9 +31,9 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_signin);
 
-        setTitle("Login");
+        setTitle("Sign in");
 
         emailField = (EditText) findViewById(R.id.emailField);
         passwordField = (EditText) findViewById(R.id.passwordField);
@@ -43,8 +46,13 @@ public class LoginActivity extends BaseActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = firebaseAuth.getCurrentUser();
                 if(user != null){
-                    startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
-                    finish();
+                    if(isRedirected){
+                        startActivity(new Intent(SigninActivity.this, NotificationSettingsActivity.class));
+                        finish();
+                    }else {
+                        startActivity(new Intent(SigninActivity.this, ProfileActivity.class));
+                        finish();
+                    }
                 }
             }
         };
@@ -63,7 +71,7 @@ public class LoginActivity extends BaseActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+                startActivity(new Intent(SigninActivity.this,RegisterActivity.class));
                 finish();
             }
         });
@@ -77,7 +85,7 @@ public class LoginActivity extends BaseActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         hideProgressDialog();
                         if(!task.isSuccessful()){
-                            Toast.makeText(LoginActivity.this, "Failed signin!",
+                            Toast.makeText(SigninActivity.this, "Failed signin!",
                                     Toast.LENGTH_SHORT).show();
                         }
                         // if login is successful display logout item and hide login item

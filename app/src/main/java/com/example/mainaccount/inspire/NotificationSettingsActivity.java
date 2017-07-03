@@ -11,6 +11,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -18,7 +19,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.mainaccount.inspire.model.BaseActivity;
-import com.example.mainaccount.inspire.model.LoginActivity;
+import com.example.mainaccount.inspire.model.SigninActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;
@@ -32,14 +33,22 @@ public class NotificationSettingsActivity extends BaseActivity {
     TextView clockText; // TextViews for clock
     TimePicker timePicker; // TimePicker allows user to define notification time
     SetTime setTime; // SetTime class for setting and retrieving time
-    public static boolean isNotificationsOn; // check if notifications are on/off on reboot of system
+    public static boolean isRedirected;
+    private boolean isUserTimeSet;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static SharedPreferences sharedPreferences;
+    public static SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_settings);
         timePicker = (TimePicker) findViewById(R.id.timePicker);
+        sharedPreferences = getApplicationContext().getSharedPreferences(MyPREFERENCES, 0);
+        editor = sharedPreferences.edit();
 
+        setTime = new SetTime();
         // Intent to begin BroadcastReceiver
         Intent alarmIntent = new Intent(NotificationSettingsActivity.this, MyReceiver.class);
         // PendingIntent holds Intent until called by AlarmManger
@@ -69,16 +78,24 @@ public class NotificationSettingsActivity extends BaseActivity {
             public void onClick(View v) {
                 if(FirebaseAuth.getInstance().getCurrentUser() != null) {
                     setTime = new SetTime(userHour, userMinutes);
+                    editor.putBoolean("notificationsOn", true);
+                    editor.putInt("hour", userHour);
+                    editor.putInt("minute", userMinutes);
+                    editor.putLong("time", setTime.getCalendar().getTimeInMillis());
+                    editor.commit();
+                    isUserTimeSet = true;
                     start();
                     Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set! " + setTime.getCalendar().get(Calendar.HOUR_OF_DAY) + " : " + setTime.getCalendar().get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(NotificationSettingsActivity.this, "You need to be logged in to set notifications time!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(NotificationSettingsActivity.this, "You must be signed in to set notifications time!\n" +
+                            "Redirecting to sigin...", Toast.LENGTH_LONG).show();
+                    isRedirected = true;
                     Thread thread = new Thread(){
                         @Override
                         public void run() {
                             try {
                                 Thread.sleep(2500); // Launch login Activity after Toast message has run
-                                startActivity(new Intent(NotificationSettingsActivity.this, LoginActivity.class));
+                                startActivity(new Intent(NotificationSettingsActivity.this, SigninActivity.class));
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -104,8 +121,7 @@ public class NotificationSettingsActivity extends BaseActivity {
         findViewById(R.id.start_notifications).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setTime = new SetTime();
-                Toast.makeText(NotificationSettingsActivity.this, "Notifications set at defualt time 18:00", Toast.LENGTH_LONG).show();
+                Toast.makeText(NotificationSettingsActivity.this, "Notifications set at default time 18:00", Toast.LENGTH_LONG).show();
                 start();
             }
         });
@@ -122,7 +138,11 @@ public class NotificationSettingsActivity extends BaseActivity {
 
     // start() method defines an AlarmManger to start notifications for set time and launches Intent via PendingIntent
     public void start() {
-        isNotificationsOn = true;
+        editor.putBoolean("notificationsOn", true);
+        editor.apply();
+        if(!isUserTimeSet){
+            setTime.setDefaultTime();
+        }
 
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         int interval = 15000;
@@ -134,8 +154,8 @@ public class NotificationSettingsActivity extends BaseActivity {
 
     // cancel() method stops the notifications
     public void cancel() {
-        isNotificationsOn = false;
-
+        editor.putBoolean("notificationsOn", false);
+        editor.apply();
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         manager.cancel(pendingIntent);
         Toast.makeText(this, "Notifications deactivated!", Toast.LENGTH_SHORT).show();

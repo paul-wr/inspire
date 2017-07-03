@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:padding="@dimen/default_padding"
-    tools:context="com.example.mainaccount.inspire.model.LoginActivity">
+    tools:context="com.example.mainaccount.inspire.model.SigninActivity">
 
     <EditText
         android:id="@+id/emailField"
@@ -38,7 +38,7 @@
         android:id="@+id/loginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Sign in"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="231dp"
         android:layout_below="@+id/passwordField" />
@@ -50,7 +50,7 @@
         android:layout_below="@+id/loginBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:text="Sign Up" />
+        android:text="Register" />
 
     <TextView
         android:id="@+id/textView4"

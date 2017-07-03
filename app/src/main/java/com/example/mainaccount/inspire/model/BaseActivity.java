@@ -85,7 +85,7 @@ public class BaseActivity extends AppCompatActivity {
             return true;
         }
         else if(id == R.id.sign_in){
-            startActivity(new Intent(BaseActivity.this, LoginActivity.class));
+            startActivity(new Intent(BaseActivity.this, SigninActivity.class));
             return true;
         }
 

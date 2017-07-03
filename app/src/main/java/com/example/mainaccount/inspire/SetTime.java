@@ -9,14 +9,9 @@ import java.util.Calendar;
  *  @author Paul Wrenn, x15020029
  */
 public class SetTime {
-    private Calendar calendar;
+    private static Calendar calendar;
 
-    public SetTime() {
-        // calender instance set to default notification time of 18:00
-        calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 18);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
+    public SetTime(){
     }
 
     public SetTime(int hour, int minute) {
@@ -25,6 +20,17 @@ public class SetTime {
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, 0);
     }
+
+
+    public void setDefaultTime() {
+        // calender instance set to default notification time of 18:00
+        calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 18);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+    }
+
+
     public Calendar getCalendar(){
         return calendar;
     }
