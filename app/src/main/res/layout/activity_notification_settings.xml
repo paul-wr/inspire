@@ -82,6 +82,32 @@
         android:layout_below="@+id/start_notifications"
         android:text="Stop Notifications" />
 
+    <Button
+        android:id="@+id/start_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/inspireGrey"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:onClick="startService"
+        android:textSize="@dimen/button_size"
+        android:background="@color/colorPrimary"
+        android:layout_below="@+id/stop_notifications"
+        android:text="Start service" />
+
+    <Button
+        android:id="@+id/stop_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/inspireGrey"
+        android:textStyle="bold"
+        android:onClick="stopService"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/button_size"
+        android:background="@color/colorPrimary"
+        android:layout_below="@+id/start_service"
+        android:text="Stop service" />
+
 
 
 </RelativeLayout>

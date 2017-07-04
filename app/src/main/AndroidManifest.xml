@@ -29,26 +29,20 @@
         <receiver
             android:name=".MyReceiver"
             android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
         </receiver>
 
         <activity android:name=".NotificationDetails" />
-
-        <receiver
-            android:name=".MyBootReceiver"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
 
         <activity android:name=".model.RegisterActivity" />
         <activity android:name=".model.ProfileActivity" />
         <activity android:name=".model.SigninActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".model.FavoritesActivity"></activity>
+        <activity android:name=".model.FavoritesActivity" />
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

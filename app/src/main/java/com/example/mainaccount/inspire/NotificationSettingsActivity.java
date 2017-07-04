@@ -56,6 +56,7 @@ public class NotificationSettingsActivity extends BaseActivity {
 
         clockText = (TextView) findViewById(R.id.clock_text);
 
+        /* timePicker allows the user to define the time of the notifications */
         TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
         timePicker.setVisibility(View.INVISIBLE);
         timePicker.setIs24HourView(false);
@@ -68,6 +69,8 @@ public class NotificationSettingsActivity extends BaseActivity {
                 userMinutes = minute;
             }
         });
+
+
 
         /* set_time button sets values to calender variables and calls start()
         method to begin notifications at specified time
@@ -134,6 +137,20 @@ public class NotificationSettingsActivity extends BaseActivity {
             }
         });
 
+    }
+
+    public void startService(View view) {
+        startService(new Intent(getBaseContext(), MyService.class));
+    }
+
+    // Method to stop the service
+    public void stopService(View view) {
+        stopService(new Intent(getBaseContext(), MyService.class));
+    }
+
+    public void onStop() {
+        super.onStop();
+        stopService(new Intent(getApplicationContext(), MyService.class));
     }
 
     // start() method defines an AlarmManger to start notifications for set time and launches Intent via PendingIntent
