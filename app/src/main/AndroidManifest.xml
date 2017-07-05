@@ -28,11 +28,9 @@
 
         <receiver
             android:name=".MyReceiver"
-            android:enabled="true">
-        </receiver>
+            android:enabled="true"></receiver>
 
         <activity android:name=".NotificationDetails" />
-
         <activity android:name=".model.RegisterActivity" />
         <activity android:name=".model.ProfileActivity" />
         <activity android:name=".model.SigninActivity" />
@@ -42,7 +40,16 @@
         <service
             android:name=".MyService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="false"></service>
+
+        <receiver
+            android:name=".RebootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
