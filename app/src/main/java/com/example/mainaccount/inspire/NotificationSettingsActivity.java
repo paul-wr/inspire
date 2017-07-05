@@ -40,6 +40,8 @@ public class NotificationSettingsActivity extends BaseActivity {
     public static SharedPreferences.Editor editor;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +86,7 @@ public class NotificationSettingsActivity extends BaseActivity {
                     editor.putLong("time", setTime.getCalendar().getTimeInMillis());
                     editor.commit();
                     isUserTimeSet = true;
-                    start();
+                    setTime.setAlarm(NotificationSettingsActivity.this);
                     Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set! " + setTime.getCalendar().get(Calendar.HOUR_OF_DAY) + " : " + setTime.getCalendar().get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(NotificationSettingsActivity.this, "You must be signed in to set notifications time!\n" +

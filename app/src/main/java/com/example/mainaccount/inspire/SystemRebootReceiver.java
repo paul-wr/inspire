@@ -5,16 +5,19 @@ import android.content.Context;
 import android.content.Intent;
 
 
-public class MyBootReceiver extends BroadcastReceiver {
+public class SystemRebootReceiver extends BroadcastReceiver {
     SetTime setTime;
+    public static boolean rebootKey;
 
 
-    public MyBootReceiver() {
+
+    public SystemRebootReceiver() {
         setTime = new SetTime();
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        rebootKey = true;
         setTime.setAlarm(context);
     }
 

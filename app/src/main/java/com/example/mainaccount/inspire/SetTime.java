@@ -61,9 +61,9 @@ public class SetTime {
 
             manager.setRepeating(AlarmManager.RTC_WAKEUP, time, interval, pendingIntent);
             Toast.makeText(context, ""+date.toString(), Toast.LENGTH_SHORT).show();
-
         }
     }
+
 
 
     public Calendar getCalendar(){
