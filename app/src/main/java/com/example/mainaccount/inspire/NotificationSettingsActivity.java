@@ -36,8 +36,9 @@ public class NotificationSettingsActivity extends BaseActivity {
     public static boolean isRedirected;
     private boolean isUserTimeSet;
     public static final String MyPREFERENCES = "MyPrefs" ;
-    public static SharedPreferences sharedPreferences;
-    public static SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    public static long time;
 
 
     @Override
@@ -85,9 +86,10 @@ public class NotificationSettingsActivity extends BaseActivity {
                     editor.putInt("hour", userHour);
                     editor.putInt("minute", userMinutes);
                     editor.putLong("time", setTime.getCalendar().getTimeInMillis());
+                    time = sharedPreferences.getLong("time", setTime.getCalendar().getTimeInMillis());
                     editor.commit();
                     isUserTimeSet = true;
-                    start();
+                    startService(new Intent(getBaseContext(), MyService.class));
                     Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set! " + setTime.getCalendar().get(Calendar.HOUR_OF_DAY) + " : " + setTime.getCalendar().get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(NotificationSettingsActivity.this, "You must be signed in to set notifications time!\n" +
