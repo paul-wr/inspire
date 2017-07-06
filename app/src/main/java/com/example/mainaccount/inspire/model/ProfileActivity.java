@@ -24,6 +24,7 @@ public class ProfileActivity extends BaseActivity {
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser user;
+    String newName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +81,7 @@ public class ProfileActivity extends BaseActivity {
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String newName = nameField.getText().toString();
+                newName = nameField.getText().toString();
                 if(!newName.isEmpty()){
                     if(newName.equals(user.getDisplayName())){
                         Toast.makeText(ProfileActivity.this, "No changes applied",
@@ -103,9 +104,14 @@ public class ProfileActivity extends BaseActivity {
                                             Toast.makeText(ProfileActivity.this,
                                                     "Profile name updated",
                                                     Toast.LENGTH_LONG).show();
+                                            // refresh user name data with screen relaunch
+                                            finish();
+                                            startActivity(getIntent());
                                         }
                                     }
                                 });
+                        // reset profile name title after edit
+                        setTitle(newName);
                     }
                 }else{
                     nameField.setError("Field can't be empty");

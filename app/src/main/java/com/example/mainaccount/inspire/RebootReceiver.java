@@ -6,15 +6,24 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import static com.example.mainaccount.inspire.NotificationSettingsActivity.MyPREFERENCES;
-import static com.example.mainaccount.inspire.NotificationSettingsActivity.time;
 
 public class RebootReceiver extends BroadcastReceiver {
     SharedPreferences sharedPreferences;
+    SetTime setTime;
+    int hour;
+    int minute;
+    public  static boolean isNotificationsOn;
+
 
     @Override
     public void onReceive(Context context, Intent intent) {
         sharedPreferences = context.getApplicationContext().getSharedPreferences(MyPREFERENCES, 0);
-        time = sharedPreferences.getLong("time", System.currentTimeMillis());
+        hour = sharedPreferences.getInt("hour", 0);
+        minute = sharedPreferences.getInt("minute", 0);
+        isNotificationsOn = sharedPreferences.getBoolean("isNotificationsOn", false);
+
+        setTime = new SetTime(hour, minute);
+
 
         Intent serviceIntent = new Intent(context, MyService.class);
         context.startService(serviceIntent);

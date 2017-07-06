@@ -26,42 +26,42 @@ import java.util.Calendar;
 
 
 public class NotificationSettingsActivity extends BaseActivity {
-    private PendingIntent pendingIntent; // PendingIntent stores Intent until Alarm fires
-    private int notificationId = 1;
-    public static int userMinutes; // user specified minute count
-    public static int userHour; // user specified hour of day
-    TextView clockText; // TextViews for clock
+    private PendingIntent pendingIntent; // pendingIntent for broadcastReceiver
+    private int notificationId = 1; // int for notification id
+    public static int userMinutes; // user specified minute
+    public static int userHour; // user specified hour
+    TextView clockText; // TextView for clock time display
     TimePicker timePicker; // TimePicker allows user to define notification time
     SetTime setTime; // SetTime class for setting and retrieving time
-    public static boolean isRedirected;
-    private boolean isUserTimeSet;
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
-    public static long time;
+    public static boolean isRedirected; // redirect user back to this activity if redirected to sign in
+    private boolean isUserTimeSet; // set default alarm time if none set
+    public static final String MyPREFERENCES = "MyPrefs" ; // data member to store name of SharedPreferences instance
+    SharedPreferences sharedPreferences; // store hour, minute, isNotificationsOn variables for access on reboot
+    SharedPreferences.Editor editor; // declare editor to edit sharedPreferences
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_settings);
-        timePicker = (TimePicker) findViewById(R.id.timePicker);
-        sharedPreferences = getApplicationContext().getSharedPreferences(MyPREFERENCES, 0);
-        editor = sharedPreferences.edit();
+        timePicker = (TimePicker) findViewById(R.id.timePicker); // user will set time using timePicker
+        sharedPreferences = getApplicationContext().getSharedPreferences(MyPREFERENCES, 0); // instantiate SharedPreferences
+        editor = sharedPreferences.edit(); // instantiate editor
+        setTime = new SetTime(); // instantiate SetTime class
 
-        setTime = new SetTime();
         // Intent to begin BroadcastReceiver
         Intent alarmIntent = new Intent(NotificationSettingsActivity.this, MyReceiver.class);
-        // PendingIntent holds Intent until called by AlarmManger
+        // pendingIntent holds BroadcastReceiver
         pendingIntent = PendingIntent.getBroadcast(NotificationSettingsActivity.this, 0, alarmIntent, 0);
 
-        clockText = (TextView) findViewById(R.id.clock_text);
+        clockText = (TextView) findViewById(R.id.clock_text); // instantiate TextView for display time in text
 
-        /* timePicker allows the user to define the time of the notifications */
+        // timePicker allows the user to define the time of the notifications
         TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
         timePicker.setVisibility(View.INVISIBLE);
-        timePicker.setIs24HourView(false);
+        timePicker.setIs24HourView(false); // spinning wheel style
 
+        // set variables on time change
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker timePicker, int hour, int minute) {
@@ -82,18 +82,16 @@ public class NotificationSettingsActivity extends BaseActivity {
             public void onClick(View v) {
                 if(FirebaseAuth.getInstance().getCurrentUser() != null) {
                     setTime = new SetTime(userHour, userMinutes);
-                    editor.putBoolean("notificationsOn", true);
+                    editor.putBoolean("isNotificationsOn", true);
                     editor.putInt("hour", userHour);
                     editor.putInt("minute", userMinutes);
-                    editor.putLong("time", setTime.getCalendar().getTimeInMillis());
-                    time = sharedPreferences.getLong("time", setTime.getCalendar().getTimeInMillis());
                     editor.commit();
                     isUserTimeSet = true;
                     startService(new Intent(getBaseContext(), MyService.class));
                     Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set! " + setTime.getCalendar().get(Calendar.HOUR_OF_DAY) + " : " + setTime.getCalendar().get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(NotificationSettingsActivity.this, "You must be signed in to set notifications time!\n" +
-                            "Redirecting to sigin...", Toast.LENGTH_LONG).show();
+                            "Redirecting to sign in...", Toast.LENGTH_LONG).show();
                     isRedirected = true;
                     Thread thread = new Thread(){
                         @Override

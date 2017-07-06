@@ -5,20 +5,24 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 import java.util.Date;
 
-import static com.example.mainaccount.inspire.NotificationSettingsActivity.time;
+import static com.example.mainaccount.inspire.NotificationSettingsActivity.MyPREFERENCES;
+import static com.example.mainaccount.inspire.RebootReceiver.isNotificationsOn;
 
 public class MyService extends Service {
     private PendingIntent pendingIntent;
+    SetTime setTime;
+    SharedPreferences sharedPreferences;
 
 
     public MyService() {
-
+        setTime = new SetTime();
     }
 
     @Nullable
@@ -31,18 +35,24 @@ public class MyService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         int interval = 15000;
-        String date = new Date(time).toString();
+
+        String date = new Date(setTime.getTime()).toString();
+
+        sharedPreferences = getApplicationContext().getSharedPreferences(MyPREFERENCES, 0);
+        isNotificationsOn = sharedPreferences.getBoolean("isNotificationsOn", false);
+
 
         Intent alarmIntent = new Intent(getApplicationContext(), MyReceiver.class);
         // PendingIntent holds Intent until called by AlarmManger
         pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, alarmIntent, 0);
 
-
-        manager.setRepeating(AlarmManager.RTC_WAKEUP, time, interval , pendingIntent);
-        Toast.makeText(this, "Notifications activated!", Toast.LENGTH_SHORT).show();
-        // Let it continue running until it is stopped.
-        Toast.makeText(this, "Service Started", Toast.LENGTH_LONG).show();
-        Toast.makeText(this, "Time: "+date, Toast.LENGTH_LONG).show();
+        if(isNotificationsOn) {
+            manager.setRepeating(AlarmManager.RTC_WAKEUP, setTime.getTime(), interval, pendingIntent);
+            Toast.makeText(this, "Notifications activated!", Toast.LENGTH_SHORT).show();
+            // Let it continue running until it is stopped.
+            Toast.makeText(this, "Service Started", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Time: " + date, Toast.LENGTH_LONG).show();
+        }
 
         return START_STICKY;
     }
