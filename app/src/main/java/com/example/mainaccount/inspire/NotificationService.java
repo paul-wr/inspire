@@ -53,7 +53,6 @@ public class NotificationService extends Service {
             Toast.makeText(this, "Service Started", Toast.LENGTH_LONG).show();
             Toast.makeText(this, "Time: " + date, Toast.LENGTH_LONG).show();
         }
-
         return START_STICKY;
     }
 

@@ -12,7 +12,7 @@ public class RebootReceiver extends BroadcastReceiver {
     SetTime setTime;
     int hour;
     int minute;
-    public  static boolean isNotificationsOn;
+    public static boolean isNotificationsOn;
 
 
     @Override

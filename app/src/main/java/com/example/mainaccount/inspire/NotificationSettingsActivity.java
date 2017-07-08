@@ -145,6 +145,7 @@ public class NotificationSettingsActivity extends BaseActivity {
 
     // Method to stop the service
     public void stopService(View view) {
+        editor.putBoolean("isNotificationsOn", false);
         stopService(new Intent(getBaseContext(), NotificationService.class));
     }
 
@@ -171,7 +172,7 @@ public class NotificationSettingsActivity extends BaseActivity {
 
     // cancel() method stops the notifications
     public void cancel() {
-        editor.putBoolean("notificationsOn", false);
+        editor.putBoolean("isNotificationsOn", false);
         editor.apply();
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         manager.cancel(pendingIntent);
