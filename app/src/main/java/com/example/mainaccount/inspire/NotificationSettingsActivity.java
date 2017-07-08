@@ -50,7 +50,7 @@ public class NotificationSettingsActivity extends BaseActivity {
         setTime = new SetTime(); // instantiate SetTime class
 
         // Intent to begin BroadcastReceiver
-        Intent alarmIntent = new Intent(NotificationSettingsActivity.this, MyReceiver.class);
+        Intent alarmIntent = new Intent(NotificationSettingsActivity.this, NotificationReceiver.class);
         // pendingIntent holds BroadcastReceiver
         pendingIntent = PendingIntent.getBroadcast(NotificationSettingsActivity.this, 0, alarmIntent, 0);
 
@@ -87,7 +87,7 @@ public class NotificationSettingsActivity extends BaseActivity {
                     editor.putInt("minute", userMinutes);
                     editor.commit();
                     isUserTimeSet = true;
-                    startService(new Intent(getBaseContext(), MyService.class));
+                    startService(new Intent(getBaseContext(), NotificationService.class));
                     Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set! " + setTime.getCalendar().get(Calendar.HOUR_OF_DAY) + " : " + setTime.getCalendar().get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(NotificationSettingsActivity.this, "You must be signed in to set notifications time!\n" +
@@ -140,17 +140,17 @@ public class NotificationSettingsActivity extends BaseActivity {
     }
 
     public void startService(View view) {
-        startService(new Intent(getBaseContext(), MyService.class));
+        startService(new Intent(getBaseContext(), NotificationService.class));
     }
 
     // Method to stop the service
     public void stopService(View view) {
-        stopService(new Intent(getBaseContext(), MyService.class));
+        stopService(new Intent(getBaseContext(), NotificationService.class));
     }
 
     public void onStop() {
         super.onStop();
-        stopService(new Intent(getApplicationContext(), MyService.class));
+        stopService(new Intent(getApplicationContext(), NotificationService.class));
     }
 
     // start() method defines an AlarmManger to start notifications for set time and launches Intent via PendingIntent

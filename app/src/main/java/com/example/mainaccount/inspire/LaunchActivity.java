@@ -4,9 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 
-public class MainActivity extends AppCompatActivity {
+public class LaunchActivity extends AppCompatActivity {
     private static final int HOME_LAUNCH_DELAY = 3500;
 
 
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(MainActivity.this, HomeActivity.class);
+                Intent i = new Intent(LaunchActivity.this, HomeActivity.class);
                 startActivity(i);
                 finish();
             }

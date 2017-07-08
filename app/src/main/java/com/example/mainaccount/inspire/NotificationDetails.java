@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 import com.example.mainaccount.inspire.model.BaseActivity;
 
-import static com.example.mainaccount.inspire.MyReceiver.text;
+import static com.example.mainaccount.inspire.NotificationReceiver.text;
 
 
 public class NotificationDetails extends BaseActivity {

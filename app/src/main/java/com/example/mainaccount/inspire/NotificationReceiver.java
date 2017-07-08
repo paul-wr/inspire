@@ -10,13 +10,13 @@ import android.support.v4.app.NotificationCompat;
 
 import com.example.mainaccount.inspire.model.Gem;
 
-public class MyReceiver extends BroadcastReceiver {
+public class NotificationReceiver extends BroadcastReceiver {
     Gem gem;
     String[] array;
     public static String title;
     public static String text;
 
-    public MyReceiver() {
+    public NotificationReceiver() {
         gem = new Gem();
         gem.createList();
         array = gem.getRandomGem();

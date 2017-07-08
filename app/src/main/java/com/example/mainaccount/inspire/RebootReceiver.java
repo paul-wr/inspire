@@ -25,7 +25,7 @@ public class RebootReceiver extends BroadcastReceiver {
         setTime = new SetTime(hour, minute);
 
 
-        Intent serviceIntent = new Intent(context, MyService.class);
+        Intent serviceIntent = new Intent(context, NotificationService.class);
         context.startService(serviceIntent);
 
 

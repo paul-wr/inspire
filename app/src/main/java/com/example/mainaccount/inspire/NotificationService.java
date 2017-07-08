@@ -15,13 +15,13 @@ import java.util.Date;
 import static com.example.mainaccount.inspire.NotificationSettingsActivity.MyPREFERENCES;
 import static com.example.mainaccount.inspire.RebootReceiver.isNotificationsOn;
 
-public class MyService extends Service {
+public class NotificationService extends Service {
     private PendingIntent pendingIntent;
     SetTime setTime;
     SharedPreferences sharedPreferences;
 
 
-    public MyService() {
+    public NotificationService() {
         setTime = new SetTime();
     }
 
@@ -42,7 +42,7 @@ public class MyService extends Service {
         isNotificationsOn = sharedPreferences.getBoolean("isNotificationsOn", false);
 
 
-        Intent alarmIntent = new Intent(getApplicationContext(), MyReceiver.class);
+        Intent alarmIntent = new Intent(getApplicationContext(), NotificationReceiver.class);
         // PendingIntent holds Intent until called by AlarmManger
         pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, alarmIntent, 0);
 

@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".LaunchActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
             android:theme="@style/AppTheme" />
 
         <receiver
-            android:name=".MyReceiver"
+            android:name=".NotificationReceiver"
             android:enabled="true"></receiver>
 
         <activity android:name=".NotificationDetails" />
@@ -38,7 +38,7 @@
         <activity android:name=".model.FavoritesActivity" />
 
         <service
-            android:name=".MyService"
+            android:name=".NotificationService"
             android:enabled="true"
             android:exported="false"></service>
 
