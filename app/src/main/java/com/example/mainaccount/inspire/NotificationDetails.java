@@ -18,7 +18,7 @@ public class NotificationDetails extends BaseActivity {
         t = (TextView) findViewById(R.id.textView3);
 
         // send static data to TextView
-        t.setText(text);
+        t.setText("\""+text+"\"");
 
     }
 
