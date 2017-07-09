@@ -59,9 +59,6 @@ public class NotificationService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        manager.cancel(pendingIntent);
-        Toast.makeText(this, "Notifications deactivated!", Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "Service Destroyed", Toast.LENGTH_LONG).show();
     }
 
