@@ -3,9 +3,11 @@ package com.example.mainaccount.inspire.model;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.mainaccount.inspire.R;
@@ -18,12 +20,14 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class ProfileActivity extends BaseActivity {
     private EditText nameField, emailField;
-    private Button updateBtn, profileEdit, deleteUserBtn;
+    private Button updateBtn, profileEdit, deleteUserBtn, btnResetPassword;
+    ProgressBar progressBar;
+
 
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser user;
-    String newName;
+    static String newName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +40,20 @@ public class ProfileActivity extends BaseActivity {
         updateBtn = (Button) findViewById(R.id.updateButton);
         profileEdit = (Button) findViewById(R.id.profile_edit);
         deleteUserBtn = (Button) findViewById(R.id.delete_profile);
+        btnResetPassword = (Button) findViewById(R.id.password_reset);
+        progressBar = (ProgressBar) findViewById(R.id.resetProgressBar);
+
+
+
+
+
 
         nameField.setEnabled(false);
         emailField.setEnabled(false);
         updateBtn.setVisibility(View.INVISIBLE);
         deleteUserBtn.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
+        btnResetPassword.setVisibility(View.INVISIBLE);
 
 
         auth = FirebaseAuth.getInstance();
@@ -76,6 +89,8 @@ public class ProfileActivity extends BaseActivity {
                 nameField.setEnabled(true);
                 updateBtn.setVisibility(View.VISIBLE);
                 deleteUserBtn.setVisibility(View.VISIBLE);
+                btnResetPassword.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -91,6 +106,7 @@ public class ProfileActivity extends BaseActivity {
                         UserProfileChangeRequest changeRequest = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(newName)
                                 .build();
+                        progressBar.setVisibility(View.VISIBLE);
                         user.updateProfile(changeRequest)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -109,6 +125,7 @@ public class ProfileActivity extends BaseActivity {
                                             finish();
                                             startActivity(getIntent());
                                         }
+                                        progressBar.setVisibility(View.INVISIBLE);
                                     }
                                 });
                         // reset profile name title after edit
@@ -125,6 +142,7 @@ public class ProfileActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 if (user != null) {
+                    progressBar.setVisibility(View.VISIBLE);
                     user.delete()
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -134,9 +152,38 @@ public class ProfileActivity extends BaseActivity {
                                     } else {
                                         Toast.makeText(ProfileActivity.this, "Failed to delete your account!", Toast.LENGTH_SHORT).show();
                                     }
+                                    progressBar.setVisibility(View.INVISIBLE);
                                 }
                             });
                 }
+            }
+        });
+
+        btnResetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(MainActivity.this, ResetPasswordActivity.class));
+                String email = emailField.getText().toString().trim();
+
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(getApplication(), "Enter your registered email id", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                progressBar.setVisibility(View.VISIBLE);
+                auth.sendPasswordResetEmail(email)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(ProfileActivity.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(ProfileActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+                                }
+
+                                progressBar.setVisibility(View.INVISIBLE);
+                            }
+                        });
             }
         });
     }
