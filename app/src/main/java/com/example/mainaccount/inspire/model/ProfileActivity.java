@@ -1,7 +1,6 @@
 package com.example.mainaccount.inspire.model;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -19,7 +18,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class ProfileActivity extends BaseActivity {
     private EditText nameField, emailField;
-    private Button updateBtn, profileEdit;
+    private Button updateBtn, profileEdit, deleteUserBtn;
 
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -33,15 +32,16 @@ public class ProfileActivity extends BaseActivity {
 
         nameField = (EditText) findViewById(R.id.nameField);
         emailField = (EditText) findViewById(R.id.emailField);
-        updateBtn = (Button) findViewById(R.id.updateBtn);
-        profileEdit = (Button) findViewById(R.id.profile_edit);
 
-        profileEdit.setPaintFlags(profileEdit.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        updateBtn.setPaintFlags(updateBtn.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        updateBtn = (Button) findViewById(R.id.updateButton);
+        profileEdit = (Button) findViewById(R.id.profile_edit);
+        deleteUserBtn = (Button) findViewById(R.id.delete_profile);
 
         nameField.setEnabled(false);
         emailField.setEnabled(false);
         updateBtn.setVisibility(View.INVISIBLE);
+        deleteUserBtn.setVisibility(View.INVISIBLE);
+
 
         auth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
@@ -75,6 +75,7 @@ public class ProfileActivity extends BaseActivity {
             public void onClick(View view) {
                 nameField.setEnabled(true);
                 updateBtn.setVisibility(View.VISIBLE);
+                deleteUserBtn.setVisibility(View.VISIBLE);
             }
         });
 
@@ -115,6 +116,26 @@ public class ProfileActivity extends BaseActivity {
                     }
                 }else{
                     nameField.setError("Field can't be empty");
+                }
+            }
+        });
+
+        // delete user account
+        deleteUserBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (user != null) {
+                    user.delete()
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(ProfileActivity.this, "Your profile is deleted:( Create a account now!", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(ProfileActivity.this, "Failed to delete your account!", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                 }
             }
         });

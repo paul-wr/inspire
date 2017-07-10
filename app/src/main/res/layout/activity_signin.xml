@@ -52,6 +52,14 @@
         android:layout_marginTop="15dp"
         android:text="Register" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password_reset"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/register_btn"
+        android:text="Reset password"/>
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -63,4 +71,13 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="36sp"
         android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/resetProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/password_reset"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
