@@ -24,4 +24,13 @@
         android:textAlignment="center"
         android:textStyle="italic"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add to favorites"
+        android:id="@+id/add_to_fav_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/textView3"/>
+
 </RelativeLayout>

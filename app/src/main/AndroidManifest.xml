@@ -36,8 +36,8 @@
         <activity android:name=".model.ProfileActivity" />
         <activity android:name=".model.SigninActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".model.FavoritesActivity" />
         <activity android:name=".ServicesActivity" />
+        <activity android:name=".FavoritesActivity" />
 
         <service
             android:name=".NotificationService"

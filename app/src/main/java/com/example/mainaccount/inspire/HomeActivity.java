@@ -15,6 +15,8 @@ public class HomeActivity extends BaseActivity {
         setContentView(R.layout.activity_home);
 
         Button servicesBtn = (Button) findViewById(R.id.services_btn);
+        Button favsLaunchBtn = (Button) findViewById(R.id.favs_btn);
+
 
 
         findViewById(R.id.imageButton).setOnClickListener(new View.OnClickListener() {
@@ -28,6 +30,14 @@ public class HomeActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, ServicesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        favsLaunchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, FavoritesActivity.class);
                 startActivity(intent);
             }
         });

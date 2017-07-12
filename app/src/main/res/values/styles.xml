@@ -42,7 +42,7 @@
         <item name="android:layout_alignParentTop">true</item>
     </style>
 
-    <style name="MyOverFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+    <style name="MyOverFlow" parent="android:Widget.ActionButton.Overflow">
         <item name="android:src">@drawable/ic_white_menu</item>
     </style>
 

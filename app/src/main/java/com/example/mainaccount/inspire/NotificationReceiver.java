@@ -15,6 +15,8 @@ public class NotificationReceiver extends BroadcastReceiver {
     String[] array;
     public static String title;
     public static String text;
+    public static String author;
+
 
     public NotificationReceiver() {
         gem = new Gem();
@@ -22,6 +24,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         array = gem.getRandomGem();
         title = array[0];
         text = array[1];
+        author = array[2];
     }
 
     @Override
