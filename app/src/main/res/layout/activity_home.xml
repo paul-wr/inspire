@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/default_padding"
-    tools:context="com.example.mainaccount.inspire.HomeActivity">
+    tools:context="com.example.mainaccount.inspire.activities.HomeActivity">
 
     <ImageView
         android:id="@+id/imageViewLogo"

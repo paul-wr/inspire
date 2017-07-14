@@ -1,4 +1,4 @@
-package com.example.mainaccount.inspire;
+package com.example.mainaccount.inspire.adapters;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,13 +7,19 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.mainaccount.inspire.R;
 
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
 /**
- * Created by mainaccount on 12/07/2017.
+ *  Classname: FavoriteListAdapter.java
+ *  Version 1
+ *  Date: 12 Jul 2017
+ *  @author Paul Wrenn, x15020029
  */
 
 public class FavoriteListAdapter extends BaseAdapter {
@@ -22,6 +28,7 @@ public class FavoriteListAdapter extends BaseAdapter {
     public static final String MyFavPREFERENCES = "MyFavPrefs";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    private String delete;
 
     public FavoriteListAdapter(Context mContext, List<String> gemList) {
         this.mContext = mContext;
@@ -53,7 +60,8 @@ public class FavoriteListAdapter extends BaseAdapter {
         tvFav = (TextView) v.findViewById(R.id.tv_fav);
         // set views
         tvFav.setText(gemList.get(position).toString());
-        final String delete = gemList.get(position).toString();
+        delete = gemList.get(position).toString();
+
 
 
         Button deleteFavBtn = (Button) v.findViewById(R.id.delete_fav_btn);
@@ -67,17 +75,32 @@ public class FavoriteListAdapter extends BaseAdapter {
         deleteFavBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // delete favorite record from storage
-                sharedPreferences.edit().remove(delete).commit();
+                // delete favorite record from SharedPreferences storage
+                editor.remove(delete);
+                editor.commit();
+                // updtate ListView of change in data
+                gemList.remove(position);
+                notifyDataSetChanged();
+                // inform user of change
+                Toast.makeText(mContext, "Favorite deleted!", Toast.LENGTH_SHORT).show();
+
+
             }
         });
+
 
         deleteAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // delete all favorite records from storage
+                // delete all favorite records from SharedPreferences storage
                 editor.clear();
                 editor.commit();
+
+                // updtate ListView of change in data
+                gemList.clear();
+                notifyDataSetChanged();
+                Toast.makeText(mContext, "Favorites list deleted!", Toast.LENGTH_SHORT).show();
+
             }
         });
 

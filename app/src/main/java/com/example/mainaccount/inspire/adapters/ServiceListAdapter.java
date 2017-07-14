@@ -1,4 +1,4 @@
-package com.example.mainaccount.inspire;
+package com.example.mainaccount.inspire.adapters;
 
 import android.Manifest;
 import android.content.Context;
@@ -9,14 +9,20 @@ import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.mainaccount.inspire.HelpfulService;
+import com.example.mainaccount.inspire.R;
+
 import java.util.List;
 
+
 /**
- * Created by mainaccount on 08/07/2017.
+ *  Classname: ServiceListAdapter.java
+ *  Version 1
+ *  Date: 8 Jul 2017
+ *  @author Paul Wrenn, x15020029
  */
 
 public class ServiceListAdapter extends BaseAdapter {
@@ -74,7 +80,7 @@ public class ServiceListAdapter extends BaseAdapter {
             }
         });
 
-        Button phoneBtn = (Button) v.findViewById(R.id.phone_button);
+        ImageButton phoneBtn = (ImageButton) v.findViewById(R.id.phone_button);
         phoneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -17,6 +17,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
+/**
+ *  Classname: ProfileActivity.java
+ *  Version 1
+ *  Date: 25 Jun 2017
+ *  @reference Benit Kibabu
+ *  @author Paul Wrenn, x15020029
+ */
+
+
 
 public class ProfileActivity extends BaseActivity {
     private EditText nameField, emailField;

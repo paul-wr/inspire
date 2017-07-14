@@ -10,10 +10,19 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
+import com.example.mainaccount.inspire.broadcasts.NotificationReceiver;
+
 import java.util.Date;
 
-import static com.example.mainaccount.inspire.NotificationSettingsActivity.MyPREFERENCES;
-import static com.example.mainaccount.inspire.RebootReceiver.isNotificationsOn;
+import static com.example.mainaccount.inspire.activities.NotificationSettingsActivity.MyPREFERENCES;
+import static com.example.mainaccount.inspire.broadcasts.RebootReceiver.isNotificationsOn;
+
+/**
+ *  Classname: NotificationService.java
+ *  Version 1
+ *  Date: 1 Jul 2017
+ *  @author Paul Wrenn, x15020029
+ */
 
 public class NotificationService extends Service {
     private PendingIntent pendingIntent;

@@ -1,16 +1,20 @@
-package com.example.mainaccount.inspire;
+package com.example.mainaccount.inspire.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.mainaccount.inspire.HelpfulService;
+import com.example.mainaccount.inspire.R;
+import com.example.mainaccount.inspire.adapters.ServiceListAdapter;
+import com.example.mainaccount.inspire.model.BaseActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServicesActivity extends AppCompatActivity {
+public class ServicesActivity extends BaseActivity {
     private ListView lvService;
     private ServiceListAdapter adapter;
     private List<HelpfulService> mServiceList;
@@ -43,7 +47,6 @@ public class ServicesActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Clicked! Tag = "+view.getTag(), Toast.LENGTH_LONG).show();
             }
         });
-
 
     }
 }

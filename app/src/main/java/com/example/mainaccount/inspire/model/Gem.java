@@ -1,5 +1,12 @@
 package com.example.mainaccount.inspire.model;
 
+/**
+ *  Classname: Gem.java
+ *  Version 1
+ *  Date: 25 Jun 2017
+ *  @author Paul Wrenn, x15020029
+ */
+
 import java.util.ArrayList;
 import java.util.Random;
 

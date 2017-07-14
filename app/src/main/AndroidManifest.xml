@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LaunchActivity"
+            android:name=".activities.LaunchActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,20 +24,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NotificationSettingsActivity"
+            android:name=".activities.NotificationSettingsActivity"
             android:theme="@style/AppTheme" />
 
         <receiver
-            android:name=".NotificationReceiver"
+            android:name=".broadcasts.NotificationReceiver"
             android:enabled="true"></receiver>
 
-        <activity android:name=".NotificationDetails" />
+        <activity android:name=".activities.NotificationDetails" />
         <activity android:name=".model.RegisterActivity" />
         <activity android:name=".model.ProfileActivity" />
         <activity android:name=".model.SigninActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".ServicesActivity" />
-        <activity android:name=".FavoritesActivity" />
+        <activity android:name=".activities.HomeActivity" />
+        <activity android:name=".activities.ServicesActivity" />
+        <activity android:name=".activities.FavoritesActivity" />
 
         <service
             android:name=".NotificationService"
@@ -45,7 +45,7 @@
             android:exported="false"></service>
 
         <receiver
-            android:name=".RebootReceiver"
+            android:name=".broadcasts.RebootReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

@@ -1,4 +1,4 @@
-package com.example.mainaccount.inspire;
+package com.example.mainaccount.inspire.broadcasts;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -8,7 +8,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
+import com.example.mainaccount.inspire.activities.NotificationDetails;
+import com.example.mainaccount.inspire.R;
 import com.example.mainaccount.inspire.model.Gem;
+
+/**
+ *  Classname: NotificationReceiver.java
+ *  Version 1
+ *  Date: 1 Jul 2017
+ *  @reference Derek Banas https://www.youtube.com/watch?v=WozSRUnYoNM&t=937s
+ *  @author Paul Wrenn, x15020029
+ */
 
 public class NotificationReceiver extends BroadcastReceiver {
     Gem gem;
@@ -16,6 +26,8 @@ public class NotificationReceiver extends BroadcastReceiver {
     public static String title;
     public static String text;
     public static String author;
+    private int notificationId = 1; // int for notification id
+
 
 
     public NotificationReceiver() {
@@ -37,8 +49,8 @@ public class NotificationReceiver extends BroadcastReceiver {
     public void createNotification(Context context, String msg, String msgText, String notificationAlert){
 
             // Define an Intent and an action to perform with it by another application
-            PendingIntent notificIntent = PendingIntent.getActivity(context, 0,
-                    new Intent(context, NotificationDetails.class), 0);
+            PendingIntent notificIntent = PendingIntent.getActivity(context, Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP,
+                    new Intent(context, NotificationDetails.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
             // Builds a notification
             NotificationCompat.Builder mBuilder =
@@ -54,6 +66,7 @@ public class NotificationReceiver extends BroadcastReceiver {
             mBuilder.setContentIntent(notificIntent);
 
 
+
             // DEFAULT_SOUND : Make sound
             mBuilder.setDefaults(Notification.DEFAULT_SOUND);
 
@@ -65,7 +78,7 @@ public class NotificationReceiver extends BroadcastReceiver {
                     (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
             // Post the notification
-            mNotificationManager.notify(1, mBuilder.build());
+            mNotificationManager.notify(notificationId, mBuilder.build());
 
     }
 }

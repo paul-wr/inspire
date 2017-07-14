@@ -1,11 +1,4 @@
-package com.example.mainaccount.inspire;
-
-/**
- *  Classname: NotificationSettingsActivity.java
- *  Version 1
- *  Date: 22 Jun 2017
- *  @author Paul Wrenn, x15020029
- */
+package com.example.mainaccount.inspire.activities;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -14,10 +7,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.mainaccount.inspire.NotificationService;
+import com.example.mainaccount.inspire.R;
+import com.example.mainaccount.inspire.SetTime;
+import com.example.mainaccount.inspire.broadcasts.NotificationReceiver;
 import com.example.mainaccount.inspire.model.BaseActivity;
 import com.example.mainaccount.inspire.model.SigninActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,12 +21,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.Calendar;
 
 
+/**
+ *  Classname: NotificationSettingsActivity.java
+ *  Version 1
+ *  Date: 22 Jun 2017
+ *  @author Paul Wrenn, x15020029
+ */
+
+
 public class NotificationSettingsActivity extends BaseActivity {
     private PendingIntent pendingIntent; // pendingIntent for broadcastReceiver
-    private int notificationId = 1; // int for notification id
     public static int userMinutes; // user specified minute
     public static int userHour; // user specified hour
-    TextView clockText; // TextView for clock time display
     TimePicker timePicker; // TimePicker allows user to define notification time
     SetTime setTime; // SetTime class for setting and retrieving time
     public static boolean isRedirected; // redirect user back to this activity if redirected to sign in
@@ -54,8 +56,6 @@ public class NotificationSettingsActivity extends BaseActivity {
         // pendingIntent holds BroadcastReceiver
         pendingIntent = PendingIntent.getBroadcast(NotificationSettingsActivity.this, 0, alarmIntent, 0);
 
-        clockText = (TextView) findViewById(R.id.clock_text); // instantiate TextView for display time in text
-
         // timePicker allows the user to define the time of the notifications
         TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
         timePicker.setVisibility(View.INVISIBLE);
@@ -65,7 +65,6 @@ public class NotificationSettingsActivity extends BaseActivity {
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker timePicker, int hour, int minute) {
-                clockText.setText("Time: "+hour+" : "+minute);
                 userHour = hour;
                 userMinutes = minute;
             }

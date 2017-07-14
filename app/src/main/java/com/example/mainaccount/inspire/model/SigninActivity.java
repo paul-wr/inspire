@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.mainaccount.inspire.NotificationSettingsActivity;
+import com.example.mainaccount.inspire.activities.NotificationSettingsActivity;
 import com.example.mainaccount.inspire.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -18,8 +18,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import static com.example.mainaccount.inspire.NotificationSettingsActivity.isRedirected;
+import static com.example.mainaccount.inspire.activities.NotificationSettingsActivity.isRedirected;
 
+/**
+ *  Classname: ProfileActivity.java
+ *  Version 1
+ *  Date: 25 Jun 2017
+ *  @reference Benit Kibabu
+ *  @author Paul Wrenn, x15020029
+ */
 
 public class SigninActivity extends BaseActivity {
     public static boolean loginV, logoutV;

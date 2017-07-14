@@ -3,7 +3,10 @@ package com.example.mainaccount.inspire;
 import java.util.ArrayList;
 
 /**
- * Created by mainaccount on 08/07/2017.
+ *  Classname: HelpfulService.java
+ *  Version 1
+ *  Date: 5 Jul 2017
+ *  @author Paul Wrenn, x15020029
  */
 
 public class HelpfulService {

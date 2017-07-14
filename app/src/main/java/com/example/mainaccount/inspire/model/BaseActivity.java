@@ -7,8 +7,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.mainaccount.inspire.activities.FavoritesActivity;
 import com.example.mainaccount.inspire.R;
 import com.google.firebase.auth.FirebaseAuth;
+
+/**
+ *  Classname: BaseActivity.java
+ *  Version 1
+ *  Date: 25 Jun 2017
+ *  @reference Benit Kibabu
+ *  @author Paul Wrenn, x15020029
+ */
 
 
 public class BaseActivity extends AppCompatActivity {
@@ -88,7 +97,12 @@ public class BaseActivity extends AppCompatActivity {
             startActivity(new Intent(BaseActivity.this, SigninActivity.class));
             return true;
         }
+        else if(id == R.id.refresh){
+            finish();
+            startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
+        }
 
         return super.onOptionsItemSelected(item);
     }
+
 }

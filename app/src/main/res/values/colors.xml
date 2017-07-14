@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#bc0063</color>
     <color name="colorPrimaryDark">#004CA9</color>
-    <color name="colorAccent">#3E7C3E</color>
+    <color name="colorAccent">#96bc0063</color>
     <color name="mainInspireColor">#1c5b1c</color>
     <color name="inspireGrey">#eeeeee</color>
     <color name="InspireLight">#3E7C3E</color>
