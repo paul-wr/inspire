@@ -7,6 +7,7 @@
     android:padding="@dimen/default_padding"
     tools:context="com.example.mainaccount.inspire.activities.HomeActivity">
 
+    <include layout="@layout/user_display"/>
 
     <ImageButton
         android:id="@+id/imageButton"

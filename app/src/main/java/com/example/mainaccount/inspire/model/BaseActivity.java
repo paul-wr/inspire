@@ -6,11 +6,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mainaccount.inspire.activities.FavoritesActivity;
 import com.example.mainaccount.inspire.R;
+import com.example.mainaccount.inspire.activities.FavoritesActivity;
 import com.google.firebase.auth.FirebaseAuth;
+
+import static com.example.mainaccount.inspire.activities.NotificationSettingsActivity.isRedirected;
 
 /**
  *  Classname: BaseActivity.java
@@ -24,6 +27,10 @@ import com.google.firebase.auth.FirebaseAuth;
 public class BaseActivity extends AppCompatActivity {
     public static Menu myMenu; // myMenu allows updating of Menu items visibility across classes
     public static boolean backPressed;
+    TextView userTV;
+    TextView emailTV;
+    public static Intent userIntent;
+
 
 
     private ProgressDialog progressDialog;
@@ -92,14 +99,21 @@ public class BaseActivity extends AppCompatActivity {
                 startActivity(new Intent(BaseActivity.this, ProfileActivity.class));
                 return true;
             case R.id.sign_out:
+                // sign out user using getInstance() method
                 FirebaseAuth.getInstance().signOut();
-                // if signed out display signin item and hide sign out item
+                // if signed out display signin item and hide sign out item in actionBar menu
                 myMenu.getItem(0).setVisible(true);
                 myMenu.getItem(1).setVisible(false);
+                // alert user
                 Toast.makeText(BaseActivity.this, "Successfully signed out!", Toast.LENGTH_SHORT).show();
+                // reset email display in TextView
+                emailTV.setText("");
                 return true;
             case R.id.sign_in:
                 startActivity(new Intent(BaseActivity.this, SigninActivity.class));
+                // set userIntent and isRedirected boolean for redirecting from signin activity
+                userIntent = getIntent();
+                isRedirected = true;
                 return true;
             case R.id.refresh:
                 finish();
@@ -111,6 +125,15 @@ public class BaseActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    public void welcomeUser(){
+        userTV = (TextView) findViewById(R.id.user_tv);
+        emailTV = (TextView) findViewById(R.id.user_email_tv);
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+            userTV.setText("Welcome " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+            emailTV.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        }
     }
 
 }

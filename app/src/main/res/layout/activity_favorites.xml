@@ -8,6 +8,7 @@
     android:padding="@dimen/default_padding"
     android:orientation="vertical"
     tools:context="com.example.mainaccount.inspire.activities.FavoritesActivity">
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
@@ -27,7 +28,7 @@
         android:id="@+id/favorite_list"
         android:layout_below="@+id/delete_all_btn"
         android:background="@android:color/white"
-        android:dividerHeight="4dp"
+        android:dividerHeight="1dp"
         android:divider="@color/colorPrimary">
     </ListView>
 

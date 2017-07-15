@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.mainaccount.inspire.activities.NotificationSettingsActivity;
 import com.example.mainaccount.inspire.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -61,9 +60,10 @@ public class SigninActivity extends BaseActivity {
                 user = firebaseAuth.getCurrentUser();
                 if(user != null){
                     if(isRedirected){
-                        startActivity(new Intent(SigninActivity.this, NotificationSettingsActivity.class));
+                        startActivity(userIntent);
                         finish();
-                    }else {
+                    }
+                    else {
                         startActivity(new Intent(SigninActivity.this, ProfileActivity.class));
                         finish();
                     }

@@ -24,6 +24,7 @@ public class ServicesActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
 
+
         lvService = (ListView) findViewById(R.id.service_list);
         mServiceList = new ArrayList<>();
 

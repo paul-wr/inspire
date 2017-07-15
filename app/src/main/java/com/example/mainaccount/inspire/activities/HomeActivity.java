@@ -16,10 +16,13 @@ import com.example.mainaccount.inspire.model.BaseActivity;
  */
 public class HomeActivity extends BaseActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        welcomeUser();
+
 
         Button servicesBtn = (Button) findViewById(R.id.services_btn);
         Button favsLaunchBtn = (Button) findViewById(R.id.favs_btn);
@@ -61,6 +64,5 @@ public class HomeActivity extends BaseActivity {
             startActivity(getIntent());
             backPressed = false;
         }
-
     }
 }

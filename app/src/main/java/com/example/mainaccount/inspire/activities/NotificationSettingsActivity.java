@@ -91,7 +91,6 @@ public class NotificationSettingsActivity extends BaseActivity {
                 }else{
                     Toast.makeText(NotificationSettingsActivity.this, "You must be signed in to set notifications time!\n" +
                             "Redirecting to sign in...", Toast.LENGTH_LONG).show();
-                    isRedirected = true;
                     Thread thread = new Thread(){
                         @Override
                         public void run() {

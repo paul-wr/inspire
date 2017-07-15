@@ -32,7 +32,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@android:color/white"
-        android:dividerHeight="4dp"
-        android:divider="#E2E2E2">
+        android:dividerHeight="1dp"
+        android:divider="@color/colorAccent">
     </ListView>
 </LinearLayout>

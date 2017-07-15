@@ -56,7 +56,6 @@ public class ProfileActivity extends BaseActivity {
 
 
 
-
         nameField.setEnabled(false);
         emailField.setEnabled(false);
         updateBtn.setVisibility(View.INVISIBLE);
