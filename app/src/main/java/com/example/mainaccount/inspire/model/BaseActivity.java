@@ -2,6 +2,7 @@ package com.example.mainaccount.inspire.model;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,6 +60,13 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // back to home arrow in actionbar
+        ActionBar aBar = getSupportActionBar();
+        aBar.setDisplayHomeAsUpEnabled(true);
+        aBar.setHomeAsUpIndicator(R.drawable.logo_pink);
+
+
+        // set data member to dynamically set user status in menu
         myMenu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.profile_activity_menu, menu);
@@ -78,31 +86,31 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
 
-        if(id == R.id.profile){
-            startActivity(new Intent(BaseActivity.this, ProfileActivity.class));
-            return true;
+        switch(item.getItemId()) {
+            case R.id.profile:
+                startActivity(new Intent(BaseActivity.this, ProfileActivity.class));
+                return true;
+            case R.id.sign_out:
+                FirebaseAuth.getInstance().signOut();
+                // if signed out display signin item and hide sign out item
+                myMenu.getItem(0).setVisible(true);
+                myMenu.getItem(1).setVisible(false);
+                Toast.makeText(BaseActivity.this, "Successfully signed out!", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.sign_in:
+                startActivity(new Intent(BaseActivity.this, SigninActivity.class));
+                return true;
+            case R.id.refresh:
+                finish();
+                startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        else if(id == R.id.sign_out){
-            FirebaseAuth.getInstance().signOut();
-            // if signed out display signin item and hide sign out item
-            myMenu.getItem(0).setVisible(true);
-            myMenu.getItem(1).setVisible(false);
-            Toast.makeText(BaseActivity.this, "Successfully signed out!", Toast.LENGTH_SHORT).show();
 
-            return true;
-        }
-        else if(id == R.id.sign_in){
-            startActivity(new Intent(BaseActivity.this, SigninActivity.class));
-            return true;
-        }
-        else if(id == R.id.refresh){
-            finish();
-            startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
 }

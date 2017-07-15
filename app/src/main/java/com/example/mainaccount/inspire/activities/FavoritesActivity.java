@@ -33,6 +33,7 @@ public class FavoritesActivity  extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
 
+
         sharedPreferences = getApplicationContext().getSharedPreferences(MyFavPREFERENCES, MODE_PRIVATE);
 
         lvFavorites = (ListView) findViewById(R.id.favorite_list);

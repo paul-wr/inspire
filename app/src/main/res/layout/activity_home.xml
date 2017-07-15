@@ -7,11 +7,6 @@
     android:padding="@dimen/default_padding"
     tools:context="com.example.mainaccount.inspire.activities.HomeActivity">
 
-    <ImageView
-        android:id="@+id/imageViewLogo"
-        style="@style/logoStyle"
-        android:layout_marginTop="0dp"
-        app:srcCompat="@drawable/logo_pink" />
 
     <ImageButton
         android:id="@+id/imageButton"
