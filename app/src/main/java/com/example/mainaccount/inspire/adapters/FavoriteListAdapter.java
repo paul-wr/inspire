@@ -56,7 +56,6 @@ public class FavoriteListAdapter extends BaseAdapter {
     public View getView(final int position, View view, final ViewGroup viewGroup) {
         View v = View.inflate(mContext, R.layout.favorite_list, null);
         TextView tvFav, tvDate;
-        tvDate = (TextView) v.findViewById(R.id.tv_date);
         tvFav = (TextView) v.findViewById(R.id.tv_fav);
         // set views
         tvFav.setText(gemList.get(position).toString());

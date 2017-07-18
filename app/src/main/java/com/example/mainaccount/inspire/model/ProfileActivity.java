@@ -156,7 +156,7 @@ public class ProfileActivity extends BaseActivity {
                                 @Override
                                 public void onComplete(@NonNull Task task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(ProfileActivity.this, "Your profile is deleted:( Create a account now!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ProfileActivity.this, "Your account has been deleted!", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Toast.makeText(ProfileActivity.this, "Failed to delete your account!", Toast.LENGTH_SHORT).show();
                                     }
@@ -174,7 +174,7 @@ public class ProfileActivity extends BaseActivity {
                 String email = emailField.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplication(), "Enter your registered email id", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication(), "Enter your email address ", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

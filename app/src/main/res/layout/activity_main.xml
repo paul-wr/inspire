@@ -14,9 +14,9 @@
 
 
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/logo_pink_bg"
+        app:srcCompat="@drawable/inspire_logo"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:id="@+id/logoImageView" />

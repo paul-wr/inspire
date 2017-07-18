@@ -70,7 +70,7 @@ public class BaseActivity extends AppCompatActivity {
         // back to home arrow in actionbar
         ActionBar aBar = getSupportActionBar();
         aBar.setDisplayHomeAsUpEnabled(true);
-        aBar.setHomeAsUpIndicator(R.drawable.logo_pink);
+        // aBar.setHomeAsUpIndicator(R.drawable.logo_pink);
 
 
         // set data member to dynamically set user status in menu

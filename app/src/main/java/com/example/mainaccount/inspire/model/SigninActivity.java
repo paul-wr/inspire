@@ -17,8 +17,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import static com.example.mainaccount.inspire.activities.NotificationSettingsActivity.isRedirected;
-
 /**
  *  Classname: ProfileActivity.java
  *  Version 1
@@ -59,14 +57,8 @@ public class SigninActivity extends BaseActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = firebaseAuth.getCurrentUser();
                 if(user != null){
-                    if(isRedirected){
-                        startActivity(userIntent);
-                        finish();
-                    }
-                    else {
-                        startActivity(new Intent(SigninActivity.this, ProfileActivity.class));
-                        finish();
-                    }
+                    startActivity(userIntent);
+                    finish();
                 }
             }
         };

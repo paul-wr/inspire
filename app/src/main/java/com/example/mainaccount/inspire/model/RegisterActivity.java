@@ -90,7 +90,7 @@ public class RegisterActivity extends BaseActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         hideProgressDialog();
                         if(!task.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this, "Failed signup",
+                            Toast.makeText(RegisterActivity.this, "Failed to register",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
