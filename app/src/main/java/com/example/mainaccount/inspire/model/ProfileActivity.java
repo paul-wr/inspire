@@ -32,7 +32,6 @@ public class ProfileActivity extends BaseActivity {
     private Button updateBtn, profileEdit, deleteUserBtn, btnResetPassword;
     ProgressBar progressBar;
 
-
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser user;
@@ -53,9 +52,6 @@ public class ProfileActivity extends BaseActivity {
         deleteUserBtn = (Button) findViewById(R.id.delete_profile);
         btnResetPassword = (Button) findViewById(R.id.password_reset);
         progressBar = (ProgressBar) findViewById(R.id.resetProgressBar);
-
-
-
 
 
         nameField.setEnabled(false);

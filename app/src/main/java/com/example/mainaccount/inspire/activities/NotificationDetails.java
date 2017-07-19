@@ -11,6 +11,7 @@ import com.example.mainaccount.inspire.R;
 import com.example.mainaccount.inspire.model.BaseActivity;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import static com.example.mainaccount.inspire.broadcasts.NotificationReceiver.author;
 import static com.example.mainaccount.inspire.broadcasts.NotificationReceiver.text;
@@ -46,14 +47,8 @@ public class NotificationDetails extends BaseActivity {
         sharedPreferences = getApplicationContext().getSharedPreferences(MyFavPREFERENCES, MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-        c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int date = c.get(Calendar.DATE);
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minutes = c.get(Calendar.MINUTE);
-        int seconds = c.get(Calendar.SECOND);
-        String dateString = "Saved date: "+date+"/"+month+"/"+year+" - "+hour+":"+minutes+":"+seconds;
+        GregorianCalendar c = (GregorianCalendar) GregorianCalendar.getInstance();
+        String dateString = c.getTime().toString();;
 
         textString = "\""+text+"\"";
 

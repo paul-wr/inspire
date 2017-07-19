@@ -13,7 +13,7 @@ import com.example.mainaccount.inspire.R;
 import com.example.mainaccount.inspire.activities.NotificationDetails;
 import com.example.mainaccount.inspire.model.Gem;
 
-import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -37,11 +37,6 @@ public class NotificationReceiver extends BroadcastReceiver {
     SharedPreferences sharedPreferencesHistory;
     SharedPreferences.Editor editorHistory;
 
-
-
-
-
-
     public NotificationReceiver() {
         gem = new Gem();
         gem.createList();
@@ -55,14 +50,8 @@ public class NotificationReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         sharedPreferencesHistory = context.getApplicationContext().getSharedPreferences(MyHistoryPREFERENCES, MODE_PRIVATE);
         editorHistory = sharedPreferencesHistory.edit();
-        Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int date = c.get(Calendar.DATE);
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minutes = c.get(Calendar.MINUTE);
-        int seconds = c.get(Calendar.SECOND);
-        String dateString = date+"/"+month+"/"+year+" - "+hour+":"+minutes+":"+seconds;
+        GregorianCalendar c = (GregorianCalendar) GregorianCalendar.getInstance();
+        String dateString = c.getTime().toString();;
         createNotification(context, "Inspire notification", text, "Inspire Notification");
         array = gem.getRandomGem();
         gemData = "\""+text+"\""+" ~ "+author+"\n\nNotification date: "+dateString;

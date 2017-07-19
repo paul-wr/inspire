@@ -7,16 +7,15 @@ android:layout_height="match_parent"
 android:padding="@dimen/default_padding"
 tools:context="com.example.mainaccount.inspire.model.ProfileActivity">
 
-    <include layout="@layout/page_heading"/>
+    <include layout="@layout/page_heading" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/heading_text"
+        android:layout_below="@layout/user_display"
         android:layout_marginTop="73dp"
         android:text="Name:" />
-
 
     <EditText
         android:id="@+id/nameField"
@@ -100,6 +99,5 @@ tools:context="com.example.mainaccount.inspire.model.ProfileActivity">
         android:layout_marginTop="50dp"
         android:layout_below="@+id/profileLinearLayout2"
         android:layout_centerHorizontal="true"/>
-
 
 </RelativeLayout>

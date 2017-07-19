@@ -28,8 +28,9 @@
         android:id="@+id/favorite_list"
         android:layout_below="@+id/delete_all_btn"
         android:background="@android:color/white"
-        android:dividerHeight="1dp"
-        android:divider="@color/colorPrimary">
+        android:dividerHeight="2dp"
+        android:padding="10dp"
+        android:divider="@color/colorAccent">
     </ListView>
 
 </LinearLayout>

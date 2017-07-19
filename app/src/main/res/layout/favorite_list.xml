@@ -21,15 +21,30 @@
         android:layout_gravity="right"
         android:textAlignment="center" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="15"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_weight="4"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/btn_star_big_on" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_fav"
         android:text="Favorite"
+        android:layout_weight="11"
         android:layout_below="@+id/delete_all_btn"
         android:textSize="20sp"
         android:textColor="#111"/>
 
+ </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
@@ -40,6 +55,5 @@
         android:layout_marginTop="12dp"
         android:focusable="true"
         android:text="Delete"/>
-
 
 </LinearLayout>

@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:padding="@dimen/default_padding"
     android:orientation="vertical"
     tools:context="com.example.mainaccount.inspire.activities.HistoryActivity">
 
@@ -27,6 +29,7 @@
         android:layout_below="@+id/delete_all_btn"
         android:background="@android:color/white"
         android:dividerHeight="1dp"
+        android:padding="10dp"
         android:divider="@color/colorPrimary">
     </ListView>
 
