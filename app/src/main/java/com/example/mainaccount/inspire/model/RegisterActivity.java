@@ -15,6 +15,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ *  Classname: RegisterActivity.java
+ *  Version 1
+ *  Date: 25 Jun 2017
+ *  @reference Benit Kibabu
+ *  @author Paul Wrenn, x15020029
+ */
+
+
 public class RegisterActivity extends BaseActivity {
     private EditText  emailField, passwordField;
     private Button loginBtn, registerBtn;
@@ -28,6 +37,7 @@ public class RegisterActivity extends BaseActivity {
         setContentView(R.layout.activity_register);
 
         setTitle("Register");
+        setHeadingText("Register");
 
         emailField = (EditText) findViewById(R.id.emailField);
         passwordField = (EditText) findViewById(R.id.passwordField);
@@ -81,7 +91,7 @@ public class RegisterActivity extends BaseActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         hideProgressDialog();
                         if(!task.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this, "Failed signup",
+                            Toast.makeText(RegisterActivity.this, "Failed to register",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }

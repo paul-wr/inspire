@@ -1,12 +1,13 @@
 package com.example.mainaccount.inspire.model;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.mainaccount.inspire.R;
@@ -16,31 +17,54 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
+/**
+ *  Classname: ProfileActivity.java
+ *  Version 1
+ *  Date: 25 Jun 2017
+ *  @reference Benit Kibabu
+ *  @author Paul Wrenn, x15020029
+ */
+
+
 
 public class ProfileActivity extends BaseActivity {
     private EditText nameField, emailField;
-    private Button updateBtn, profileEdit;
+    private Button updateBtn, profileEdit, deleteUserBtn, btnResetPassword;
+    ProgressBar progressBar;
+
 
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser user;
+    static String newName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        setHeadingText("User Profile");
+
         nameField = (EditText) findViewById(R.id.nameField);
         emailField = (EditText) findViewById(R.id.emailField);
-        updateBtn = (Button) findViewById(R.id.updateBtn);
-        profileEdit = (Button) findViewById(R.id.profile_edit);
 
-        profileEdit.setPaintFlags(profileEdit.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        updateBtn.setPaintFlags(updateBtn.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        updateBtn = (Button) findViewById(R.id.updateButton);
+        profileEdit = (Button) findViewById(R.id.profile_edit);
+        deleteUserBtn = (Button) findViewById(R.id.delete_profile);
+        btnResetPassword = (Button) findViewById(R.id.password_reset);
+        progressBar = (ProgressBar) findViewById(R.id.resetProgressBar);
+
+
+
+
 
         nameField.setEnabled(false);
         emailField.setEnabled(false);
         updateBtn.setVisibility(View.INVISIBLE);
+        deleteUserBtn.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
+        btnResetPassword.setVisibility(View.INVISIBLE);
+
 
         auth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
@@ -74,13 +98,16 @@ public class ProfileActivity extends BaseActivity {
             public void onClick(View view) {
                 nameField.setEnabled(true);
                 updateBtn.setVisibility(View.VISIBLE);
+                deleteUserBtn.setVisibility(View.VISIBLE);
+                btnResetPassword.setVisibility(View.VISIBLE);
+
             }
         });
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String newName = nameField.getText().toString();
+                newName = nameField.getText().toString();
                 if(!newName.isEmpty()){
                     if(newName.equals(user.getDisplayName())){
                         Toast.makeText(ProfileActivity.this, "No changes applied",
@@ -89,6 +116,7 @@ public class ProfileActivity extends BaseActivity {
                         UserProfileChangeRequest changeRequest = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(newName)
                                 .build();
+                        progressBar.setVisibility(View.VISIBLE);
                         user.updateProfile(changeRequest)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -103,13 +131,69 @@ public class ProfileActivity extends BaseActivity {
                                             Toast.makeText(ProfileActivity.this,
                                                     "Profile name updated",
                                                     Toast.LENGTH_LONG).show();
+                                            // refresh user name data with screen relaunch
+                                            finish();
+                                            startActivity(getIntent());
                                         }
+                                        progressBar.setVisibility(View.INVISIBLE);
                                     }
                                 });
+                        // reset profile name title after edit
+                        setTitle(newName);
                     }
                 }else{
                     nameField.setError("Field can't be empty");
                 }
+            }
+        });
+
+        // delete user account
+        deleteUserBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (user != null) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    user.delete()
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(ProfileActivity.this, "Your account has been deleted!", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(ProfileActivity.this, "Failed to delete your account!", Toast.LENGTH_SHORT).show();
+                                    }
+                                    progressBar.setVisibility(View.INVISIBLE);
+                                }
+                            });
+                }
+            }
+        });
+
+        btnResetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(MainActivity.this, ResetPasswordActivity.class));
+                String email = emailField.getText().toString().trim();
+
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(getApplication(), "Enter your email address ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                progressBar.setVisibility(View.VISIBLE);
+                auth.sendPasswordResetEmail(email)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(ProfileActivity.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(ProfileActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+                                }
+
+                                progressBar.setVisibility(View.INVISIBLE);
+                            }
+                        });
             }
         });
     }

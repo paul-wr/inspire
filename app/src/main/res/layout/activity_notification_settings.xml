@@ -14,25 +14,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.mainaccount.inspire.NotificationSettingsActivity">
+    tools:context="com.example.mainaccount.inspire.activities.NotificationSettingsActivity">
 
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Clock text"
-        android:id="@+id/clock_text"
-        android:textSize="21sp"
-        android:layout_alignParentTop="true"
-        android:layout_width="wrap_content"
-        android:textStyle="normal|bold" />
-
+    <include layout="@layout/page_heading"/>
 
     <TimePicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:timePickerMode="spinner"
+        android:layout_marginTop="65dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/clock_text"
+        android:layout_below="@+id/heading_text"
         android:id="@+id/timePicker" />
 
     <Button
@@ -62,11 +54,10 @@
         android:id="@+id/start_notifications"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/inspireGrey"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:textSize="@dimen/button_size"
-        android:background="@color/colorPrimary"
+        style="@style/btn_style"
         android:layout_below="@+id/set_time"
         android:text="Start Notifications" />
 
@@ -74,15 +65,12 @@
         android:id="@+id/stop_notifications"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/inspireGrey"
+        style="@style/btn_style"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:textSize="@dimen/button_size"
-        android:background="@color/colorPrimary"
         android:layout_below="@+id/start_notifications"
         android:text="Stop Notifications" />
-
-
 
 </RelativeLayout>
     </ScrollView>

@@ -1,5 +1,12 @@
 package com.example.mainaccount.inspire.model;
 
+/**
+ *  Classname: Gem.java
+ *  Version 1
+ *  Date: 25 Jun 2017
+ *  @author Paul Wrenn, x15020029
+ */
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -7,13 +14,38 @@ import java.util.Random;
 public class Gem {
     private String category;
     private String gem;
+    private String author;
     Random ran;
     public ArrayList <Gem> gemList;
 
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setGem(String gem) {
+        this.gem = gem;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public Gem(String category, String gem, String author) {
+        this.category = category;
+        this.gem = gem;
+        this.author = author;
+    }
+
     public Gem(){
         ran = new Random();
+
         gemList = new ArrayList<>();
+
     }
 
     public Gem(String category, String gem){
@@ -23,15 +55,15 @@ public class Gem {
 
     // method to populate phraseList
     public void createList(){
-        gemList.add(new Gem("Love", "love text1"));
-        gemList.add(new Gem("Love", "love text2"));
-        gemList.add(new Gem("Love", "love text3"));
-        gemList.add(new Gem("Wisdom", "wisdom text1"));
-        gemList.add(new Gem("Wisdom", "wisdom text2"));
-        gemList.add(new Gem("Wisdom", "wisdom text3"));
-        gemList.add(new Gem("Freedom", "freedom text1"));
-        gemList.add(new Gem("Freedom", "freedom text2"));
-        gemList.add(new Gem("Freedom", "freedom text3"));
+        gemList.add(new Gem("Love", "love text1", "author"));
+        gemList.add(new Gem("Love", "love text2",  "author"));
+        gemList.add(new Gem("Love", "love text3", "author"));
+        gemList.add(new Gem("Wisdom", "wisdom text1", "author"));
+        gemList.add(new Gem("Wisdom", "wisdom text2", "author"));
+        gemList.add(new Gem("Wisdom", "wisdom text3", "author"));
+        gemList.add(new Gem("Freedom", "freedom text1", "author"));
+        gemList.add(new Gem("Freedom", "freedom text2", "author"));
+        gemList.add(new Gem("Freedom", "freedom text3", "author"));
 
     }
 
@@ -49,11 +81,12 @@ public class Gem {
 
     public String[] getRandomGem(){
         Gem p = gemList.get(ran.nextInt(gemList.size()));
-        String[] a = new String[2];
+        String[] a = new String[3];
         // System.out.println(p.getCategory()+": "+p.getPhrase());
 
         a[0] = p.getCategory();
         a[1] = p.getGem();
+        a[2] = p.getAuthor();
 
         return a;
 

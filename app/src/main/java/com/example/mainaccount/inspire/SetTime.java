@@ -19,6 +19,7 @@ import static com.example.mainaccount.inspire.NotificationSettingsActivity.MyPRE
  *  @author Paul Wrenn, x15020029
  */
 public class SetTime {
+    // declare static calendar to store time
     private static Calendar calendar;
     private PendingIntent pendingIntent;
     Boolean isNotificationsOn;
@@ -29,6 +30,7 @@ public class SetTime {
     public SetTime(){
     }
 
+    // override constructor with int args for setting time
     public SetTime(int hour, int minute) {
         calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hour);
@@ -36,7 +38,7 @@ public class SetTime {
         calendar.set(Calendar.SECOND, 0);
     }
 
-
+    // method to allow for a default time setting
     public void setDefaultTime() {
         // calender instance set to default notification time of 18:00
         calendar = Calendar.getInstance();
@@ -45,6 +47,7 @@ public class SetTime {
         calendar.set(Calendar.SECOND, 0);
     }
 
+<<<<<<< HEAD
     public void setAlarm(Context context){
         prefs = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         isNotificationsOn = prefs.getBoolean("notificationsOn", false);
@@ -66,8 +69,16 @@ public class SetTime {
 
 
 
+=======
+    // calender accessor method
+>>>>>>> e93ccb5f60f0c2607e7ad3e5d3e42d80ea631a00
     public Calendar getCalendar(){
         return calendar;
+    }
+
+    // return long variable of calendar
+    public long getTime(){
+        return calendar.getTimeInMillis();
     }
 
 }

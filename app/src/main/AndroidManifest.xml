@@ -6,15 +6,16 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_string"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.LaunchActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,32 +24,41 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".NotificationSettingsActivity"
+            android:name=".activities.NotificationSettingsActivity"
             android:theme="@style/AppTheme" />
 
         <receiver
-            android:name=".MyReceiver"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
+            android:name=".broadcasts.NotificationReceiver"
+            android:enabled="true" />
 
-        <activity android:name=".NotificationDetails" />
-
-        <receiver
-            android:name=".SystemRebootReceiver"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
+        <activity android:name=".activities.NotificationDetails" />
         <activity android:name=".model.RegisterActivity" />
         <activity android:name=".model.ProfileActivity" />
         <activity android:name=".model.SigninActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".model.FavoritesActivity"></activity>
+        <activity android:name=".activities.HomeActivity" />
+        <activity android:name=".activities.ServicesActivity" />
+        <activity android:name=".activities.FavoritesActivity" />
+
+        <service
+            android:name=".NotificationService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+<<<<<<< HEAD
+            android:name=".SystemRebootReceiver"
+            android:enabled="true">
+=======
+            android:name=".broadcasts.RebootReceiver"
+            android:enabled="true"
+            android:exported="true">
+>>>>>>> e93ccb5f60f0c2607e7ad3e5d3e42d80ea631a00
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".activities.HistoryActivity"></activity>
     </application>
 
 </manifest>

@@ -8,7 +8,6 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:windowBackground">@color/inspireGrey</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:actionOverflowButtonStyle">@style/MyOverFlow</item>
 
     </style>
 
@@ -20,7 +19,7 @@
     </style>
 
     <style name="btn_style">
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorAccent</item>
         <item name="android:textColor">@color/inspireGrey</item>
         <item name="android:textSize">17sp</item>
         <item name="android:paddingLeft">14dp</item>
@@ -42,8 +41,12 @@
         <item name="android:layout_alignParentTop">true</item>
     </style>
 
-    <style name="MyOverFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
-        <item name="android:src">@drawable/ic_white_menu</item>
+    <style name="headerStyle">
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">18dp</item>
+        <item name="android:textColor">@color/lightBlack</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
     </style>
 
 

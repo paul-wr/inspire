@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:focusable="false"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_name"
+        android:text="Name"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_address"
+        android:text="Address"
+        android:textSize="17sp"
+        android:textColor="#000000"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:id="@+id/serviceLinearLayout"
+        android:orientation="horizontal">
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textColor="#00ACED"
+        android:background="@android:color/white"
+        android:src="@drawable/ic_phone"
+        android:id="@+id/phone_button" />
+
+    <ImageButton
+        android:id="@+id/webButton"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_web_link" />
+
+    <ImageButton
+        android:id="@+id/emailButton"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:src="@drawable/ic_email" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
