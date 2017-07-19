@@ -6,11 +6,16 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.NotificationCompat;
 
-import com.example.mainaccount.inspire.activities.NotificationDetails;
 import com.example.mainaccount.inspire.R;
+import com.example.mainaccount.inspire.activities.NotificationDetails;
 import com.example.mainaccount.inspire.model.Gem;
+
+import java.util.Calendar;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  *  Classname: NotificationReceiver.java
@@ -23,10 +28,17 @@ import com.example.mainaccount.inspire.model.Gem;
 public class NotificationReceiver extends BroadcastReceiver {
     Gem gem;
     String[] array;
+    String gemData;
     public static String title;
     public static String text;
     public static String author;
     private int notificationId = 1; // int for notification id
+    public static final String MyHistoryPREFERENCES = "MyHistoryPrefs";
+    SharedPreferences sharedPreferencesHistory;
+    SharedPreferences.Editor editorHistory;
+
+
+
 
 
 
@@ -41,8 +53,22 @@ public class NotificationReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-            createNotification(context, "Inspire notification", text, "Inspire Notification");
-            array = gem.getRandomGem();
+        sharedPreferencesHistory = context.getApplicationContext().getSharedPreferences(MyHistoryPREFERENCES, MODE_PRIVATE);
+        editorHistory = sharedPreferencesHistory.edit();
+        Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int date = c.get(Calendar.DATE);
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minutes = c.get(Calendar.MINUTE);
+        int seconds = c.get(Calendar.SECOND);
+        String dateString = date+"/"+month+"/"+year+" - "+hour+":"+minutes+":"+seconds;
+        createNotification(context, "Inspire notification", text, "Inspire Notification");
+        array = gem.getRandomGem();
+        gemData = "\""+text+"\""+" ~ "+author+"\n\nNotification date: "+dateString;
+        editorHistory.putString(gemData, gemData);
+        editorHistory.commit();
+
     }
     
 

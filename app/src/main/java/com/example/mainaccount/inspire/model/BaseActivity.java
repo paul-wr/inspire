@@ -29,8 +29,9 @@ public class BaseActivity extends AppCompatActivity {
     public static boolean backPressed;
     TextView userTV;
     TextView emailTV;
+    TextView headerText;
     public static Intent userIntent;
-
+    private static boolean isSignedOut;
 
 
     private ProgressDialog progressDialog;
@@ -105,9 +106,9 @@ public class BaseActivity extends AppCompatActivity {
                 myMenu.getItem(0).setVisible(true);
                 myMenu.getItem(1).setVisible(false);
                 // alert user
-                Toast.makeText(BaseActivity.this, "Successfully signed out!", Toast.LENGTH_SHORT).show();
-                // reset email display in TextView
-                emailTV.setText("");
+                Toast.makeText(this, "Successfully signed out!", Toast.LENGTH_SHORT).show();
+                // reset email display in TextView if user is signed out
+                isSignedOut = true;
                 return true;
             case R.id.sign_in:
                 startActivity(new Intent(BaseActivity.this, SigninActivity.class));
@@ -128,12 +129,27 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void welcomeUser(){
+        // declare TextViews on Home screen for display of user data
         userTV = (TextView) findViewById(R.id.user_tv);
         emailTV = (TextView) findViewById(R.id.user_email_tv);
+        // welcome registered users by name and display email address
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             userTV.setText("Welcome " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
             emailTV.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         }
+    }
+
+    // method declaration for re-setting Home screen email text after sign out
+    private void setWelcomeText(){
+        if(isSignedOut) {
+            emailTV.setText("");
+        }
+    }
+
+    // method declaration for dynamically setting heading text per activity screen
+    public void setHeadingText(String text){
+        headerText = (TextView) findViewById(R.id.heading_text);
+        headerText.setText(text);
     }
 
 }

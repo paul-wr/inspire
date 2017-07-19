@@ -15,7 +15,6 @@
         android:text="Gem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
         android:textColor="@color/mainInspireColor"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
@@ -30,7 +29,9 @@
         android:text="Add to favorites"
         android:id="@+id/add_to_fav_btn"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_centerVertical="true"
+        style="@style/btn_style"
+        android:layout_marginTop="73dp"
         android:layout_below="@+id/textView3"/>
 
 </RelativeLayout>

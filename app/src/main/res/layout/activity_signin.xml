@@ -8,6 +8,8 @@
     android:padding="@dimen/default_padding"
     tools:context="com.example.mainaccount.inspire.model.SigninActivity">
 
+    <include layout="@layout/page_heading"/>
+
     <EditText
         android:id="@+id/emailField"
         android:layout_width="368dp"
@@ -18,8 +20,8 @@
         tools:layout_editor_absoluteX="8dp"
         style="@style/editText_style"
         tools:layout_editor_absoluteY="98dp"
-        android:layout_marginTop="55dp"
-        android:layout_below="@+id/textView4" />
+        android:layout_marginTop="73dp"
+        android:layout_below="@+id/heading_text" />
 
     <EditText
         android:id="@+id/passwordField"
@@ -59,18 +61,6 @@
         android:layout_marginTop="15dp"
         android:layout_below="@+id/register_btn"
         android:text="Reset password"/>
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:text="Sign In"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="36sp"
-        android:textStyle="bold" />
 
     <ProgressBar
         android:id="@+id/resetProgressBar"

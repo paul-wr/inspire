@@ -41,6 +41,7 @@ public class SigninActivity extends BaseActivity {
         setContentView(R.layout.activity_signin);
 
         setTitle("Sign in");
+        setHeadingText("Sign in");
 
         emailField = (EditText) findViewById(R.id.emailField);
         passwordField = (EditText) findViewById(R.id.passwordField);
@@ -57,6 +58,7 @@ public class SigninActivity extends BaseActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = firebaseAuth.getCurrentUser();
                 if(user != null){
+                    // redirect user to screen they were orignally on
                     startActivity(userIntent);
                     finish();
                 }

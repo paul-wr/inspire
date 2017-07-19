@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.mainaccount.inspire.R;
 import com.example.mainaccount.inspire.model.BaseActivity;
 
-import java.util.Date;
+import java.util.Calendar;
 
 import static com.example.mainaccount.inspire.broadcasts.NotificationReceiver.author;
 import static com.example.mainaccount.inspire.broadcasts.NotificationReceiver.text;
@@ -24,12 +24,13 @@ import static com.example.mainaccount.inspire.broadcasts.NotificationReceiver.te
 
 public class NotificationDetails extends BaseActivity {
     TextView t;
-    String textString;
-    String authorString;
+    private String textString;
+    private String authorString;
+    private String fullGemData;
     public static final String MyFavPREFERENCES = "MyFavPrefs";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    Date date;
+    Calendar c;
 
 
 
@@ -38,26 +39,34 @@ public class NotificationDetails extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_details);
+        setTitle("Inspire gem details");
         t = (TextView) findViewById(R.id.textView3);
         Button addBtn = (Button) findViewById(R.id.add_to_fav_btn);
 
         sharedPreferences = getApplicationContext().getSharedPreferences(MyFavPREFERENCES, MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        date = new Date();
-        setTitle("Inspire gem details");
+
+        c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int date = c.get(Calendar.DATE);
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minutes = c.get(Calendar.MINUTE);
+        int seconds = c.get(Calendar.SECOND);
+        String dateString = "Saved date: "+date+"/"+month+"/"+year+" - "+hour+":"+minutes+":"+seconds;
 
         textString = "\""+text+"\"";
 
         authorString = " ~ "+author;
         // send notification text to TextView
         t.setText(textString);
+        fullGemData = textString+authorString+"\n\n"+dateString;
 
         // store notification to favorites in shared preferences using unique string as key and value
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editor.putString(textString+authorString+"\n\n"+"Saved date: "+date.toString(),
-                        textString+authorString+"\n\n"+"Saved date: "+date.toString());
+                editor.putString(fullGemData, fullGemData);
                 editor.commit();
                 Toast.makeText(getApplicationContext(), "Gem added to Favorites list!", Toast.LENGTH_SHORT).show();
 

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.mainaccount.inspire.R;
 import com.example.mainaccount.inspire.adapters.FavoriteListAdapter;
@@ -24,7 +23,7 @@ import java.util.Map;
 public class FavoritesActivity  extends BaseActivity {
     private ListView lvFavorites;
     private FavoriteListAdapter adapter;
-    public static ArrayList<String> mGemList;
+    public static ArrayList<String> favList;
     public static final String MyFavPREFERENCES = "MyFavPrefs";
     SharedPreferences sharedPreferences;
 
@@ -37,23 +36,23 @@ public class FavoritesActivity  extends BaseActivity {
         sharedPreferences = getApplicationContext().getSharedPreferences(MyFavPREFERENCES, MODE_PRIVATE);
 
         lvFavorites = (ListView) findViewById(R.id.favorite_list);
-        mGemList = new ArrayList<>();
+        favList = new ArrayList<>();
 
 
 
         Map<String, ?> keys = sharedPreferences.getAll();
         for(Map.Entry <String, ?> entry : keys.entrySet()){
-            mGemList.add((String) entry.getValue());
+            favList.add((String) entry.getValue());
         }
 
-        adapter = new FavoriteListAdapter(getApplicationContext(), mGemList);
+        adapter = new FavoriteListAdapter(getApplicationContext(), favList);
         lvFavorites.setAdapter(adapter);
 
 
         lvFavorites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Toast.makeText(getApplicationContext(), "Clicked! Tag = "+position, Toast.LENGTH_LONG).show();
+                // Toast.makeText(getApplicationContext(), "Clicked! Tag = "+position, Toast.LENGTH_LONG).show();
             }
         });
 

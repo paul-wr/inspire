@@ -3,6 +3,7 @@
     <color name="colorPrimary">#5C9900</color>
     <color name="colorPrimaryDark">#004CA9</color>
     <color name="colorAccent">#965C9900</color>
+    <color name="lightBlack">#333333</color>
     <color name="mainInspireColor">#1c5b1c</color>
     <color name="inspireGrey">#eeeeee</color>
     <color name="InspireLight">#3E7C3E</color>

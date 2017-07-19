@@ -50,6 +50,7 @@ public class NotificationSettingsActivity extends BaseActivity {
         sharedPreferences = getApplicationContext().getSharedPreferences(MyPREFERENCES, 0); // instantiate SharedPreferences
         editor = sharedPreferences.edit(); // instantiate editor
         setTime = new SetTime(); // instantiate SetTime class
+        setHeadingText("Settings");
 
         // Intent to begin BroadcastReceiver
         Intent alarmIntent = new Intent(NotificationSettingsActivity.this, NotificationReceiver.class);
@@ -91,6 +92,7 @@ public class NotificationSettingsActivity extends BaseActivity {
                 }else{
                     Toast.makeText(NotificationSettingsActivity.this, "You must be signed in to set notifications time!\n" +
                             "Redirecting to sign in...", Toast.LENGTH_LONG).show();
+                    userIntent = getIntent();
                     Thread thread = new Thread(){
                         @Override
                         public void run() {
