@@ -1,116 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:padding="@dimen/default_padding"
-tools:context="com.example.mainaccount.inspire.model.ProfileActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:scrollbars="vertical"
+    android:fillViewport="true"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
 
-    <include layout="@layout/page_heading" />
-    <include layout="@layout/user_display"
-        android:layout_marginTop="100dp"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/default_padding"
+        tools:context="com.example.mainaccount.inspire.model.ProfileActivity">
+
+        <include layout="@layout/page_heading" />
+        <include layout="@layout/user_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/user_tv"
-        android:layout_marginTop="180dp"
-        android:text="Name:" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_tv"
+            android:layout_marginTop="35dp"
+            android:text="Name:" />
 
-    <EditText
-        android:id="@+id/nameField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="17dp"
-        android:editable="false"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/nameField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="17dp"
+            android:editable="false"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nameField"
-        android:layout_marginTop="19dp"
-        android:text="Email:" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameField"
+            android:layout_marginTop="19dp"
+            android:text="Email:" />
 
-    <EditText
-        android:id="@+id/emailField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:editable="false"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:layout_below="@+id/textView3" />
+        <EditText
+            android:id="@+id/emailField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:editable="false"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:layout_below="@+id/textView3" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/profileLinearLayout"
-        android:layout_below="@+id/emailField"
-        android:orientation="horizontal" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/profileLinearLayout"
+            android:layout_below="@+id/emailField"
+            android:orientation="horizontal" >
 
-    <Button
-        android:id="@+id/profile_edit"
-        android:layout_width="0dp"
-        style="@style/btn_style"
-        android:layout_weight="1"
-        android:layout_margin="5dp"
-        android:layout_height="wrap_content"
-        android:text="@string/profile_edit" />
+        <Button
+            android:id="@+id/profile_edit"
+            android:layout_width="0dp"
+            style="@style/btn_style"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_edit" />
 
-    <Button
-        android:id="@+id/updateButton"
-        android:layout_width="0dp"
-        style="@style/btn_style"
-        android:layout_margin="5dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="Update profile" />
+        <Button
+            android:id="@+id/updateButton"
+            android:layout_width="0dp"
+            style="@style/btn_style"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Update profile" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/profileLinearLayout2"
+            android:layout_below="@+id/profileLinearLayout"
+            android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            style="@style/btn_style"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/password_reset"
+            android:text="Reset password"/>
+
+        <Button
+            android:id="@+id/delete_profile"
+            android:layout_width="0dp"
+            style="@style/btn_style"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Delete profile" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/resetProgressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_below="@+id/profileLinearLayout2"
+            android:layout_centerHorizontal="true"/>
+
+        <include layout="@layout/bottom_nav"/>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/profileLinearLayout2"
-        android:layout_below="@+id/profileLinearLayout"
-        android:orientation="horizontal" >
-
-    <Button
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        style="@style/btn_style"
-        android:layout_margin="5dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/password_reset"
-        android:text="Reset password"/>
-
-    <Button
-        android:id="@+id/delete_profile"
-        android:layout_width="0dp"
-        style="@style/btn_style"
-        android:layout_margin="5dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="Delete profile" />
-
-    </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/resetProgressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/profileLinearLayout2"
-        android:layout_centerHorizontal="true"/>
-
-</RelativeLayout>
+</ScrollView>

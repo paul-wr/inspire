@@ -1,36 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:padding="@dimen/default_padding"
-    android:orientation="vertical"
-    tools:context="com.example.mainaccount.inspire.activities.HistoryActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:scrollbars="vertical"
+    android:fillViewport="true"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:padding="@dimen/default_padding"
+                tools:context="com.example.mainaccount.inspire.activities.HistoryActivity">
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@android:color/white"
+                android:text="History"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="36sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@android:color/white"
-        android:text="History"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="36sp"
-        android:textStyle="bold" />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/history_list"
-        android:layout_below="@+id/delete_all_btn"
-        android:background="@android:color/white"
-        android:dividerHeight="1dp"
-        android:padding="10dp"
-        android:divider="@color/colorPrimary">
-    </ListView>
-
-</LinearLayout>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/history_list"
+                android:layout_below="@+id/textView4"
+                android:background="@android:color/white"
+                android:dividerHeight="1dp"
+                android:padding="10dp"
+                android:layout_marginBottom="70dp"
+                android:divider="@color/colorPrimary">
+            </ListView>
+        <include layout="@layout/bottom_nav"/>
+    </RelativeLayout>
+</ScrollView>

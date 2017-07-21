@@ -2,7 +2,6 @@ package com.example.mainaccount.inspire.model;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
@@ -37,9 +36,11 @@ public class BaseActivity extends AppCompatActivity {
     private static boolean isSignedOut;
     private BottomNavigationView bottomNavigationView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
+    private ProgressDialog progressDialog;
+
+    // method to create bottomNavigationView
+    public void createBottomDrawerMenu(){
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -57,9 +58,6 @@ public class BaseActivity extends AppCompatActivity {
             }
         });
     }
-
-
-    private ProgressDialog progressDialog;
 
     public void showProgressDialog(String message){
         if (progressDialog == null) {
@@ -93,6 +91,8 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // call the create method for bottomDrawer nav
+        createBottomDrawerMenu();
         // back to home arrow in actionbar
         ActionBar aBar = getSupportActionBar();
         aBar.setDisplayHomeAsUpEnabled(true);

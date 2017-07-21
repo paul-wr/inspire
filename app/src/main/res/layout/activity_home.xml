@@ -71,6 +71,5 @@
             android:text="History"/>
 
         <include layout="@layout/bottom_nav"/>
-
     </LinearLayout>
 </ScrollView>

@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:padding="@dimen/default_padding"
-    android:orientation="vertical"
-    tools:context="com.example.mainaccount.inspire.activities.FavoritesActivity">
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@android:color/white"
-        android:text="Favorites List"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="36sp"
-        android:textStyle="bold" />
-
-    <ListView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:scrollbars="vertical"
+    android:fillViewport="true"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/favorite_list"
-        android:layout_below="@+id/delete_all_btn"
-        android:background="@android:color/white"
-        android:dividerHeight="2dp"
-        android:padding="10dp"
-        android:divider="@color/colorAccent">
-    </ListView>
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:padding="@dimen/default_padding"
+        tools:context="com.example.mainaccount.inspire.activities.FavoritesActivity">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/white"
+            android:text="Favorites List"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/favorite_list"
+            android:background="@android:color/white"
+            android:layout_below="@+id/textView4"
+            android:layout_marginBottom="70dp"
+            android:dividerHeight="2dp"
+            android:padding="10dp"
+            android:divider="@color/colorAccent">
+        </ListView>
+
+        <include layout="@layout/bottom_nav"/>
+    </RelativeLayout>
+</ScrollView>
