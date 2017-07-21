@@ -43,6 +43,7 @@ public class ProfileActivity extends BaseActivity {
         setContentView(R.layout.activity_profile);
 
         setHeadingText("User Profile");
+        welcomeUser();
 
         nameField = (EditText) findViewById(R.id.nameField);
         emailField = (EditText) findViewById(R.id.emailField);

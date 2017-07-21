@@ -31,13 +31,14 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_recent_history" />
+        android:src="@drawable/ic_history" />
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/tv_history"
         android:text="History"
+        android:layout_marginLeft="10dp"
         android:layout_weight="14"
         android:layout_below="@+id/delete_all_btn"
         android:textSize="20sp"

@@ -18,7 +18,7 @@
         android:text="Name"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@color/lightBlack"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,7 +26,7 @@
         android:id="@+id/tv_address"
         android:text="Address"
         android:textSize="17sp"
-        android:textColor="#000000"/>
+        android:textColor="@color/lightBlack"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:textColor="#00ACED"
         android:background="@android:color/white"
-        android:src="@drawable/ic_phone"
+        android:src="@drawable/ic_contact_phone"
         android:id="@+id/phone_button" />
 
     <ImageButton

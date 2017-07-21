@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:weightSum="2"
     android:id="@+id/userLinearLayout"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="@dimen/default_padding" >
 
 

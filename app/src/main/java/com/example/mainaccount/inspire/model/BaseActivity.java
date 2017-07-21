@@ -2,6 +2,9 @@ package com.example.mainaccount.inspire.model;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -32,6 +35,28 @@ public class BaseActivity extends AppCompatActivity {
     TextView headerText;
     public static Intent userIntent;
     private static boolean isSignedOut;
+    private BottomNavigationView bottomNavigationView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                if (item.getItemId() == R.id.home_item) {
+                    Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
+                } else if (item.getItemId() == R.id.settings_item) {
+                    Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+                } else if (item.getItemId() == R.id.favorites_item) {
+                    Toast.makeText(getApplicationContext(), "Favorites", Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+        });
+    }
 
 
     private ProgressDialog progressDialog;
