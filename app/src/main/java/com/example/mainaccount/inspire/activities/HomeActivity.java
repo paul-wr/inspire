@@ -21,6 +21,8 @@ public class HomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        userIntent = getIntent();
+
 
         Button servicesBtn = (Button) findViewById(R.id.services_btn);
         Button favsLaunchBtn = (Button) findViewById(R.id.favs_btn);

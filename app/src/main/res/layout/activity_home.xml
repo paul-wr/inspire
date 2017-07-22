@@ -11,65 +11,77 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/default_padding"
         tools:context="com.example.mainaccount.inspire.activities.HomeActivity">
 
-        <include layout="@layout/user_display"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/default_padding"
+            android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="23dp"
-            style="@style/img_btn_style"
-            android:src="@drawable/ic_settings" />
+            <include layout="@layout/user_display"/>
 
-        <Button
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="23dp"
+                style="@style/img_btn_style"
+                android:src="@drawable/ic_settings" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/services_btn"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/imageButton"
+                android:text="Services"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/favs_btn"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/services_btn"
+                android:text="Favorites"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/history_btn"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/favs_btn"
+                android:text="History"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/a"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/history_btn"
+                android:text="History"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/b"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/a"
+                android:text="History"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/c"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/b"
+                android:text="History"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/services_btn"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/imageButton"
-            android:text="Services"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/favs_btn"
-            android:layout_marginTop="5dp"
-            android:layout_below="@+id/services_btn"
-            android:text="Favorites"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/history_btn"
-            android:layout_marginTop="5dp"
-            android:layout_below="@+id/favs_btn"
-            android:text="History"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/a"
-            android:layout_marginTop="5dp"
-            android:layout_below="@+id/history_btn"
-            android:text="History"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/b"
-            android:layout_marginTop="5dp"
-            android:layout_below="@+id/a"
-            android:text="History"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/c"
-            android:layout_marginTop="5dp"
-            android:layout_below="@+id/b"
-            android:text="History"/>
-
-        <include layout="@layout/bottom_nav"/>
+            android:orientation="vertical">
+                <include layout="@layout/bottom_nav"/>
+        </RelativeLayout>
     </LinearLayout>
 </ScrollView>

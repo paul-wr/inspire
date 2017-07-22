@@ -11,8 +11,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#ffffff"
-        android:padding="@dimen/default_padding"
         tools:context="com.example.mainaccount.inspire.activities.ServicesActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/default_padding"
+            android:layout_height="wrap_content">
+
 
         <TextView
             android:id="@+id/textView4"
@@ -42,6 +48,12 @@
             android:dividerHeight="1dp"
             android:divider="@color/colorAccent">
         </ListView>
-        <include layout="@layout/bottom_nav"/>
+       </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include layout="@layout/bottom_nav"/>
+        </RelativeLayout>
     </RelativeLayout>
 </ScrollView>

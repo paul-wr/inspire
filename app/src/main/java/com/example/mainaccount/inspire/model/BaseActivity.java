@@ -137,6 +137,7 @@ public class BaseActivity extends AppCompatActivity {
                 return true;
             case R.id.sign_in:
                 startActivity(new Intent(BaseActivity.this, SigninActivity.class));
+                finish();
                 // set userIntent and isRedirected boolean for redirecting from signin activity
                 userIntent = getIntent();
                 isRedirected = true;

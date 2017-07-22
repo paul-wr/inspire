@@ -11,34 +11,45 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#ffffff"
-        android:padding="@dimen/default_padding"
         tools:context="com.example.mainaccount.inspire.activities.FavoritesActivity">
 
-        <TextView
-            android:id="@+id/textView4"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/default_padding"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@android:color/white"
+                android:text="Favorites List"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/favorite_list"
+                android:background="@android:color/white"
+                android:layout_below="@+id/textView4"
+                android:layout_marginBottom="70dp"
+                android:dividerHeight="2dp"
+                android:padding="10dp"
+                android:divider="@color/colorAccent">
+            </ListView>
+        </LinearLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:background="@android:color/white"
-            android:text="Favorites List"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="36sp"
-            android:textStyle="bold" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/favorite_list"
-            android:background="@android:color/white"
-            android:layout_below="@+id/textView4"
-            android:layout_marginBottom="70dp"
-            android:dividerHeight="2dp"
-            android:padding="10dp"
-            android:divider="@color/colorAccent">
-        </ListView>
-
-        <include layout="@layout/bottom_nav"/>
+            android:orientation="vertical">
+            <include layout="@layout/bottom_nav"/>
+        </RelativeLayout>
     </RelativeLayout>
 </ScrollView>
