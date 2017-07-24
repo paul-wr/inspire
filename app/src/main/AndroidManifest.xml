@@ -53,7 +53,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activities.HistoryActivity"></activity>
+        <activity android:name=".activities.HistoryActivity" />
+        <activity android:name=".activities.GemBrowseActivity"></activity>
     </application>
 
 </manifest>

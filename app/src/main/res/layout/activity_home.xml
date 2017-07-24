@@ -55,10 +55,10 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/a"
+                android:id="@+id/gemBtn"
                 android:layout_marginTop="5dp"
                 android:layout_below="@+id/history_btn"
-                android:text="History"/>
+                android:text="Gem"/>
 
             <Button
                 android:layout_width="match_parent"

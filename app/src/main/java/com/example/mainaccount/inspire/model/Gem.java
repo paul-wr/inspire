@@ -16,7 +16,7 @@ public class Gem {
     private String gem;
     private String author;
     Random ran;
-    public ArrayList <Gem> gemList;
+    private ArrayList <Gem> gemList;
 
 
     public void setCategory(String category) {
@@ -55,15 +55,15 @@ public class Gem {
 
     // method to populate phraseList
     public void createList(){
-        gemList.add(new Gem("Love", "love text1", "author"));
-        gemList.add(new Gem("Love", "love text2",  "author"));
-        gemList.add(new Gem("Love", "love text3", "author"));
-        gemList.add(new Gem("Wisdom", "wisdom text1", "author"));
-        gemList.add(new Gem("Wisdom", "wisdom text2", "author"));
-        gemList.add(new Gem("Wisdom", "wisdom text3", "author"));
-        gemList.add(new Gem("Freedom", "freedom text1", "author"));
-        gemList.add(new Gem("Freedom", "freedom text2", "author"));
-        gemList.add(new Gem("Freedom", "freedom text3", "author"));
+        gemList.add(new Gem("Music", "Music text1", "author"));
+        gemList.add(new Gem("Music", "Music text2",  "author"));
+        gemList.add(new Gem("Music", "Music text3", "author"));
+        gemList.add(new Gem("Education", "Education text1", "author"));
+        gemList.add(new Gem("Education", "Education text2", "author"));
+        gemList.add(new Gem("Education", "Education text3", "author"));
+        gemList.add(new Gem("Health", "Health text1", "author"));
+        gemList.add(new Gem("Health", "Health text2", "author"));
+        gemList.add(new Gem("Health", "Health text3", "author"));
 
     }
 
@@ -71,34 +71,36 @@ public class Gem {
         return category;
     }
 
+
     public String getGem(){
         return gem;
     }
 
-    public ArrayList getList(){
+    public ArrayList<Gem> getList(){
         return gemList;
     }
 
     public String[] getRandomGem(){
-        Gem p = gemList.get(ran.nextInt(gemList.size()));
+        Gem g = gemList.get(ran.nextInt(gemList.size()));
         String[] a = new String[3];
         // System.out.println(p.getCategory()+": "+p.getPhrase());
 
-        a[0] = p.getCategory();
-        a[1] = p.getGem();
-        a[2] = p.getAuthor();
+        a[0] = g.getCategory();
+        a[1] = g.getGem();
+        a[2] = g.getAuthor();
 
         return a;
 
     }
 
-    public void getPhraseByCategory(String phraseCategory){
-        for(Gem phrase : gemList){
-            if(phrase.getCategory().equalsIgnoreCase(phraseCategory)){
-                System.out.println(phrase.getCategory()+": "+phrase.getGem());
+    public ArrayList<Gem> getGemByCategpry(String category){
+        ArrayList<Gem> g = new ArrayList<>();
+        for(Gem gem : gemList){
+            if(gem.getCategory().equalsIgnoreCase(category)){
+                g.add(gem);
             }
         }
-
+        return g;
     }
 
 }

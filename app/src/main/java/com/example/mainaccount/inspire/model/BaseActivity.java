@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.mainaccount.inspire.R;
 import com.example.mainaccount.inspire.activities.FavoritesActivity;
+import com.example.mainaccount.inspire.activities.HomeActivity;
+import com.example.mainaccount.inspire.activities.NotificationSettingsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import static com.example.mainaccount.inspire.activities.NotificationSettingsActivity.isRedirected;
@@ -48,11 +50,14 @@ public class BaseActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 if (item.getItemId() == R.id.home_item) {
-                    Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    finish();
                 } else if (item.getItemId() == R.id.settings_item) {
-                    Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), NotificationSettingsActivity.class));
+                    finish();
                 } else if (item.getItemId() == R.id.favorites_item) {
-                    Toast.makeText(getApplicationContext(), "Favorites", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
+                    finish();
                 }
                 return true;
             }

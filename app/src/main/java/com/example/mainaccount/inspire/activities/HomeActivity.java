@@ -27,6 +27,7 @@ public class HomeActivity extends BaseActivity {
         Button servicesBtn = (Button) findViewById(R.id.services_btn);
         Button favsLaunchBtn = (Button) findViewById(R.id.favs_btn);
         Button historyLaunchBtn = (Button) findViewById(R.id.history_btn);
+        Button gemBtn = (Button) findViewById(R.id.gemBtn);
 
 
 
@@ -58,6 +59,14 @@ public class HomeActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, HistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        gemBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, GemBrowseActivity.class);
                 startActivity(intent);
             }
         });
