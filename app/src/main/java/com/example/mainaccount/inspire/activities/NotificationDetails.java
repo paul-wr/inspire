@@ -1,5 +1,6 @@
 package com.example.mainaccount.inspire.activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.Toast;
 
 import com.example.mainaccount.inspire.R;
 import com.example.mainaccount.inspire.model.BaseActivity;
+import com.example.mainaccount.inspire.model.SigninActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -65,9 +68,29 @@ public class NotificationDetails extends BaseActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editor.putString(fullGemData, fullGemData);
-                editor.commit();
-                Toast.makeText(getApplicationContext(), "Gem added to Favorites list!", Toast.LENGTH_SHORT).show();
+                if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+                    editor.putString(fullGemData, fullGemData);
+                    editor.commit();
+                    Toast.makeText(getApplicationContext(), "Gem added to Favorites list!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(NotificationDetails.this, "You must be signed in to add favorites!\n" +
+                            "Redirecting to sign in...", Toast.LENGTH_LONG).show();
+                    userIntent = getIntent();
+                    Thread thread = new Thread(){
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(2500); // Launch login Activity after Toast message has run
+                                Intent intent = new Intent(NotificationDetails.this, SigninActivity.class);
+                                startActivity(intent);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+
+                    thread.start();
+                }
 
             }
         });

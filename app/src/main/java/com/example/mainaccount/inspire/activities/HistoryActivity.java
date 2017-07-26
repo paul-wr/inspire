@@ -35,6 +35,8 @@ public class HistoryActivity extends BaseActivity {
 
         adapter = new HistoryListAdapter(getApplicationContext(), historyList);
         lvHistory.setAdapter(adapter);
+        adapter.setIntent(getIntent());
+
 
 
     }

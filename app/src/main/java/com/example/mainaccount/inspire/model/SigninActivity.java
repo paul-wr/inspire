@@ -71,7 +71,6 @@ public class SigninActivity extends BaseActivity {
                 if(validateEditTextField(emailField) && validateEditTextField(passwordField)) {
                     String email = emailField.getText().toString();
                     String password = passwordField.getText().toString();
-
                     signIn(email, password);
                 }
             }

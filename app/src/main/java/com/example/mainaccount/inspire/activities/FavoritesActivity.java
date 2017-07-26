@@ -46,6 +46,7 @@ public class FavoritesActivity  extends BaseActivity {
         }
 
         adapter = new FavoriteListAdapter(getApplicationContext(), favList);
+        adapter.setIntent(getIntent());
         lvFavorites.setAdapter(adapter);
 
 

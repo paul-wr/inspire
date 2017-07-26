@@ -1,15 +1,18 @@
 package com.example.mainaccount.inspire.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mainaccount.inspire.R;
 import com.example.mainaccount.inspire.model.BaseActivity;
 import com.example.mainaccount.inspire.model.Gem;
+import com.example.mainaccount.inspire.model.SigninActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -134,11 +137,30 @@ public class GemBrowseActivity extends BaseActivity {
             public void onClick(View view) {
                 userEmail = getUserEmail();
                 gemSuggestion = gemSuggestET.getText().toString();
-                databaseReference.push().setValue("Suggestion: "+gemSuggestion+" | Email: "+userEmail);
-                gemSuggestET.setText("");
-                gemSuggestET.setVisibility(View.INVISIBLE);
-                gemSuggestTV.setText(R.string.gem_confirmation);
-                sendBtn.setVisibility(View.INVISIBLE);
+                if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+                    databaseReference.push().setValue("Suggestion: " + gemSuggestion + " | Email: " + userEmail);
+                    gemSuggestET.setText("");
+                    gemSuggestET.setVisibility(View.INVISIBLE);
+                    gemSuggestTV.setText(R.string.gem_confirmation);
+                    sendBtn.setVisibility(View.INVISIBLE);
+                }else{
+                    Toast.makeText(GemBrowseActivity.this, "You must be signed in to make a Gem suggestion!\n" +
+                            "Redirecting to sign in...", Toast.LENGTH_LONG).show();
+                    userIntent = getIntent();
+                    Thread thread = new Thread(){
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(2500); // Launch login Activity after Toast message has run
+                                startActivity(new Intent(GemBrowseActivity.this, SigninActivity.class));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+
+                    thread.start();
+                }
             }
         });
 

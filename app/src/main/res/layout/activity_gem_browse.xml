@@ -20,8 +20,8 @@
 
         <ImageView
             android:id="@+id/gemImageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/gem" />
 
@@ -159,6 +159,7 @@
             android:id="@+id/gemSend"
             android:layout_gravity="center"
             style="@style/btn_style"
+            android:layout_marginBottom="20dp"
             android:layout_below="@+id/gemSuggestionET"
             android:text="Send"/>
 
