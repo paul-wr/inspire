@@ -16,64 +16,116 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:padding="@dimen/default_padding"
             android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="140dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_height="75dp"
+                android:src="@drawable/inspire_logo_green"/>
+
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_gravity="center"
+                android:layout_height="75dp"
+                android:src="@drawable/gem"/>
 
             <include layout="@layout/user_display"/>
 
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="23dp"
-                style="@style/img_btn_style"
-                android:src="@drawable/ic_settings" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="40dp"
+                android:id="@+id/main_home_tv"
+                android:textSize="@dimen/main_text_size"
+                android:text="@string/main_home_string"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            android:layout_height="wrap_content">
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/settingsButton"
+                android:layout_margin="5dp"
+                style="@style/btn_style"
+                android:text="settings" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:id="@+id/services_btn"
-                android:layout_marginTop="20dp"
+                style="@style/btn_style"
+                android:layout_margin="5dp"
                 android:layout_below="@+id/imageButton"
                 android:text="Services"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            android:layout_height="wrap_content">
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:id="@+id/favs_btn"
-                android:layout_marginTop="5dp"
+                style="@style/btn_style"
+                android:layout_margin="5dp"
                 android:layout_below="@+id/services_btn"
                 android:text="Favorites"/>
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:id="@+id/history_btn"
-                android:layout_marginTop="5dp"
+                android:layout_margin="5dp"
+                style="@style/btn_style"
                 android:layout_below="@+id/favs_btn"
                 android:text="History"/>
+         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            android:layout_height="wrap_content">
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:id="@+id/gemBtn"
-                android:layout_marginTop="5dp"
+                style="@style/btn_style"
+                android:layout_margin="5dp"
                 android:layout_below="@+id/history_btn"
-                android:text="Gem"/>
+                android:text="@string/gems"/>
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:id="@+id/b"
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/a"
-                android:text="History"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/c"
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/b"
-                android:text="History"/>
+                android:id="@+id/register_btn"
+                style="@style/btn_style"
+                android:layout_margin="5dp"
+                android:layout_below="@+id/gemBtn"
+                android:text="Register"/>
 
         </LinearLayout>
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+    <item
+        android:id="@+id/sign_in"
+        android:title="Sign in"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/sign_out"
+        android:title="Sign out"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_account_circle"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/home_item"
+        android:title="Home"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/settings_item"
+        android:title="Settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/history_item"
+        android:title="History"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/favorites_item"
+        android:title="Favorites"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/gems_item"
+        android:title="Gems"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/services_item"
+        android:title="Services"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/refresh"
+        android:title="Refresh screen"
+        app:showAsAction="never" />
+
+</menu>

@@ -24,7 +24,8 @@ import static com.example.mainaccount.inspire.broadcasts.NotificationReceiver.te
  */
 
 public class NotificationDetails extends BaseActivity {
-    TextView t;
+    TextView gemTV;
+    TextView authorTV;
     private String textString;
     private String authorString;
     private String fullGemData;
@@ -41,7 +42,8 @@ public class NotificationDetails extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_details);
         setTitle("Inspire gem details");
-        t = (TextView) findViewById(R.id.textView3);
+        gemTV = (TextView) findViewById(R.id.gem_text_tv);
+        authorTV = (TextView) findViewById(R.id.authorTV);
         Button addBtn = (Button) findViewById(R.id.add_to_fav_btn);
 
         sharedPreferences = getApplicationContext().getSharedPreferences(MyFavPREFERENCES, MODE_PRIVATE);
@@ -54,7 +56,9 @@ public class NotificationDetails extends BaseActivity {
 
         authorString = " ~ "+author;
         // send notification text to TextView
-        t.setText(textString);
+        gemTV.setText(textString);
+        authorTV.setText(" ~ "+author);
+
         fullGemData = textString+authorString+"\n\n"+dateString;
 
         // store notification to favorites in shared preferences using unique string as key and value

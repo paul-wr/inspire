@@ -3,7 +3,7 @@
     android:scrollbars="vertical"
     android:fillViewport="true"
     android:layout_height="fill_parent"
-    android:layout_width="fill_parent">
+    android:layout_width="match_parent">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -24,10 +24,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:background="@android:color/white"
                 android:text="Favorites List"
                 android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/lightBlack"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -39,7 +38,7 @@
                 android:layout_below="@+id/textView4"
                 android:layout_marginBottom="70dp"
                 android:dividerHeight="2dp"
-                android:padding="10dp"
+                android:padding="@dimen/default_padding"
                 android:divider="@color/colorAccent">
             </ListView>
         </LinearLayout>

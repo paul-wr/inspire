@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -33,6 +36,7 @@ public class NotificationSettingsActivity extends BaseActivity {
     private PendingIntent pendingIntent; // pendingIntent for broadcastReceiver
     public static int userMinutes; // user specified minute
     public static int userHour; // user specified hour
+    TextView infoTV;
     TimePicker timePicker; // TimePicker allows user to define notification time
     SetTime setTime; // SetTime class for setting and retrieving time
     public static boolean isRedirected; // redirect user back to this activity if redirected to sign in
@@ -46,11 +50,25 @@ public class NotificationSettingsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_settings);
-        timePicker = (TimePicker) findViewById(R.id.timePicker); // user will set time using timePicker
+
         sharedPreferences = getApplicationContext().getSharedPreferences(MyPREFERENCES, 0); // instantiate SharedPreferences
         editor = sharedPreferences.edit(); // instantiate editor
+
+        timePicker = (TimePicker) findViewById(R.id.timePicker); // user will set time using timePicker
         setTime = new SetTime(); // instantiate SetTime class
+
         setHeadingText("Settings");
+
+        Button setTimeBtn = (Button) findViewById(R.id.set_time);
+        Button editTimeBtn = (Button) findViewById(R.id.edit_time);
+        Button startNotificationsBtn = (Button) findViewById(R.id.start_notifications);
+        Button stopNotificationsBtn = (Button) findViewById(R.id.stop_notifications);
+        ImageButton infoBtn = (ImageButton) findViewById(R.id.info_btn);
+
+        setTimeBtn.setVisibility(View.INVISIBLE);
+
+        infoTV = (TextView) findViewById(R.id.info_tv);
+        infoTV.setVisibility(View.INVISIBLE);
 
         // Intent to begin BroadcastReceiver
         Intent alarmIntent = new Intent(NotificationSettingsActivity.this, NotificationReceiver.class);
@@ -59,7 +77,6 @@ public class NotificationSettingsActivity extends BaseActivity {
 
         // timePicker allows the user to define the time of the notifications
         TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
-        timePicker.setVisibility(View.INVISIBLE);
         timePicker.setIs24HourView(false); // spinning wheel style
 
         // set variables on time change
@@ -72,12 +89,10 @@ public class NotificationSettingsActivity extends BaseActivity {
         });
 
 
-
         /* set_time button sets values to calender variables and calls start()
         method to begin notifications at specified time
         */
-        findViewById(R.id.set_time).setVisibility(View.INVISIBLE);
-        findViewById(R.id.set_time).setOnClickListener(new View.OnClickListener() {
+        setTimeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(FirebaseAuth.getInstance().getCurrentUser() != null) {
@@ -110,7 +125,7 @@ public class NotificationSettingsActivity extends BaseActivity {
             }
         });
 
-        findViewById(R.id.edit_time).setOnClickListener(new View.OnClickListener() {
+        editTimeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 findViewById(R.id.set_time).setVisibility(View.VISIBLE);
@@ -121,7 +136,7 @@ public class NotificationSettingsActivity extends BaseActivity {
 
 
         // button onClick starts Notifications
-        findViewById(R.id.start_notifications).setOnClickListener(new View.OnClickListener() {
+        startNotificationsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(NotificationSettingsActivity.this, "Notifications set at default time 18:00", Toast.LENGTH_LONG).show();
@@ -130,29 +145,24 @@ public class NotificationSettingsActivity extends BaseActivity {
         });
 
         // button onClick stops Notifications
-        findViewById(R.id.stop_notifications).setOnClickListener(new View.OnClickListener() {
+        stopNotificationsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cancel();
             }
         });
 
+        infoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                infoTV.setVisibility(View.VISIBLE);
+            }
+        });
+
     }
 
-    public void startService(View view) {
-        startService(new Intent(getBaseContext(), NotificationService.class));
-    }
 
-    // Method to stop the service
-    public void stopService(View view) {
-        editor.putBoolean("isNotificationsOn", false);
-        stopService(new Intent(getBaseContext(), NotificationService.class));
-    }
 
-    public void onStop() {
-        super.onStop();
-        stopService(new Intent(getApplicationContext(), NotificationService.class));
-    }
 
     // start() method defines an AlarmManger to start notifications for set time and launches Intent via PendingIntent
     public void start() {

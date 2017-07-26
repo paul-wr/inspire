@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import com.example.mainaccount.inspire.R;
 import com.example.mainaccount.inspire.model.BaseActivity;
+import com.example.mainaccount.inspire.model.RegisterActivity;
 
 /**
  *  Classname: HomeActivity.java
@@ -22,17 +23,19 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         userIntent = getIntent();
+        welcomeUser();
 
 
         Button servicesBtn = (Button) findViewById(R.id.services_btn);
         Button favsLaunchBtn = (Button) findViewById(R.id.favs_btn);
         Button historyLaunchBtn = (Button) findViewById(R.id.history_btn);
         Button gemBtn = (Button) findViewById(R.id.gemBtn);
+        Button registerBtn = (Button) findViewById(R.id.register_btn);
 
 
 
 
-        findViewById(R.id.imageButton).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.settingsButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(HomeActivity.this, NotificationSettingsActivity.class));
@@ -67,6 +70,14 @@ public class HomeActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, GemBrowseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });

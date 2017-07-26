@@ -70,7 +70,7 @@ public class NotificationReceiver extends BroadcastReceiver {
             // Builds a notification
             NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(context)
-                            .setSmallIcon(R.drawable.ic_stat_android)
+                            .setSmallIcon(R.drawable.notification_icon)
                             .setContentTitle(msg)
                             .setWhen(System.currentTimeMillis())
                             .setTicker(notificationAlert)
@@ -79,8 +79,6 @@ public class NotificationReceiver extends BroadcastReceiver {
 
             // Defines the Intent to fire when the notification is clicked
             mBuilder.setContentIntent(notificIntent);
-
-
 
             // DEFAULT_SOUND : Make sound
             mBuilder.setDefaults(Notification.DEFAULT_SOUND);

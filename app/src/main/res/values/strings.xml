@@ -2,5 +2,20 @@
     <string name="app_name">Inspire</string>
     <string name="profile_edit">Edit profile</string>
     <string name="app_string"></string>
-    <string name="gemThemeString">Daily Gems of Inspiration</string>
+    <string name="gem_theme_string">Daily Gems of Inspiration</string>
+    <string name="gem_required_field">Enter your suggestion below and click send when you have finished filling in the field.</string>
+    <string name="gem_confirmation">Thank you, your suggestion has been sent to our online database and will be considered for future versions of the application.</string>
+    <string name="welcome">Welcome</string>
+    <string name="music_gem1">Music produces a kind of pleasure which human nature cannot do without.</string>
+    <string name="gem_info">"To browse Gem categories, simply click on the icons."
+                            "\nTo make your own Gem suggestion, click on the 'suggest a gem' button and follow instructions"
+
+    </string>
+    <string name="gems">Gems</string>
+    <string name="main_home_string">"Inspire application brings you daily quotation gems of inspiration to inspire and uplift you."
+    "\nYou can browse gems by category by clicking the gems button below. Add favorite gems to your favorite list when you receive them or browse notification history from the button link."
+    </string>
+    <string name="settings_tv">"To start the inspire gem notifications at the default time of 18:00 daily, simply click START NOTIFICATIONS button."
+    "\nClick "EDIT TIME" to set your own custom daily time to recieve notifications."
+    </string>
 </resources>

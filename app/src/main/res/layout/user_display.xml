@@ -12,9 +12,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textSize="19sp"
-            android:textStyle="bold"
-            android:text="Welcome"
-            android:textColor="@color/lightBlack"
+            android:text="@string/welcome"
             android:id="@+id/user_tv"/>
 
         <TextView

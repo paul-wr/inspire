@@ -13,8 +13,11 @@ import android.widget.Toast;
 
 import com.example.mainaccount.inspire.R;
 import com.example.mainaccount.inspire.activities.FavoritesActivity;
+import com.example.mainaccount.inspire.activities.GemBrowseActivity;
+import com.example.mainaccount.inspire.activities.HistoryActivity;
 import com.example.mainaccount.inspire.activities.HomeActivity;
 import com.example.mainaccount.inspire.activities.NotificationSettingsActivity;
+import com.example.mainaccount.inspire.activities.ServicesActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import static com.example.mainaccount.inspire.activities.NotificationSettingsActivity.isRedirected;
@@ -49,17 +52,23 @@ public class BaseActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                if (item.getItemId() == R.id.home_item) {
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                    finish();
-                } else if (item.getItemId() == R.id.settings_item) {
-                    startActivity(new Intent(getApplicationContext(), NotificationSettingsActivity.class));
-                    finish();
-                } else if (item.getItemId() == R.id.favorites_item) {
-                    startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
-                    finish();
+                switch (item.getItemId()) {
+                    case R.id.home_item:
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        finish();
+                        return true;
+                    case R.id.settings_item:
+                        startActivity(new Intent(getApplicationContext(), NotificationSettingsActivity.class));
+                        finish();
+                        return true;
+                    case R.id.favorites_item:
+                        startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
+                        finish();
+                        return true;
+                    default:
+                        return BaseActivity.super.onOptionsItemSelected(item);
                 }
-                return true;
+
             }
         });
     }
@@ -107,7 +116,7 @@ public class BaseActivity extends AppCompatActivity {
         // set data member to dynamically set user status in menu
         myMenu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.profile_activity_menu, menu);
+        getMenuInflater().inflate(R.menu.top_navigation_menu, menu);
 
         if(FirebaseAuth.getInstance().getCurrentUser() == null){
             menu.getItem(0).setVisible(true);
@@ -139,6 +148,8 @@ public class BaseActivity extends AppCompatActivity {
                 Toast.makeText(this, "Successfully signed out!", Toast.LENGTH_SHORT).show();
                 // reset email display in TextView if user is signed out
                 isSignedOut = true;
+                startActivity(userIntent);
+                finish();
                 return true;
             case R.id.sign_in:
                 startActivity(new Intent(BaseActivity.this, SigninActivity.class));
@@ -148,9 +159,35 @@ public class BaseActivity extends AppCompatActivity {
                 isRedirected = true;
                 return true;
             case R.id.refresh:
+                userIntent = getIntent();
                 finish();
-                startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
+                startActivity(userIntent);
+                return true;
             case android.R.id.home:
+                finish();
+                return true;
+            case R.id.home_item:
+                startActivity(new Intent(BaseActivity.this, HomeActivity.class));
+                finish();
+                return true;
+            case R.id.settings_item:
+                startActivity(new Intent(BaseActivity.this, NotificationSettingsActivity.class));
+                finish();
+                return true;
+            case R.id.favorites_item:
+                startActivity(new Intent(BaseActivity.this, FavoritesActivity.class));
+                finish();
+                return true;
+            case R.id.history_item:
+                startActivity(new Intent(BaseActivity.this, HistoryActivity.class));
+                finish();
+                return true;
+            case R.id.services_item:
+                startActivity(new Intent(BaseActivity.this, ServicesActivity.class));
+                finish();
+                return true;
+            case R.id.gems_item:
+                startActivity(new Intent(BaseActivity.this, GemBrowseActivity.class));
                 finish();
                 return true;
             default:
@@ -163,10 +200,13 @@ public class BaseActivity extends AppCompatActivity {
         // declare TextViews on Home screen for display of user data
         userTV = (TextView) findViewById(R.id.user_tv);
         emailTV = (TextView) findViewById(R.id.user_email_tv);
+        String welcome = getResources().getString(R.string.welcome);
         // welcome registered users by name and display email address
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
-            userTV.setText("Welcome " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-            emailTV.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+            String user = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+            String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            userTV.setText(welcome+" "+user);
+            emailTV.setText(email);
         }
     }
 
@@ -181,6 +221,14 @@ public class BaseActivity extends AppCompatActivity {
     public void setHeadingText(String text){
         headerText = (TextView) findViewById(R.id.heading_text);
         headerText.setText(text);
+    }
+
+    public String getStringResource(String gemString){
+        String gemReturn;
+        if(gemString.equalsIgnoreCase("music_gem1")){
+           gemReturn = getResources().getString(R.string.music_gem1);
+        }
+        return gemString;
     }
 
 }

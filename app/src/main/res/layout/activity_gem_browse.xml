@@ -14,24 +14,33 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:padding="@dimen/default_padding"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="70dp"
+            android:background="@drawable/inspire_bg_graphic"
+            android:layout_height="500dp">
+
+        <ImageView
+            android:id="@+id/gemImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/gem" />
+
+        <TextView
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gemImageView"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            style="@style/gemText"
+            android:id="@+id/gemDisplayTV"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            style="@style/gemText"
-            android:id="@+id/gemDisplayTV"
-            android:text="Gem"/>
+            android:layout_marginTop="10dp"
+            android:id="@+id/authorDisplayTV" />
 
-        <ImageView
-            android:id="@+id/gemImageView"
-            android:layout_width="match_parent"
-            android:layout_marginTop="45dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:src="@drawable/diamond" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -102,15 +111,56 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/gem_guidelines_tv"
+            android:layout_marginTop="10dp"
+            android:padding="@dimen/default_padding"
+            android:text="@string/gem_info"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/suggestGemBtn"
             android:layout_gravity="center"
             style="@style/btn_style"
-            android:layout_marginTop="75dp"
-            android:layout_below="@+id/gemTVLinearL"
             android:text="Suggest a Gem"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/info_btn"
+            android:layout_gravity="right"
+            android:padding="@dimen/default_padding"
+            android:layout_below="@+id/suggestGemBtn"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_info"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
+            android:text="@string/gem_required_field"
+            android:layout_below="@+id/info_btn"
+            android:id="@+id/gemSuggestionTV"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
+            android:id="@+id/gemSuggestionET"
+            android:layout_below="@+id/gemSuggestionTV"
+            android:hint="Quote here:"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gemSend"
+            android:layout_gravity="center"
+            style="@style/btn_style"
+            android:layout_below="@+id/gemSuggestionET"
+            android:text="Send"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

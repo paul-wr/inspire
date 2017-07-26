@@ -28,7 +28,7 @@
             design:itemTextColor="@android:color/white"
             android:layout_alignParentBottom="true"
             android:background="@color/colorPrimary"
-            design:menu="@menu/menu_navigation" />
+            design:menu="@menu/bottom_navigation_menu" />
 
     </FrameLayout>
 
