@@ -7,14 +7,8 @@
         android:id="@+id/heading_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:textAlignment="center"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:textColor="@color/lightBlack"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="36sp"
-        android:textStyle="bold" />
+        style="@style/header_style" />
 
 
 </LinearLayout>

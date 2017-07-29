@@ -34,6 +34,7 @@ public class GemBrowseActivity extends BaseActivity {
     ArrayList<Gem> musicList, eduList, healthList;
     private FirebaseDatabase database;
     DatabaseReference databaseReference;
+    int infoCount;
 
 
     @Override
@@ -69,10 +70,16 @@ public class GemBrowseActivity extends BaseActivity {
 
         sendBtn.setVisibility(View.INVISIBLE);
 
+        infoCount = 1;
         infoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gemGuideTV.setVisibility(View.VISIBLE);
+                if(infoCount %2 == 1){
+                    gemGuideTV.setVisibility(View.VISIBLE);
+                }else{
+                    gemGuideTV.setVisibility(View.INVISIBLE);
+                }
+                infoCount++;
             }
         });
 
@@ -137,29 +144,33 @@ public class GemBrowseActivity extends BaseActivity {
             public void onClick(View view) {
                 userEmail = getUserEmail();
                 gemSuggestion = gemSuggestET.getText().toString();
-                if(FirebaseAuth.getInstance().getCurrentUser() != null) {
-                    databaseReference.push().setValue("Suggestion: " + gemSuggestion + " | Email: " + userEmail);
-                    gemSuggestET.setText("");
-                    gemSuggestET.setVisibility(View.INVISIBLE);
-                    gemSuggestTV.setText(R.string.gem_confirmation);
-                    sendBtn.setVisibility(View.INVISIBLE);
-                }else{
-                    Toast.makeText(GemBrowseActivity.this, "You must be signed in to make a Gem suggestion!\n" +
-                            "Redirecting to sign in...", Toast.LENGTH_LONG).show();
-                    userIntent = getIntent();
-                    Thread thread = new Thread(){
-                        @Override
-                        public void run() {
-                            try {
-                                Thread.sleep(2500); // Launch login Activity after Toast message has run
-                                startActivity(new Intent(GemBrowseActivity.this, SigninActivity.class));
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                if(gemSuggestion.isEmpty()){
+                    Toast.makeText(GemBrowseActivity.this, "Field cannot be empty!", Toast.LENGTH_LONG).show();
+                }else {
+                    if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                        databaseReference.push().setValue("Suggestion: " + gemSuggestion + " | Email: " + userEmail);
+                        gemSuggestET.setText("");
+                        gemSuggestET.setVisibility(View.INVISIBLE);
+                        gemSuggestTV.setText(R.string.gem_confirmation);
+                        sendBtn.setVisibility(View.INVISIBLE);
+                    } else {
+                        Toast.makeText(GemBrowseActivity.this, "You must be signed in to make a Gem suggestion!\n" +
+                                "Redirecting to sign in...", Toast.LENGTH_LONG).show();
+                        userIntent = getIntent();
+                        Thread thread = new Thread() {
+                            @Override
+                            public void run() {
+                                try {
+                                    Thread.sleep(2500); // Launch login Activity after Toast message has run
+                                    startActivity(new Intent(GemBrowseActivity.this, SigninActivity.class));
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                             }
-                        }
-                    };
+                        };
 
-                    thread.start();
+                        thread.start();
+                    }
                 }
             }
         });

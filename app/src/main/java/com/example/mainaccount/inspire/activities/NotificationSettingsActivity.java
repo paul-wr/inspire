@@ -44,6 +44,8 @@ public class NotificationSettingsActivity extends BaseActivity {
     public static final String MyPREFERENCES = "MyPrefs" ; // data member to store name of SharedPreferences instance
     SharedPreferences sharedPreferences; // store hour, minute, isNotificationsOn variables for access on reboot
     SharedPreferences.Editor editor; // declare editor to edit sharedPreferences
+    int infoCount;
+
 
 
     @Override
@@ -152,10 +154,16 @@ public class NotificationSettingsActivity extends BaseActivity {
             }
         });
 
+        infoCount = 1;
         infoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                infoTV.setVisibility(View.VISIBLE);
+                if(infoCount %2 == 1){
+                    infoTV.setVisibility(View.VISIBLE);
+                }else {
+                    infoTV.setVisibility(View.INVISIBLE);
+                }
+                infoCount++;
             }
         });
 

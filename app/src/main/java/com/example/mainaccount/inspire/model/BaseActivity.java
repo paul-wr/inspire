@@ -110,7 +110,8 @@ public class BaseActivity extends AppCompatActivity {
         // back to home arrow in actionbar
         ActionBar aBar = getSupportActionBar();
         aBar.setDisplayHomeAsUpEnabled(true);
-        // aBar.setHomeAsUpIndicator(R.drawable.logo_pink);
+        // aBar.setHomeAsUpIndicator(R.drawable.gem);
+        setTitle("Inspire");
 
 
         // set data member to dynamically set user status in menu
@@ -221,14 +222,6 @@ public class BaseActivity extends AppCompatActivity {
     public void setHeadingText(String text){
         headerText = (TextView) findViewById(R.id.heading_text);
         headerText.setText(text);
-    }
-
-    public String getStringResource(String gemString){
-        String gemReturn;
-        if(gemString.equalsIgnoreCase("music_gem1")){
-           gemReturn = getResources().getString(R.string.music_gem1);
-        }
-        return gemString;
     }
 
 }

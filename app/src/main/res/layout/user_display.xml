@@ -19,11 +19,9 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:elegantTextHeight="true"
             android:gravity="right"
             android:textAlignment="gravity"
             android:textSize="17sp"
-            android:textColor="@color/lightBlack"
             android:id="@+id/user_email_tv"/>
 
 </LinearLayout>

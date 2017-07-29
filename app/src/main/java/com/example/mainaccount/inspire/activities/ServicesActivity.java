@@ -1,10 +1,7 @@
 package com.example.mainaccount.inspire.activities;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.mainaccount.inspire.HelpfulService;
 import com.example.mainaccount.inspire.R;
@@ -27,26 +24,15 @@ public class ServicesActivity extends BaseActivity {
         lvService = (ListView) findViewById(R.id.service_list);
         mServiceList = new ArrayList<>();
 
-        mServiceList.add(new HelpfulService(1, "Pieta House", "6 Main Street, Lower Lucan, Co Dublin", "0838579446","info@pietahouse.ie", "http://www.pieta.ie/"));
+        mServiceList.add(new HelpfulService(1, "Pieta House", "6 Main Street, Lower Lucan, Co Dublin", "016715551","info@pietahouse.ie", "http://www.pieta.ie/"));
         mServiceList.add(new HelpfulService(2, "Dublin Simon Community", "1-2 Cope Street, Dublin 2, Dublin", "0838579446", "info@pietahouse.ie", "http://www.simon.ie/"));
-        mServiceList.add(new HelpfulService(3, "Pieta House", "6 Main Street, Lower Lucan, Co Dublin", "0838579446", "info@pietahouse.ie", "http://www.pieta.ie/"));
-        mServiceList.add(new HelpfulService(4, "Dublin Simon Community", "1-2 Cope Street, Dublin 2, Dublin", "0838579446", "info@pietahouse.ie", "http://www.simon.ie/"));
-        mServiceList.add(new HelpfulService(5, "Pieta House", "6 Main Street, Lower Lucan, Co Dublin", "0838579446", "info@pietahouse.ie", "http://www.pieta.ie/"));
-        mServiceList.add(new HelpfulService(6, "Dublin Simon Community", "1-2 Cope Street, Dublin 2, Dublin", "0838579446", "info@pietahouse.ie", "http://www.simon.ie/"));
-        mServiceList.add(new HelpfulService(7, "Pieta House", "6 Main Street, Lower Lucan, Co Dublin", "0838579446", "info@pietahouse.ie", "http://www.pieta.ie/"));
-        mServiceList.add(new HelpfulService(8, "Dublin Simon Community", "1-2 Cope Street, Dublin 2, Dublin", "0838579446", "info@pietahouse.ie", "http://www.simon.ie/"));
-        mServiceList.add(new HelpfulService(9, "Pieta House", "6 Main Street, Lower Lucan, Co Dublin", "0838579446", "info@pietahouse.ie", "http://www.pieta.ie/"));
-        mServiceList.add(new HelpfulService(10, "Dublin Simon Community", "1-2 Cope Street, Dublin 2, Dublin", "0838579446", "info@pietahouse.ie", "http://www.simon.ie/"));
+        mServiceList.add(new HelpfulService(3, "Well Woman Centre", "25 Capel Street, Dublin 1, Co Dublin", "018749243", "info@wellwomancentre.ie", "http://wellwomancentre.ie/services/"));
+        mServiceList.add(new HelpfulService(4, "Acu Well", "Office 4, 126 Ranelagh Village, Dublin 6", "0877788591", "info@acuwell.ie", "http://www.acuwell.ie/"));
+        mServiceList.add(new HelpfulService(5, "HSE Counselling and Advisory Services", "Block F, Edward Court, Edward Street, Tralee, Kerry", "0667184968", "Dolores.tiernan@HSE.ie", "http://www.hse.ie"));
+        mServiceList.add(new HelpfulService(6, "Western Area Drugs Service", "64 Dominick St, Galway, Galway", "091561299", "drugs.services@hse.ie", "http://www.hse.ie/"));
 
         adapter = new ServiceListAdapter(getApplicationContext(), mServiceList);
         lvService.setAdapter(adapter);
-
-        lvService.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Toast.makeText(getApplicationContext(), "Clicked! Tag = "+view.getTag(), Toast.LENGTH_LONG).show();
-            }
-        });
 
     }
 }

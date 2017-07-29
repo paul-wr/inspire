@@ -43,7 +43,6 @@ public class NotificationService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        int interval = 15000;
 
         String date = new Date(setTime.getTime()).toString();
 
@@ -56,10 +55,11 @@ public class NotificationService extends Service {
         pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, alarmIntent, 0);
 
         if(isNotificationsOn) {
-            manager.setRepeating(AlarmManager.RTC_WAKEUP, setTime.getTime(), interval, pendingIntent);
+            manager.setRepeating(AlarmManager.RTC_WAKEUP, setTime.getTime(), AlarmManager.INTERVAL_DAY, pendingIntent);
             Toast.makeText(this, "Notifications activated!", Toast.LENGTH_SHORT).show();
-            // Let it continue running until it is stopped.
-            Toast.makeText(this, "Service Started", Toast.LENGTH_LONG).show();
+
+            // Toast.makeText(this, "Service Started", Toast.LENGTH_LONG).show();
+
             Toast.makeText(this, "Time: " + date, Toast.LENGTH_LONG).show();
         }
         return START_STICKY;

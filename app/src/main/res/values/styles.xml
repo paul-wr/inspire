@@ -20,6 +20,7 @@
     <style name="gemText">
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:textSize">30sp</item>
+        <item name="android:layout_marginTop">70dp</item>
         <item name="android:textColor">@color/lightBlack</item>
         <item name="android:textStyle">italic</item>
     </style>
@@ -55,10 +56,11 @@
         <item name="android:layout_alignParentTop">true</item>
     </style>
 
-    <style name="headerStyle">
+    <style name="header_style">
         <item name="android:layout_alignParentTop">true</item>
-        <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_marginTop">18dp</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/lightBlack</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
     </style>

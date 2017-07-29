@@ -18,13 +18,6 @@
             android:background="@drawable/inspire_bg_graphic"
             android:layout_height="500dp">
 
-        <ImageView
-            android:id="@+id/gemImageView"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/gem" />
-
         <TextView
             android:layout_width="240dp"
             android:layout_height="wrap_content"
@@ -111,13 +104,35 @@
 
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="17"
+        android:layout_marginTop="10dp"
+        android:id="@+id/gemTVLinearL"
+        android:orientation="horizontal">
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/gem_guidelines_tv"
-            android:layout_marginTop="10dp"
-            android:padding="@dimen/default_padding"
+            android:layout_weight="15"
+            android:paddingTop="@dimen/default_padding"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingBottom="@dimen/default_padding"
             android:text="@string/gem_info"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/info_btn"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:layout_below="@+id/suggestGemBtn"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_info"/>
+
+    </LinearLayout>
 
         <Button
             android:layout_width="wrap_content"
@@ -127,20 +142,11 @@
             style="@style/btn_style"
             android:text="Suggest a Gem"/>
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/info_btn"
-            android:layout_gravity="right"
-            android:padding="@dimen/default_padding"
-            android:layout_below="@+id/suggestGemBtn"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_info"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/default_padding"
+            android:textSize="@dimen/main_text_size"
             android:text="@string/gem_required_field"
             android:layout_below="@+id/info_btn"
             android:id="@+id/gemSuggestionTV"/>
