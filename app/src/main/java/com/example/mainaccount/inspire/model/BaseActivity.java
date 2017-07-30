@@ -149,7 +149,7 @@ public class BaseActivity extends AppCompatActivity {
                 Toast.makeText(this, "Successfully signed out!", Toast.LENGTH_SHORT).show();
                 // reset email display in TextView if user is signed out
                 isSignedOut = true;
-                startActivity(userIntent);
+                startActivity(getIntent());
                 finish();
                 return true;
             case R.id.sign_in:

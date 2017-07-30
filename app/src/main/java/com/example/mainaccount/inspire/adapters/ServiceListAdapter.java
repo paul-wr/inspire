@@ -57,7 +57,6 @@ public class ServiceListAdapter extends BaseAdapter {
         // set views
         tvName.setText(serviceList.get(position).getName());
         tvAddress.setText(serviceList.get(position).getAddress());
-        v.setTag(serviceList.get(position).getId());
 
         // launch services website link on onClick event
         ImageButton webBtn = (ImageButton) v.findViewById(R.id.webButton);

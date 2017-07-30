@@ -9,13 +9,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.mainaccount.inspire.NotificationService;
 import com.example.mainaccount.inspire.R;
+import com.example.mainaccount.inspire.SetDuration;
 import com.example.mainaccount.inspire.SetTime;
+import com.example.mainaccount.inspire.VerifyAdmin;
 import com.example.mainaccount.inspire.broadcasts.NotificationReceiver;
 import com.example.mainaccount.inspire.model.BaseActivity;
 import com.example.mainaccount.inspire.model.SigninActivity;
@@ -32,11 +35,12 @@ import java.util.Calendar;
  */
 
 
-public class NotificationSettingsActivity extends BaseActivity {
+public class NotificationSettingsActivity extends BaseActivity  {
     private PendingIntent pendingIntent; // pendingIntent for broadcastReceiver
     public static int userMinutes; // user specified minute
     public static int userHour; // user specified hour
     TextView infoTV;
+    TextView adminTV;
     TimePicker timePicker; // TimePicker allows user to define notification time
     SetTime setTime; // SetTime class for setting and retrieving time
     public static boolean isRedirected; // redirect user back to this activity if redirected to sign in
@@ -45,6 +49,9 @@ public class NotificationSettingsActivity extends BaseActivity {
     SharedPreferences sharedPreferences; // store hour, minute, isNotificationsOn variables for access on reboot
     SharedPreferences.Editor editor; // declare editor to edit sharedPreferences
     int infoCount;
+    LinearLayout adminLinearLayout;
+    VerifyAdmin verifyAdmin;
+    SetDuration setDuration;
 
 
 
@@ -52,6 +59,13 @@ public class NotificationSettingsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_settings);
+
+        setDuration = new SetDuration();
+
+        adminLinearLayout = (LinearLayout) findViewById(R.id.adminLinearL);
+        adminLinearLayout.setVisibility(View.INVISIBLE);
+
+        verifyAdmin = new VerifyAdmin();
 
         sharedPreferences = getApplicationContext().getSharedPreferences(MyPREFERENCES, 0); // instantiate SharedPreferences
         editor = sharedPreferences.edit(); // instantiate editor
@@ -67,15 +81,31 @@ public class NotificationSettingsActivity extends BaseActivity {
         Button stopNotificationsBtn = (Button) findViewById(R.id.stop_notifications);
         ImageButton infoBtn = (ImageButton) findViewById(R.id.info_btn);
 
+        Button halfHour = (Button) findViewById(R.id.half_hour);
+        Button fifteenMinutes = (Button) findViewById(R.id.fifteen_mins);
+        Button sixtySeconds = (Button) findViewById(R.id.sixty_seconds);
+        Button twentySeconds = (Button) findViewById(R.id.twenty_seconds);
+
+
         setTimeBtn.setVisibility(View.INVISIBLE);
 
         infoTV = (TextView) findViewById(R.id.info_tv);
+        adminTV = (TextView) findViewById(R.id.admin_tv);
         infoTV.setVisibility(View.INVISIBLE);
+        adminTV.setVisibility(View.INVISIBLE);
 
         // Intent to begin BroadcastReceiver
         Intent alarmIntent = new Intent(NotificationSettingsActivity.this, NotificationReceiver.class);
         // pendingIntent holds BroadcastReceiver
         pendingIntent = PendingIntent.getBroadcast(NotificationSettingsActivity.this, 0, alarmIntent, 0);
+
+
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+            if (verifyAdmin.isAdmin(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())) {
+                adminLinearLayout.setVisibility(View.VISIBLE);
+                adminTV.setVisibility(View.VISIBLE);
+            }
+        }
 
         // timePicker allows the user to define the time of the notifications
         TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
@@ -102,8 +132,10 @@ public class NotificationSettingsActivity extends BaseActivity {
                     editor.putBoolean("isNotificationsOn", true);
                     editor.putInt("hour", userHour);
                     editor.putInt("minute", userMinutes);
+                    editor.putLong("duration", setDuration.getAdminDuration());
                     editor.commit();
                     isUserTimeSet = true;
+
                     startService(new Intent(getBaseContext(), NotificationService.class));
                     Toast.makeText(NotificationSettingsActivity.this, "Notification time has been set! " + setTime.getCalendar().get(Calendar.HOUR_OF_DAY) + " : " + setTime.getCalendar().get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
                 }else{
@@ -167,8 +199,42 @@ public class NotificationSettingsActivity extends BaseActivity {
             }
         });
 
-    }
+        halfHour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDuration.setAdminDuration(30);
+                Toast.makeText(NotificationSettingsActivity.this, "duration of 30 minutes set", Toast.LENGTH_LONG).show();
+            }
+        });
 
+        fifteenMinutes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDuration.setAdminDuration(15);
+                Toast.makeText(NotificationSettingsActivity.this, "duration of 15 minutes set", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        sixtySeconds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDuration.setAdminDuration(60);
+                Toast.makeText(NotificationSettingsActivity.this, "duration of 60 seconds set", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        twentySeconds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDuration.setAdminDuration(20);
+                Toast.makeText(NotificationSettingsActivity.this, "duration of 20 seconds set", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+    }
 
 
 
@@ -181,10 +247,8 @@ public class NotificationSettingsActivity extends BaseActivity {
         }
 
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        int interval = 15000;
 
-
-        manager.setRepeating(AlarmManager.RTC_WAKEUP, setTime.getCalendar().getTimeInMillis(), interval , pendingIntent);
+        manager.setRepeating(AlarmManager.RTC_WAKEUP, setTime.getCalendar().getTimeInMillis(), AlarmManager.INTERVAL_DAY , pendingIntent);
         Toast.makeText(this, "Notifications activated!", Toast.LENGTH_SHORT).show();
     }
 

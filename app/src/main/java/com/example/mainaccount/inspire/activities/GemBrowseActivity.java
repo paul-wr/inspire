@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class GemBrowseActivity extends BaseActivity {
     String gemSuggestion;
@@ -142,13 +143,15 @@ public class GemBrowseActivity extends BaseActivity {
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Date date = new Date();
+                String dateString = date.toString();
                 userEmail = getUserEmail();
                 gemSuggestion = gemSuggestET.getText().toString();
                 if(gemSuggestion.isEmpty()){
                     Toast.makeText(GemBrowseActivity.this, "Field cannot be empty!", Toast.LENGTH_LONG).show();
                 }else {
                     if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-                        databaseReference.push().setValue("Suggestion: " + gemSuggestion + " | Email: " + userEmail);
+                        databaseReference.push().setValue(gemSuggestion + " | " + userEmail+" "+dateString);
                         gemSuggestET.setText("");
                         gemSuggestET.setVisibility(View.INVISIBLE);
                         gemSuggestTV.setText(R.string.gem_confirmation);

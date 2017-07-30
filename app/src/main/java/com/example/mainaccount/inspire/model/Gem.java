@@ -102,7 +102,6 @@ public class Gem extends AppCompatActivity {
     public String[] getRandomGem(){
         Gem g = gemList.get(ran.nextInt(gemList.size()));
         String[] a = new String[3];
-        // System.out.println(p.getCategory()+": "+p.getPhrase());
 
         a[0] = g.getCategory();
         a[1] = g.getGem();

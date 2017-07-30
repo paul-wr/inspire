@@ -28,7 +28,7 @@ public class NotificationService extends Service {
     private PendingIntent pendingIntent;
     SetTime setTime;
     SharedPreferences sharedPreferences;
-
+    long duration;
 
     public NotificationService() {
         setTime = new SetTime();
@@ -48,15 +48,17 @@ public class NotificationService extends Service {
 
         sharedPreferences = getApplicationContext().getSharedPreferences(MyPREFERENCES, 0);
         isNotificationsOn = sharedPreferences.getBoolean("isNotificationsOn", false);
-
+        duration = sharedPreferences.getLong("duration", AlarmManager.INTERVAL_DAY);
 
         Intent alarmIntent = new Intent(getApplicationContext(), NotificationReceiver.class);
         // PendingIntent holds Intent until called by AlarmManger
         pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, alarmIntent, 0);
 
         if(isNotificationsOn) {
-            manager.setRepeating(AlarmManager.RTC_WAKEUP, setTime.getTime(), AlarmManager.INTERVAL_DAY, pendingIntent);
+            manager.setRepeating(AlarmManager.RTC_WAKEUP, setTime.getTime(), duration, pendingIntent);
             Toast.makeText(this, "Notifications activated!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Duration = "+duration, Toast.LENGTH_SHORT).show();
+
 
             // Toast.makeText(this, "Service Started", Toast.LENGTH_LONG).show();
 

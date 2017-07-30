@@ -14,22 +14,62 @@
         android:orientation="vertical"
         tools:context="com.example.mainaccount.inspire.activities.NotificationSettingsActivity">
 
+        <include layout="@layout/page_heading"/>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:weightSum="2"
             android:padding="@dimen/default_padding"
             android:layout_height="wrap_content">
 
-            <include layout="@layout/page_heading"/>
 
             <TimePicker
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:timePickerMode="spinner"
-                android:layout_marginTop="65dp"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/heading_text"
                 android:id="@+id/timePicker" />
+             <LinearLayout
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="1"
+                 android:padding="5dp"
+                 android:orientation="vertical">
+                 <Button
+                     android:id="@+id/start_notifications"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_centerHorizontal="true"
+                     style="@style/btn_style2"
+                     android:text="Start Notifications" />
+
+                 <Button
+                     android:id="@+id/stop_notifications"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_centerHorizontal="true"
+                     style="@style/btn_style2"
+                     android:text="Stop Notifications" />
+
+
+                 <Button
+                     android:id="@+id/edit_time"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     style="@style/btn_style2"
+                     android:text="Edit notification time" />
+
+                 <Button
+                     android:id="@+id/set_time"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     style="@style/btn_style2"
+                     android:text="Set notification time" />
+
+         </LinearLayout>
 
         </LinearLayout>
 
@@ -37,7 +77,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="17"
-            android:layout_marginTop="10dp"
             android:id="@+id/gemTVLinearL"
             android:orientation="horizontal">
 
@@ -64,56 +103,60 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="2"
+            android:layout_height="wrap_content"
+            android:id="@+id/admin_tv"
+            style="@style/header_style"
+            android:textAlignment="center"
             android:paddingLeft="@dimen/default_padding"
             android:paddingRight="@dimen/default_padding"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/start_notifications"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                style="@style/btn_style2"
-                android:text="Start Notifications" />
-
-            <Button
-                android:id="@+id/stop_notifications"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                style="@style/btn_style2"
-                android:text="Stop Notifications" />
-        </LinearLayout>
+            android:textSize="@dimen/main_text_size"
+            android:text="Admin testing privilages"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            android:paddingLeft="@dimen/default_padding"
-            android:paddingRight="@dimen/default_padding"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:weightSum="4"
+            android:padding="@dimen/default_padding"
+            android:layout_marginTop="10dp"
+            android:id="@+id/adminLinearL"
+            android:orientation="horizontal">
 
             <Button
-                android:id="@+id/edit_time"
+                android:id="@+id/half_hour"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="@dimen/button_size"
+                android:layout_margin="5dp"
                 style="@style/btn_style2"
-                android:text="Edit notification time" />
-
+                android:text="half hour" />
             <Button
-                android:id="@+id/set_time"
+                android:id="@+id/fifteen_mins"
                 android:layout_width="0dp"
+                android:layout_margin="5dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 style="@style/btn_style2"
-                android:text="Set notification time" />
+                android:text="15 minutes" />
+            <Button
+                android:id="@+id/sixty_seconds"
+                android:layout_width="0dp"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/btn_style2"
+                android:text="60 seconds" />
+            <Button
+                android:id="@+id/twenty_seconds"
+                android:layout_width="0dp"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/btn_style2"
+                android:text="20 seconds" />
         </LinearLayout>
-        <RelativeLayout
+
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
