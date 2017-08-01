@@ -54,7 +54,8 @@
         </receiver>
 
         <activity android:name=".activities.HistoryActivity" />
-        <activity android:name=".activities.GemBrowseActivity"></activity>
+        <activity android:name=".activities.GemBrowseActivity" />
+        <activity android:name=".PhonePermissionActivity"></activity>
     </application>
 
 </manifest>

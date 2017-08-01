@@ -44,7 +44,7 @@
                      android:layout_height="wrap_content"
                      android:layout_centerHorizontal="true"
                      style="@style/btn_style2"
-                     android:text="Start Notifications" />
+                     android:text="@string/start_notifications" />
 
                  <Button
                      android:id="@+id/stop_notifications"
@@ -52,7 +52,7 @@
                      android:layout_height="wrap_content"
                      android:layout_centerHorizontal="true"
                      style="@style/btn_style2"
-                     android:text="Stop Notifications" />
+                     android:text="@string/stop_notifications" />
 
 
                  <Button
@@ -60,14 +60,14 @@
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content"
                      style="@style/btn_style2"
-                     android:text="Edit notification time" />
+                     android:text="@string/edit_notification_time" />
 
                  <Button
                      android:id="@+id/set_time"
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content"
                      style="@style/btn_style2"
-                     android:text="Set notification time" />
+                     android:text="@string/set_notification_time" />
 
          </LinearLayout>
 
@@ -112,7 +112,7 @@
             android:paddingLeft="@dimen/default_padding"
             android:paddingRight="@dimen/default_padding"
             android:textSize="@dimen/main_text_size"
-            android:text="Admin testing privilages"/>
+            android:text="@string/admin_testing_privilages"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                 android:layout_weight="1"
                 android:layout_margin="5dp"
                 style="@style/btn_style2"
-                android:text="half hour" />
+                android:text="@string/half_hour" />
             <Button
                 android:id="@+id/fifteen_mins"
                 android:layout_width="0dp"
@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 style="@style/btn_style2"
-                android:text="15 minutes" />
+                android:text="@string/_15_minutes" />
             <Button
                 android:id="@+id/sixty_seconds"
                 android:layout_width="0dp"
@@ -145,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 style="@style/btn_style2"
-                android:text="60 seconds" />
+                android:text="@string/_60_seconds" />
             <Button
                 android:id="@+id/twenty_seconds"
                 android:layout_width="0dp"
@@ -153,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 style="@style/btn_style2"
-                android:text="20 seconds" />
+                android:text="@string/_20_seconds" />
         </LinearLayout>
 
     <RelativeLayout

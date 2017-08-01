@@ -18,4 +18,42 @@
     <string name="settings_tv">"To start the inspire gem notifications at the default time of 18:00 daily, simply click START NOTIFICATIONS button."
     "\nClick "EDIT TIME" to set your own custom daily time to recieve notifications."
     </string>
+    <string name="music">Music</string>
+    <string name="education">Education</string>
+    <string name="health">Health</string>
+    <string name="suggest_a_gem">Suggest a Gem</string>
+    <string name="quote_here">Quote here:</string>
+    <string name="send">Send</string>
+    <string name="history">History</string>
+    <string name="settings">settings</string>
+    <string name="services">Services</string>
+    <string name="favorites">Favorites</string>
+    <string name="register">Register</string>
+    <string name="add_to_favorites">Add to favorites</string>
+    <string name="start_notifications">Start Notifications</string>
+    <string name="stop_notifications">Stop Notifications</string>
+    <string name="edit_notification_time">Edit notification time</string>
+    <string name="set_notification_time">Set notification time</string>
+    <string name="admin_testing_privilages">Admin testing privilages</string>
+    <string name="half_hour">half hour</string>
+    <string name="_15_minutes">15 minutes</string>
+    <string name="_60_seconds">60 seconds</string>
+    <string name="_20_seconds">20 seconds</string>
+    <string name="making_phone_call">Making phone call...</string>
+    <string name="name">Name:</string>
+    <string name="email">Email:</string>
+    <string name="update_profile">Update profile</string>
+    <string name="reset_password">Reset password</string>
+    <string name="delete_profile">Delete profile</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="helpful_services">Helpful Services</string>
+    <string name="delete_all">Delete All</string>
+    <string name="favorite">Favorite</string>
+    <string name="delete">Delete</string>
+    <string name="clear_history">Clear History</string>
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
+    <string name="website">Website</string>
 </resources>

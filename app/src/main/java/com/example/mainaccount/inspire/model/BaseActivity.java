@@ -206,10 +206,13 @@ public class BaseActivity extends AppCompatActivity {
         if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             String user = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
             String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-            userTV.setText(welcome+" "+user);
+            if(user != null) {
+                userTV.setText(welcome + " " + user);
+            }
             emailTV.setText(email);
         }
     }
+
 
     // method declaration for re-setting Home screen email text after sign out
     private void setWelcomeText(){

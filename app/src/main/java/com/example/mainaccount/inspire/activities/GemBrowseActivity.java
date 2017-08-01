@@ -148,7 +148,7 @@ public class GemBrowseActivity extends BaseActivity {
                 userEmail = getUserEmail();
                 gemSuggestion = gemSuggestET.getText().toString();
                 if(gemSuggestion.isEmpty()){
-                    Toast.makeText(GemBrowseActivity.this, "Field cannot be empty!", Toast.LENGTH_LONG).show();
+                    gemSuggestET.setError("Field cannot be empty!");
                 }else {
                     if (FirebaseAuth.getInstance().getCurrentUser() != null) {
                         databaseReference.push().setValue(gemSuggestion + " | " + userEmail+" "+dateString);

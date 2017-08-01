@@ -6,4 +6,7 @@
     <dimen name="button_size">17sp</dimen>
     <dimen name="main_text_size">15sp</dimen>
     <dimen name="launch_text_size">21sp</dimen>
+    <dimen name="text_3">36sp</dimen>
+    <dimen name="ten_dp">10dp</dimen>
+    <dimen name="five_dp">5dp</dimen>
 </resources>

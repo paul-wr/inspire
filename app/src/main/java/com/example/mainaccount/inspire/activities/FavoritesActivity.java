@@ -2,8 +2,6 @@ package com.example.mainaccount.inspire.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.mainaccount.inspire.R;
@@ -49,13 +47,6 @@ public class FavoritesActivity  extends BaseActivity {
         adapter.setIntent(getIntent());
         lvFavorites.setAdapter(adapter);
 
-
-        lvFavorites.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // Toast.makeText(getApplicationContext(), "Clicked! Tag = "+position, Toast.LENGTH_LONG).show();
-            }
-        });
 
     }
 

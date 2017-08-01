@@ -1,6 +1,7 @@
 package com.example.mainaccount.inspire.adapters;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.mainaccount.inspire.HelpfulService;
+import com.example.mainaccount.inspire.PhonePermissionActivity;
 import com.example.mainaccount.inspire.R;
 
 import java.util.List;
@@ -28,6 +30,7 @@ import java.util.List;
 public class ServiceListAdapter extends BaseAdapter {
     private Context mContext;
     private List<HelpfulService> serviceList;
+    public static int phoneNo;
 
     public ServiceListAdapter(Context mContext, List<HelpfulService> serviceList) {
         this.mContext = mContext;
@@ -79,19 +82,15 @@ public class ServiceListAdapter extends BaseAdapter {
             }
         });
 
-        ImageButton phoneBtn = (ImageButton) v.findViewById(R.id.phone_button);
+        final ImageButton phoneBtn = (ImageButton) v.findViewById(R.id.phone_button);
         phoneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent phoneIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+serviceList.get(position).getPhoneNo()));
                 if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
+                    phoneNo = Integer.parseInt(serviceList.get(position).getPhoneNo());
+                    Intent intent = new Intent(mContext, PhonePermissionActivity.class);
+                    ((Activity) mContext).startActivityForResult(intent, 2);
                     return;
                 }
                 viewGroup.getContext().startActivity(phoneIntent);

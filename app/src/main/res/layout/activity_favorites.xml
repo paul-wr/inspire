@@ -27,7 +27,7 @@
                 android:text="Favorites List"
                 android:textAlignment="center"
                 android:textColor="@color/lightBlack"
-                android:textSize="36sp"
+                android:textSize="@dimen/text_3"
                 android:textStyle="bold" />
 
             <ListView
@@ -36,9 +36,9 @@
                 android:id="@+id/favorite_list"
                 android:layout_below="@+id/textView4"
                 android:layout_marginBottom="70dp"
-                android:dividerHeight="2dp"
-                android:padding="@dimen/default_padding"
-                android:divider="@color/colorAccent">
+                android:dividerHeight="1dp"
+                android:padding="@dimen/ten_dp"
+                android:divider="@color/colorPrimary">
             </ListView>
         </LinearLayout>
 

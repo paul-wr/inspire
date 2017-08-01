@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:text="Clear History"
+        android:text="@string/clear_history"
         android:textColor="@color/colorPrimary"
         android:layout_gravity="right"
         android:textAlignment="center" />
@@ -37,7 +37,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/tv_history"
-        android:text="History"
+        android:text="@string/history"
         android:layout_marginLeft="10dp"
         android:layout_weight="14"
         android:layout_below="@+id/delete_all_btn"

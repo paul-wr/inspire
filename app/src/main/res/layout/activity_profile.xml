@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/user_tv"
             android:layout_marginTop="35dp"
-            android:text="Name:" />
+            android:text="@string/name" />
 
         <EditText
             android:id="@+id/nameField"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/nameField"
             android:layout_marginTop="19dp"
-            android:text="Email:" />
+            android:text="@string/email" />
 
         <EditText
             android:id="@+id/emailField"
@@ -84,7 +84,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Update profile" />
+            android:text="@string/update_profile" />
 
         </LinearLayout>
 
@@ -102,7 +102,7 @@
             android:layout_margin="5dp"
             android:layout_height="wrap_content"
             android:id="@+id/password_reset"
-            android:text="Reset password"/>
+            android:text="@string/reset_password"/>
 
         <Button
             android:id="@+id/delete_profile"
@@ -111,7 +111,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Delete profile" />
+            android:text="@string/delete_profile" />
 
         </LinearLayout>
 
@@ -121,6 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
+            android:layout_gravity="center"
             android:layout_below="@+id/profileLinearLayout2"
             android:layout_centerHorizontal="true"/>
 

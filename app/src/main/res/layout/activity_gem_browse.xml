@@ -76,7 +76,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Music"
+                android:text="@string/music"
                 android:textAlignment="center"
                 android:layout_weight="1"
                 android:textSize="17sp"
@@ -85,7 +85,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Education"
+                android:text="@string/education"
                 android:textAlignment="center"
                 android:padding="5dp"
                 android:layout_weight="1"
@@ -98,7 +98,7 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:padding="5dp"
-                android:text="Health"
+                android:text="@string/health"
                 android:textSize="17sp"
                 android:textColor="@color/lightBlack"/>
 
@@ -140,7 +140,7 @@
             android:id="@+id/suggestGemBtn"
             android:layout_gravity="center"
             style="@style/btn_style"
-            android:text="Suggest a Gem"/>
+            android:text="@string/suggest_a_gem"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -157,7 +157,7 @@
             android:padding="@dimen/default_padding"
             android:id="@+id/gemSuggestionET"
             android:layout_below="@+id/gemSuggestionTV"
-            android:hint="Quote here:"/>
+            android:hint="@string/quote_here"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -167,7 +167,7 @@
             style="@style/btn_style"
             android:layout_marginBottom="20dp"
             android:layout_below="@+id/gemSuggestionET"
-            android:text="Send"/>
+            android:text="@string/send"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
